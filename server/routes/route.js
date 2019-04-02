@@ -11,10 +11,10 @@ export const Routes =[
 	//test method
 	{
 		method: 'GET',
-		path: '/2',
+		path: '/hello',
 		handler: (request, h) => {
 
-			return h.file('index.html');
+			return h.file('server/index.html');
 		}
 	}
 ]
