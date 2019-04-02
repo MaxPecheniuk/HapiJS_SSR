@@ -18,17 +18,15 @@ const server = Hapi.server({
 		}
 	}
 });
+const handleRender = () => {
+	let content = renderToString(
+		<div>
+			<App/>
+		</div>);
+	console.log(content);
+	return template(content)
 
-// const handleRender = (req, res) => {
-// 	let content = renderToString(
-// 		<div>
-// 			<App/>
-// 		</div>
-// )
-//
-// 	return template(content)
-// }
-// server.method('handleRender', handleRender, {});
+}
 
 const init = async () => {
 	await server.register(
@@ -45,14 +43,12 @@ const init = async () => {
 
 	server.route({
 		method: 'GET',
-		path: '/',
-		handler: (request, h) => {
-			let content = renderToString(
-				<div>
-					<App/>
-				</div>
-			)
-			return template(content);
+		path: '/{param*}',
+		handler: {
+			directory: {
+				path: '.',
+				index: ['client.js']
+			}
 		}
 	});
 
@@ -66,5 +62,5 @@ process.on('unhandledRejection', (err) => {
 	console.log(err);
 	process.exit(1);
 });
-
+handleRender();
 init();
