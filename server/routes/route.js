@@ -1,20 +1,24 @@
 // 'use strict'
 // module.export
+// const Path = require('path');
+
 export const Routes =[
 	{
 		method: 'GET',
 		path: '/',
 		handler:  (request, h) => {
-			return 'o1k';
+			return 'ok';
 		}
 	},
 	//test method
 	{
 		method: 'GET',
-		path: '/hello',
-		handler: (request, h) => {
-
-			return h.file('server/index.html');
+		path: '/{param*}',
+		handler: {
+			directory: {
+				path: '.',
+				redirectToSlash: true
+			}
 		}
 	}
 ]
