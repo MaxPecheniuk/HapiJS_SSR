@@ -1,4 +1,5 @@
 export const template = (content = '') => {
+	console.log(content);
 	const page = `
 <!doctype html>
 	<html>
@@ -10,10 +11,12 @@ export const template = (content = '') => {
     </head>
     <body>
     	<div id="root">${content}</div>
-      
-      <script src="/static/client.js"></script>
+
     </body>
-  </html>`}
+  </html>`
+
+	return page
+}
 
 
 

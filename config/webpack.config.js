@@ -3,11 +3,11 @@ const path = require('path');
 module.exports = {
 
 	entry: {
-		client: './src/client.js'
+		client: './src/index.js'
 	},
 
 	output: {
-		path: path.resolve(__dirname, 'public'),
+		path: path.resolve(__dirname, '../public'),
 		publicPath: '/'
 	},
 	module: {
