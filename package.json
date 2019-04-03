@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run dev && nodemon index.js",
     "dev": "webpack --mode development --config config/webpack.config.js",
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "testM": "webpack --mode development --config config/webpack-dev-config.js"
   },
   "keywords": [],
   "author": "",
@@ -34,9 +35,12 @@
     "@babel/register": "^7.4.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.10",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",

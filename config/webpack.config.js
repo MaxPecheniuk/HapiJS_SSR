@@ -1,9 +1,12 @@
 const path = require('path');
+const paths = require("./paths");
 
 module.exports = {
 
 	entry: {
-		client: path.resolve(__dirname,'../src/index.js')
+		// client: path.resolve(__dirname,'../src/index.js')
+		client: path.resolve(paths.appIndexJs)
+
 	},
 
 	output: {
@@ -19,7 +22,7 @@ module.exports = {
 				loader: "babel-loader"
 			},
 			{
-				test: /\.(css|scss)$/,
+				test: /\.(css)$/,
 				exclude: /node_modules/,
 				use: [
 					{
