@@ -1,9 +1,9 @@
 import React from 'react'
-import {hydrate} from 'react-dom'
+import ReactDOM from 'react-dom';
 
 import App from './App/App'
 
-hydrate(
+ReactDOM.hydrate(
 	<App/>,
 
 document.querySelector('#root')
