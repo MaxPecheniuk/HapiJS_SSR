@@ -1,7 +1,7 @@
 // import csshook from 'css-modules-require-hook'
 
-const Hapi = require('hapi');
 import {Routes} from "./routes/route";
+const Hapi = require('hapi');
 const Inert = require('inert');
 
 

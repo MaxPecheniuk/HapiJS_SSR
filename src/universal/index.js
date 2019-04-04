@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import App from './App/App'
+import App from './App'
 // const hook = require('css-modules-require-hook');
 // import csshook from 'css-modules-require-hook/preset'
 // hook({
@@ -8,7 +8,7 @@ import App from './App/App'
 // 	extensions: ['.scss'],
 // 	rootDir: path.join(__dirname, '..')
 // });
-import './App/index.scss'
+import './index.scss'
 ReactDOM.hydrate(
 	<App/>,
 

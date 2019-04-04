@@ -22,6 +22,7 @@
     "hapi-pino": "^5.4.1",
     "inert": "^5.1.2",
     "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
     "vision": "^5.4.4"
   },
   "devDependencies": {

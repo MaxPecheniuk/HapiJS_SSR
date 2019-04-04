@@ -1,11 +1,15 @@
 import React from "react";
+
 const path = require('path');
 import {renderToString} from "react-dom/server";
-import App from "../../universal/App/App";
+import App from "../../universal/App";
 import {template} from "../template";
-import Paths from "../../../config/paths"
 
-export const Routes =[
+import {Provider} from 'react-redux'
+import Paths from "../../../config/paths"
+import store from "../../universal/store/app.store"
+
+export const Routes = [
 	{
 		method: 'GET',
 		path: '/{param*}',
@@ -20,8 +24,11 @@ export const Routes =[
 		method: 'GET',
 		path: '/',
 		handler: () => {
+			// const store = createStore(counterApp)
 			let content = renderToString(
-				<App/>
+				<Provider store={store}>
+					<App/>
+				</Provider>
 			);
 			return template(content)
 		}
