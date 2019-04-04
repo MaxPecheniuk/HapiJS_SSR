@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run dev && npm run server",
-    "dev": "webpack-dev-server --open --config config/webpack-dev-config.js",
-    "server": "nodemon index.js"
-
+    "start": "npm run server && npm run dev",
+    "dev": "webpack --mode development --config config/webpack-dev-config.js && webpack-dev-server --open --config config/webpack-dev-config.js",
+    "server": "node index.js",
+    "dev-server": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,7 @@
     "hapi": "^18.1.0",
     "hapi-pino": "^5.4.1",
     "inert": "^5.1.2",
+    "react-redux": "^6.0.1",
     "vision": "^5.4.4"
   },
   "devDependencies": {

@@ -15,11 +15,12 @@ module.exports = {
 		modules: [path.resolve(paths.appSrc), "node_modules"],
 	},
 	entry: {
-		client: path.resolve(paths.appIndexJs)
+		path: path.resolve(paths.appIndexJs)
 	},
 	output: {
 		path: path.resolve(paths.appPublic),
-		publicPath: '/'
+		filename: 'client.js'
+		// publicPath: '/'
 	},
 	module: {
 		rules: [

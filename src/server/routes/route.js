@@ -2,7 +2,7 @@ import React from "react";
 const path = require('path');
 import {renderToString} from "react-dom/server";
 import App from "../../universal/App/App";
-import {template} from "../../../dist/public/template";
+import {template} from "../template";
 import Paths from "../../../config/paths"
 
 export const Routes =[

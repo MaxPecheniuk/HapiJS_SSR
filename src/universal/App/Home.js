@@ -5,7 +5,7 @@ export default function Home() {
 	return(
 		<div className="red">
 			<h1>
-				!!!!!!Lorem ips555um dolor  praesentium reprehenderit saepe.
+				!!!!!!Lorem ips5sfsf55um dolor  aaapraeaaaaadgdsssssaaentaaaium reprsfsfsehenderit saepe.
 			</h1>
 		</div>
 	)
