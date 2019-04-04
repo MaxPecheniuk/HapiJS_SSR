@@ -1,5 +1,5 @@
 require("@babel/register")({
 	extends: './.babelrc'
 });
-require('./server/server');
+require('./src/server/server');
 

@@ -1,3 +1,4 @@
+
 export const template = (content = '') => {
 	const page = `
 <!doctype html>
@@ -9,10 +10,11 @@ export const template = (content = '') => {
                 <meta name="theme-color" content="#810051">
     </head>
     <body>
+    <span>TEMPLATE</span>
     	<div id="root">${content}</div>
     
 
-      <script src="./client.js"></script>
+      <script src="client.js"></script>
     </body>
   </html>`
 
