@@ -1,5 +1,6 @@
 
-export const template = (content = '') => {
+export const template = (content = '', initialState) => {
+	console.log(initialState);
 	const page = `
 <!doctype html>
 	<html>
@@ -15,8 +16,14 @@ export const template = (content = '') => {
     
 
       <script src="client.js"></script>
+<script> window.__PRELOADED_STATE__ = ${JSON.stringify(initialState).replace(
+		/</g,
+		'\\\u003c'
+	)}</script> 
     </body>
   </html>`
 
 	return page
 }
+
+{/*<!--      <script>window.__PRELOADED_STATE__ = ${JSON.stringify(initialState)}</script>-->*/}

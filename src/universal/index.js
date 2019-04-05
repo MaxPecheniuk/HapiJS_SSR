@@ -9,8 +9,23 @@ import App from './App'
 // 	rootDir: path.join(__dirname, '..')
 // });
 import './index.scss'
+
+import {Provider} from "react-redux";
+import rootReducer from "./reducer/roote.reducer";
+import {createStore} from "redux";
+
+
+const state = window.__PRELOADED_STATE__;
+delete window.__PRELOADED_STATE__;
+
+const store = createStore(rootReducer, state);
+
+
 ReactDOM.hydrate(
-	<App/>,
+	<Provider store={store} >
+		<App/>
+	</Provider>
+	,
 
 document.getElementById('root')
 )

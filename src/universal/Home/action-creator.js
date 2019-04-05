@@ -1,5 +1,8 @@
-import {COUNT} from "../constants/constants";
+import {INCREASE, DECREASE} from "../constants/constants";
 
-const count = (payload) => {
-	return {type: COUNT, payload}
-}
+export const increase = () => {
+	return {type: INCREASE}
+};
+export const decrease = () => {
+	return {type: DECREASE}
+};

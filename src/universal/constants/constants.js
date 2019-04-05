@@ -1,1 +1,2 @@
-export const COUNT = 'COUNT';
+export const INCREASE = 'INCREASE';
+export const DECREASE = 'DECREASE';

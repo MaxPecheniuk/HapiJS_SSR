@@ -27,39 +27,15 @@ module.exports = {
 
 			{
 				test: /\.(js|jsx)$/,
-				include: path.resolve(paths.appSrc),
 				exclude: /node_modules/,
-				use: [
-					{
-						loader: "babel-loader",
-						options: {
-							presets: ["@babel/react"]
-						}
-					}
-				]
+				use: ['babel-loader']
 			},
+
 			{
 				test: /\.(css|scss)$/,
 				exclude: /node_modules/,
 				include: [path.resolve(paths.appSrc)],
-				use: [
-					{
-						loader: "style-loader"
-					},
-					{
-						loader: "css-loader",
-
-					},
-					{
-						loader: "sass-loader",
-						options: {
-
-							// This enables local scoped CSS based in CSS Modules spec
-							modules: true,
-						}
-					}
-
-				]
+				use: ["style-loader","css-loader","sass-loader"]
 			}
 		]
 	},
