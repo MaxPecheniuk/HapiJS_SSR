@@ -10,6 +10,6 @@ module.exports = {
 	appConfig: resolveApp("config"), // Home config files
 	appDist: resolveApp("dist"), // Dev build
 
-	appIndexJs: resolveApp("src/universal/index.js"), // Main entry point
+	appIndexJs: resolveApp("src/universal/index.jsx"), // Main entry point
 	appSrc: resolveApp("src/universal") // Home source
 };

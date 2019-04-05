@@ -1,8 +1,8 @@
-import {INCREASE, DECREASE} from "../constants/constants";
+import { INCREASE, DECREASE } from '../constants/constants';
 
-export const increase = () => {
-	return {type: INCREASE}
-};
-export const decrease = () => {
-	return {type: DECREASE}
-};
+export const increase = () => ({
+  type: INCREASE,
+});
+export const decrease = () => ({
+  type: DECREASE,
+});
