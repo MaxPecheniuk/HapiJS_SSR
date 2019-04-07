@@ -1,11 +1,15 @@
 {
-  "extends": ["airbnb"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "parser": "babel-eslint",
   "plugins": [
     "react"
   ],
   "rules": {
-    "max-len": [1, 120, 2, {"ignoreComments": true}],
+    //0-off, 1-warn, 2-err, 120 length, 2-tab spase
+    "max-len": [2, 120, 2, {"ignoreComments": true}],
     "react/prop-types": [0],
     "linebreak-style": ["error", "windows"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]

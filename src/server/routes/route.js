@@ -1,7 +1,7 @@
 import React from "react";
 import path from 'path';
 import {renderToString} from "react-dom/server";
-import App from "../../universal/App";
+import App from "../../universal/App/App";
 import {template} from "../template";
 
 import {Provider} from 'react-redux'

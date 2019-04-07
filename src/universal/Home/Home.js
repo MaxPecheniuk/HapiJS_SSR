@@ -1,23 +1,24 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import { decrease, increase } from './action-creator';
 import '../index.scss';
 
-const mapStateToProps = (state) => ({
-  count: state.HomeReducer.count
+const mapStateToProps = state => ({
+  count: state.HomeReducer.count,
 })
 const mapDispatchToProps = {
   increase,
-  decrease
-}
-// eslint-disable-next-line
-class Home extends React.Component {
+  decrease,
+};
+
+class Home extends React.Component{
 
   render() {
-    const { count, increase, decrease } = this.props;
+
+		const { count, increase, decrease } = this.props;
     return (
       <div className="red">
-        {count}s
+        {count}
         <button onClick={increase}>+</button>
         <button onClick={decrease}>-</button>
       </div>

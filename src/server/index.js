@@ -10,5 +10,5 @@ csshook({
 	processorOpts: {parser: scssParser}
 });
 
-require('./src/server/server');
+require('./server');
 
