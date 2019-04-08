@@ -1,7 +1,5 @@
 const path = require("path");
-
 const webpack = require("webpack");
-
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -33,7 +31,9 @@ module.exports =  {
 		// Extract text/(s)css from a bundle, or bundles, into a separate file.
 		new MiniCssExtractPlugin("styles.css")
 	],
+
 	module: {
+
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
@@ -43,7 +43,8 @@ module.exports =  {
 			},
 			{
 				test: /\.(css|scss)$/,
-				include: [path.resolve(paths.appSrc)],
+        exclude: /node_modules/,
+        include: [path.resolve(paths.appSrc)],
 				use: [
 					MiniCssExtractPlugin.loader,
 					"css-loader","sass-loader"
