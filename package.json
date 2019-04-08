@@ -5,16 +5,17 @@
   "main": "src/server/index.js",
   "scripts": {
     "test": "jest js-dom",
-    "dev": "NODE_ENV=develop webpack --config config/webpack-dev-config.js && webpack-dev-server --open --config config/webpack-dev-config.js",
-    "dev-server": "NODE_ENV=develop webpack-dev-server --open --config config/webpack-dev-config.js",
-    "server": "node src/server/index.js",
+    "start": "npm run ",
+    "dev": "NODE_ENV=development webpack --config config/webpack-dev-config.js && webpack-dev-server --open --config config/webpack-dev-config.js",
+    "dev-server": "NODE_ENV=development webpack-dev-server --open --config config/webpack-dev-config.js",
+    "server": "NODE_ENV=development node src/server/index.js",
     "server-dev": "nodemon src/server/index.js",
     "build": "webpack --config config/webpack-prod-config.js",
-    "build:server":  "NODE_ENV=production BABEL_ENV=server babel src -o dist --copy-files",
+    "build:server": "NODE_ENV=production BABEL_ENV=server babel src -o dist --copy-files",
     "build:client": "NODE_E",
     "flow": "flow status --quiet",
     "lint": "eslint src -c .eslintrs --ext js,jsx",
-    "max": "NODE_ENV=develop webpack --config config/webpack-dev-config.js"
+    "max": "NODE_ENV=develop webpack --config config/webpack-comon-config.js"
   },
   "keywords": [],
   "author": "",

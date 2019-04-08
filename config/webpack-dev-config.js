@@ -1,12 +1,14 @@
+const webpack = require("webpack");
 const path = require("path");
 const paths = require("./paths");
-const webpack = require("webpack");
+const merge = require("webpack-merge");
+const common = require("./webpack-comon-config");
 
 const Port = 8080;
 const HapiPort = 9080;
 const Host = "localhost";
 
-module.exports = {
+module.exports = merge(common, {
 	mode: "development",
 	devtool: "eval",
 	resolve: {
@@ -19,39 +21,10 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(paths.appPublic),
-		filename: 'client.js'
-		// publicPath: '/'
+		filename: 'client.js',
+		publicPath: '/'
 	},
-	module: {
-		rules: [
 
-			{
-				test: /\.(js|jsx)$/,
-				exclude: /node_modules/,
-				use: ['babel-loader']
-			},
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: ['babel-loader', 'eslint-loader']
-			},
-			{
-				test: /\.(css|scss)$/,
-				exclude: /node_modules/,
-				include: [path.resolve(paths.appSrc)],
-				use: ["style-loader","css-loader","sass-loader"]
-			}
-		]
-	},
-	plugins: [
-		//global const
-		new webpack.DefinePlugin({
-
-			"process.env": {
-				NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-			}
-		})
-	],
 	devServer: {
 			port: Port,
 			host: Host,
@@ -71,4 +44,4 @@ module.exports = {
 			process.stdout.write(`Dev server is running: http://${Host}:${Port}\n`);
 		}
 }
-}
+})
