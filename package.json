@@ -14,8 +14,7 @@
     "build:server": "NODE_ENV=production BABEL_ENV=server babel src -o dist --copy-files",
     "build:client": "NODE_E",
     "flow": "flow status --quiet",
-    "lint": "eslint src -c .eslintrs --ext js,jsx",
-    "max": "NODE_ENV=develop webpack --config config/webpack-comon-config.js"
+    "lint": "eslint src -c .eslintrs --ext js,jsx"
   },
   "keywords": [],
   "author": "",

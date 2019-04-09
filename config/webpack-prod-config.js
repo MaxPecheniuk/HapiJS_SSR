@@ -3,13 +3,14 @@ const common = require("./webpack-comon-config");
 const merge = require("webpack-merge");
 const paths = require("./paths");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 module.exports =  merge(common, {
 	entry: {
 		vendor: ["react"],
-		app: paths.appIndexJs
+		universal: paths.appIndexJs,
+    server: paths.appIndexJsServer
 	},
 	mode: "production",
 	 // '5124f5efa5436b5b5e7d_app.js'

@@ -22,7 +22,7 @@ module.exports = merge(common, {
 	output: {
 		path: path.resolve(paths.appPublic),
 		filename: 'client.js',
-		publicPath: '/'
+		// publicPath: '/'
 	},
 
 	devServer: {
