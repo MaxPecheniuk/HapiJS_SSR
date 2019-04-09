@@ -21,22 +21,13 @@ module.exports =  {
 					test: /\.(js|jsx)$/,
 					exclude: /node_modules/,
           include: path.resolve(paths.appSrc),
-					use: ['babel-loader'
-            ]
-				},
-				{
-					test: /\.js$/,
-					exclude: /node_modules/,
 					use: ['babel-loader']
 				},
 				{
 					test: /\.(css|scss)$/,
 					exclude: /node_modules/,
 					include: [path.resolve(paths.appSrc)],
-
           use: (ENV === 'production') ? [MiniCssExtractPlugin.loader,"css-loader", "sass-loader"] : ["style-loader", "css-loader", "sass-loader"]
-
-
 				}
 			]
 		}

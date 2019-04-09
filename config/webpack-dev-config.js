@@ -22,7 +22,7 @@ module.exports = merge(common, {
 	output: {
 		path: path.resolve(paths.appDist),
 		filename: 'client.js',
-		// publicPath: '/'
+		publicPath: '/'
 	},
 
 	devServer: {
@@ -33,6 +33,7 @@ module.exports = merge(common, {
 					target: `http://${Host}:${HapiPort}`,
 				}
 			},
+    open: true,
 		overlay: {
 			warnings: false,
 			errors: true

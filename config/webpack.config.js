@@ -1,4 +1,3 @@
-
 const devConfig = require('./webpack-dev-config');
 const prodConfig = require('./webpack-prod-config');
 const merge = require("webpack-merge");

@@ -13,14 +13,19 @@ const mapDispatchToProps = {
 
 class Home extends React.Component{
 
+  testClick = (a,b) => {
+    return a +b;
+  }
+
   render() {
 
-		const { count, increase, decrease } = this.props;
+		const { count, increase, decrease, title, url } = this.props;
     return (
       <div className="red">
         {count}
-        <button onClick={increase}>+</button>
+        <button className="test" onClick={increase}>+</button>
         <button onClick={decrease}>-</button>
+        <a href={url} onClick={this.testClick}>{title}</a>
       </div>
     )
   }
