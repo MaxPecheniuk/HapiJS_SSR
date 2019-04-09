@@ -5,7 +5,7 @@ import App from "../../universal/App/App";
 import {template} from "../template";
 
 import {Provider} from 'react-redux'
-import Paths from "../../../config/paths"
+import paths from "../../../config/paths"
 
 import {createStore} from "redux";
 import rootReducer from "../../universal/reducer/roote.reducer";
@@ -16,7 +16,7 @@ export const Routes = [
 		path: '/{param*}',
 		handler: {
 			directory: {
-				path: path.resolve(Paths.appPublic),
+				path: path.resolve(paths.appDist),
 				index: 'client.js'
 			}
 		}

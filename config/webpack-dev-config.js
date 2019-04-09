@@ -20,7 +20,7 @@ module.exports = merge(common, {
 		path: path.resolve(paths.appIndexJs)
 	},
 	output: {
-		path: path.resolve(paths.appPublic),
+		path: path.resolve(paths.appDist),
 		filename: 'client.js',
 		// publicPath: '/'
 	},
