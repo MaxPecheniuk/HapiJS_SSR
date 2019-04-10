@@ -24,6 +24,15 @@ module.exports = merge(common, {
 		filename: 'client.js',
 		publicPath: '/'
 	},
+  module: {
+	  rules: [
+      {
+        test: /\.js|.jsx$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader"
+      }
+    ]
+  },
 
 	devServer: {
 			port: Port,

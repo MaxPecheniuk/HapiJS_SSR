@@ -15,9 +15,9 @@ const store = createStore(rootReducer, state);
 
 
 ReactDOM.hydrate(
-
   <Provider store={store}>
     <App />
   </Provider>,
-
-  document.getElementById('root'));
+  // eslint-disable-next-line
+  document.getElementById('root')
+);
