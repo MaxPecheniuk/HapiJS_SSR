@@ -1,7 +1,8 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:jest/recommended"
   ],
   "parser": "babel-eslint",
   "plugins": [
@@ -12,6 +13,12 @@
     "max-len": [2, 120, 2, {"ignoreComments": true}],
     "react/prop-types": [0],
     "linebreak-style": ["error", "windows"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-console": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

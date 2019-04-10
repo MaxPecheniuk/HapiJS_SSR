@@ -10,7 +10,7 @@ var _redux = require("redux");
 
 var _reactRedux = require("react-redux");
 
-var _App = _interopRequireDefault(require("./App/App"));
+var _App = _interopRequireDefault(require("./components/App/App"));
 
 var _roote = _interopRequireDefault(require("./reducer/roote.reducer"));
 
@@ -24,4 +24,5 @@ var store = (0, _redux.createStore)(_roote.default, state);
 
 _reactDom.default.hydrate(_react.default.createElement(_reactRedux.Provider, {
   store: store
-}, _react.default.createElement(_App.default, null)), document.getElementById('root'));
+}, _react.default.createElement(_App.default, null)), // eslint-disable-next-line
+document.getElementById('root'));

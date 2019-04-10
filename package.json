@@ -4,15 +4,17 @@
   "description": "",
   "main": "src/server/index.js",
   "scripts": {
-    "test": "jest --watch",
-    "dev": "NODE_ENV=development BABEL_ENV=development webpack-dev-server --config config/webpack.config.js && npm run flow && npm run lint",
-    "server": "NODE_ENV=development node src/server/index.js",
+    "test": "BABLE_ENV=test npm run test:eslint && npm run test:flow && npm run test:unit ",
+    "start": "NODE_ENV=development BABEL_ENV=universal webpack-dev-server --config config/webpack/webpack.config.js",
+    "build": "npm run clearDist && npm run build:server && npm run build:client",
+    "server": "NODE_ENV=development BABEL_ENV=server node src/server/index.js",
     "server:dev": "NODE_ENV=development nodemon src/server/index.js",
-    "build": "npm run build:server && npm run build:client",
     "build:server": "NODE_ENV=production babel src --out-dir dist",
-    "build:client": "NODE_ENV=production webpack --config config/webpack.config.js",
-    "flow": "flow status --quiet",
-    "lint": "eslint src -c .eslintrs --ext js,jsx"
+    "build:client": "NODE_ENV=production webpack --config config/webpack/webpack.config.js",
+    "test:unit": "jest",
+    "test:flow": "flow status",
+    "test:eslint": "BABLE_ENV=test eslint src -c .eslintrc --ext js,jsx",
+    "clearDist": "rm -r -v dist/*"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +41,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-arrow-functions": "^7.2.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.4.0",
     "@babel/plugin-transform-runtime": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-flow": "^7.0.0",
@@ -46,7 +49,9 @@
     "@babel/register": "^7.4.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
     "css-loader": "^2.1.1",
+    "empty": "^0.10.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "eslint": "^5.16.0",
@@ -59,6 +64,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-jest": "^22.4.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "flow-bin": "^0.96.0",
     "jest": "^24.7.1",
@@ -77,9 +83,21 @@
     "webpack-merge": "^4.2.1"
   },
   "jest": {
-    "moduleFileExtensions": ["js","jsx"],
-    "moduleDirectories": ["node_modules"],
-    "moduleNameMapper": {"\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"},
-    "setupFilesAfterEnv": ["<rootDir>/setupTests.js"]
+    "roots": [
+      "./src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/config/tests/__mocks__/styleMock.js"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/config/tests/setupTests.js"
+    ]
   }
 }

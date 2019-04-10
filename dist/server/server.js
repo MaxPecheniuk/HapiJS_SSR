@@ -8,6 +8,7 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _route = require("./routes/route");
 
+// const cssHook = require('./plugins/cssHook');
 var Hapi = require('hapi');
 
 var Inert = require('inert');
@@ -27,8 +28,10 @@ function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return server.register([{
+            console.log('server');
+            _context.next = 3;
+            return server.register([// cssHook.plugin,
+            {
               plugin: require('hapi-pino'),
               options: {
                 prettyPrint: true,
@@ -37,15 +40,15 @@ function () {
             }, //static file
             Inert]);
 
-          case 2:
+          case 3:
             server.route(_route.Routes);
-            _context.next = 5;
+            _context.next = 6;
             return server.start();
 
-          case 5:
+          case 6:
             console.log("Server running at: ".concat(server.info.uri));
 
-          case 6:
+          case 7:
           case "end":
             return _context.stop();
         }

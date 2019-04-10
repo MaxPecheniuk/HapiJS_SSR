@@ -1,5 +1,6 @@
 [ignore]
-
+module.file_ext=.css
+module.file_ext=.scss
 [include]
 
 [libs]
@@ -7,5 +8,5 @@
 [lints]
 
 [options]
-
+module.name_mapper='.*\(.scss\)' -> 'empty/object'
 [strict]

@@ -1,14 +1,6 @@
-import React from "react";
 import path from 'path';
-import {renderToString} from "react-dom/server";
-import App from "../../universal/App/App";
-import {template} from "../template";
-
-import {Provider} from 'react-redux'
-import paths from "../../../config/paths"
-
-import {createStore} from "redux";
-import rootReducer from "../../universal/reducer/roote.reducer";
+import paths from "../../../config/webpack/paths"
+import { appHandler } from '../handlers/appHandler';
 
 export const Routes = [
 	{
@@ -25,16 +17,7 @@ export const Routes = [
 		method: 'GET',
 		path: '/',
 		handler: () => {
-			const store = createStore(rootReducer);
-
-			const state = store.getState();
-
-			let content = renderToString(
-				<Provider store={store}>
-					<App/>
-				</Provider>
-			);
-			return template(content, state)
+      return appHandler();
 		}
 
 	}

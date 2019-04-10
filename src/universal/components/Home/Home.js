@@ -1,7 +1,14 @@
-import React from 'react';
+// @flow
+import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { decrease, increase } from './action-creator';
-import '../index.scss';
+import '../../index.scss';
+
+type Props = {
+  count: any,
+  increase: any,
+  decrease: any
+}
 
 const mapStateToProps = state => ({
   count: state.HomeReducer.count,
@@ -11,16 +18,15 @@ const mapDispatchToProps = {
   decrease,
 };
 
-class Home extends React.Component{
-
+class Home extends Component<Props>{
   render() {
-		const { count, increase, decrease, title, url } = this.props;
+		const { count, increase, decrease} = this.props;
     return (
       <div className="red">
-        {count}gggggggggggg
+        {count}
         <button className="test" onClick={increase}>+</button>
         <button onClick={decrease}>-</button>
-        <a href={url} onClick={this.testClick}>{title}</a>
+
       </div>
     )
   }

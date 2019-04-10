@@ -1,11 +1,11 @@
 const path = require("path");
 
-const appDirectory = path.resolve(__dirname, '..');
+const appDirectory = path.resolve(__dirname, '../..');
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 
 module.exports = {
-	appAssets: resolveApp("src/assets"), // For images and other assets
+  appAssets: resolveApp("src/assets"), // For images and other assets
 	appPublic: resolveApp("dist/public"), // Prod built files end up here
 	appBuild: resolveApp("dist/build"), // Prod built files end up here
 	appConfig: resolveApp("config"), // Home config files

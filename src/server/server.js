@@ -1,6 +1,4 @@
-
-
-
+// const cssHook = require('./plugins/cssHook');
 import {Routes} from "./routes/route";
 const Hapi = require('hapi');
 const Inert = require('inert');
@@ -14,6 +12,7 @@ const server = Hapi.server({
 const init = async () => {
 	await server.register(
 		[
+      // cssHook.plugin,
 			{
 				plugin: require('hapi-pino'),
 				options: {
@@ -27,12 +26,14 @@ const init = async () => {
 
 	server.route(Routes);
 	await server.start();
-
-	console.log(`Server running at: ${server.info.uri}`);
+  // eslint-disable-next-line
+  console.log(`Server running at: ${server.info.uri}`);
 };
-
+// eslint-disable-next-line
 process.on('unhandledRejection', (err) => {
-	console.log(err);
+  // eslint-disable-next-line
+  console.log(err);
+// eslint-disable-next-line
 	process.exit(1);
 });
 
