@@ -1,20 +1,22 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme/build';
+import { shallow } from 'enzyme/build';
 import * as actions from '../action-creator';
 import * as types from '../../../constants/constants'
 import  { Home } from '../Home';
 
 
 describe('Home component', () => {
+  let component;
+  beforeEach(()=>{
+    component = shallow(<Home/>);
+  })
 
   it('should render correctly with no props', () => {
     //only parent without child
-    const component = shallow(<Home/>);
     expect(component).toMatchSnapshot();
   });
 
   it('should be possible to activate button with spacebar and click', () => {
-    const component = shallow(<Home/>);
     component
       .find('.btn')
       .simulate('keydown', {keyCode: 32})

@@ -25,8 +25,14 @@ var Routes = [{
 }, {
   method: 'GET',
   path: '/',
-  handler: function handler() {
-    return (0, _appHandler.appHandler)();
+  handler: function handler(request) {
+    return (0, _appHandler.appHandler)(request);
+  }
+}, {
+  method: 'GET',
+  path: '/page',
+  handler: function handler(request) {
+    return (0, _appHandler.appHandler)(request);
   }
 }];
 exports.Routes = Routes;

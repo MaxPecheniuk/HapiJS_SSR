@@ -14,6 +14,8 @@ var _App = _interopRequireDefault(require("./components/App/App"));
 
 var _roote = _interopRequireDefault(require("./reducer/roote.reducer"));
 
+var _reactRouterDom = require("react-router-dom");
+
 require("./index.scss");
 
 // eslint-disable-next-line
@@ -24,5 +26,5 @@ var store = (0, _redux.createStore)(_roote.default, state);
 
 _reactDom.default.hydrate(_react.default.createElement(_reactRedux.Provider, {
   store: store
-}, _react.default.createElement(_App.default, null)), // eslint-disable-next-line
+}, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_App.default, null))), // eslint-disable-next-line
 document.getElementById('root'));

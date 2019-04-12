@@ -16,14 +16,14 @@ export const Routes = [
 	{
 		method: 'GET',
 		path: '/',
-		handler: (request, h) => {
+		handler: (request) => {
       return appHandler(request);
 		}
 	},
   {
     method: 'GET',
     path: '/page',
-    handler: (request, h) => {
+    handler: (request) => {
       return appHandler(request);
     }
   }
