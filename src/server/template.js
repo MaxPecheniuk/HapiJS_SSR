@@ -9,10 +9,9 @@ export const template = (content = '', initialState) => {
                 <meta name="theme-color" content="#810051">
     </head>
     <body>
-    <span>TEMPLATE</span>
+    
     	<div id="root">${content}</div>
     
-
       <script src="client.js"></script>
 <script> window.__PRELOADED_STATE__ = ${JSON.stringify(initialState).replace(
     /</g,

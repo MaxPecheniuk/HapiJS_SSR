@@ -16,11 +16,17 @@ export const Routes = [
 	{
 		method: 'GET',
 		path: '/',
-		handler: () => {
-      return appHandler();
+		handler: (request, h) => {
+      return appHandler(request);
 		}
-
-	}
+	},
+  {
+    method: 'GET',
+    path: '/page',
+    handler: (request, h) => {
+      return appHandler(request);
+    }
+  }
 ]
 
 
