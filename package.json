@@ -13,7 +13,7 @@
     "build:client": "NODE_ENV=production  BABEL_ENV=universal webpack --config config/webpack/webpack.config.js",
     "test:unit": "jest --config config/jest/jest.config.js",
     "test:flow": "flow status",
-    "test:eslint": "BABLE_ENV=eslint eslint src -c .eslintrc --ext js,jsx",
+    "test:eslint": "BABLE_ENV=test eslint src -c .eslintrc --ext js,jsx",
     "clearDist": "rm -r -v dist/*"
   },
   "keywords": [],

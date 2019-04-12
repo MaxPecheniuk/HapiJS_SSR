@@ -14,7 +14,7 @@ describe('Home component', () => {
   });
 
   it('should be possible to activate button with spacebar and click', () => {
-    const component = mount(<Home/>);
+    const component = shallow(<Home/>);
     component
       .find('.btn')
       .simulate('keydown', {keyCode: 32})
