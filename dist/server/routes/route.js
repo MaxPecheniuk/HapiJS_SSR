@@ -7,8 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Routes = void 0;
 
-var _react = _interopRequireDefault(require("react"));
-
 var _path = _interopRequireDefault(require("path"));
 
 var _paths = _interopRequireDefault(require("../../../config/webpack/paths"));

@@ -1,18 +1,25 @@
 {
-
   "env": {
+
     "server": {
+      "ignore": ["**/*.test.js"],
+
       "presets": [
         "@babel/env",
-        "@babel/react"
+        "@babel/react",
+        "@babel/preset-flow"
       ],
       "plugins": [
         "@babel/plugin-transform-arrow-functions",
         "@babel/plugin-transform-runtime",
-        "dynamic-import-node"
+        "dynamic-import-node",
+        "@babel/plugin-proposal-class-properties"
       ]
     },
+
     "universal": {
+      "ignore": ["**/*.test.js"],
+
       "presets": [
         "@babel/env",
         "@babel/react"
@@ -21,17 +28,19 @@
         "@babel/plugin-transform-arrow-functions",
         "@babel/plugin-transform-runtime",
         "dynamic-import-node",
-        "@babel/plugin-transform-flow-strip-types"
-
+        "@babel/plugin-transform-flow-strip-types",
+        "@babel/plugin-proposal-class-properties"
       ]
     },
-    "test": {
+
+    "eslint": {
       "presets": [
         "@babel/env",
         "@babel/react"
       ],
       "plugins": [
-        "@babel/plugin-transform-flow-strip-types"
+        "@babel/plugin-transform-flow-strip-types",
+        "@babel/plugin-proposal-class-properties"
       ]
     }
   }

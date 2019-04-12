@@ -28,8 +28,7 @@ function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log('server');
-            _context.next = 3;
+            _context.next = 2;
             return server.register([// cssHook.plugin,
             {
               plugin: require('hapi-pino'),
@@ -40,15 +39,16 @@ function () {
             }, //static file
             Inert]);
 
-          case 3:
+          case 2:
             server.route(_route.Routes);
-            _context.next = 6;
+            _context.next = 5;
             return server.start();
 
-          case 6:
+          case 5:
+            // eslint-disable-next-line
             console.log("Server running at: ".concat(server.info.uri));
 
-          case 7:
+          case 6:
           case "end":
             return _context.stop();
         }
@@ -59,10 +59,13 @@ function () {
   return function init() {
     return _ref.apply(this, arguments);
   };
-}();
+}(); // eslint-disable-next-line
+
 
 process.on('unhandledRejection', function (err) {
-  console.log(err);
+  // eslint-disable-next-line
+  console.log(err); // eslint-disable-next-line
+
   process.exit(1);
 });
 init();

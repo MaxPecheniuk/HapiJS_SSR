@@ -16,7 +16,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /__tests__/],
         include: path.resolve(paths.appSrc),
         use: ['babel-loader']
       },
@@ -39,7 +39,5 @@ module.exports = {
       filename: "[name].css",
     })
   ],
-
-
 }
 
