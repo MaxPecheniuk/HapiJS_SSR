@@ -1,4 +1,5 @@
-export const template = (content = '', initialState) => {
+export const template = (content = '', reduxState, apolloState) => {
+  console.log('hkjhkjhkhk');
   const page = `
 <!doctype html>
 	<html>
@@ -13,12 +14,12 @@ export const template = (content = '', initialState) => {
     	<div id="root">${content}</div>
     
       <script src="client.js"></script>
-<script> window.__PRELOADED_STATE__ = ${JSON.stringify(initialState).replace(
-    /</g,
-    '\\\u003c'
-  )}</script> 
+<script> window.__PRELOADED_STATE__ = ${JSON.stringify(reduxState).replace(/</g,'\\\u003c')}</script> 
     </body>
   </html>`
 
   return page
 }
+
+
+{/*<script> window.__APOLLO_STATE__=${JSON.stringify(apolloState).replace(/</g, '\\u003c')}</script>*/}
