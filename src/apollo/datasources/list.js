@@ -1,20 +1,23 @@
 const {RESTDataSource} = require('apollo-datasource-rest');
-
+const {apiUrl, listUrl} = require('../../config/apiConfig');
 class ListAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = 'http://localhost:9080/api/';
+    this.baseURL = apiUrl;
   }
 
-  async getAllLaunches() {
-    const response = await this.get('list');
+  async getList() {
+    const response = await this.get(listUrl);
     console.log(response);
     return Array.isArray(response)
-      ? response.map(list => this.launchReducer(list))
+      ? response.map(list => this.listReducer(list))
       : [];
   }
+  async getLikes() {
 
-  launchReducer(list) {
+  }
+
+  listReducer(list) {
     return {
       title: list.title,
       likes:

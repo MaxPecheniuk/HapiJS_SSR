@@ -1,28 +1,16 @@
 [
   {
     "title": "Title 1",
-    "likes": [
-      {
-        "name": "Title 1 Name 1",
-        "avatar": "Title 1 Name 1 Avatar 1"
-      },
-      {
-        "name": "Title 1 Name 2",
-        "avatar": "Title 1 Name 2 Avatar 2"
-      }
-    ]
+    "likes": {
+      "name": "Title 1 Name 1",
+      "avatar": "Title 1 Name 1 Avatar 1"
+    }
   },
   {
     "title": "Title 2",
-    "likes": [
-      {
-        "name": "Title 2 Name 1",
-        "avatar": "Title 2 Name 1 Avatar 1"
-      },
-      {
-        "name": "Title 2 Name 2",
-        "avatar": "Title 2 Name 2 Avatar 2"
-      }
-    ]
+    "likes": {
+      "name": "Title 2 Name 1",
+      "avatar": "Title 2 Name 1 Avatar 1"
+    }
   }
 ]

@@ -14,6 +14,7 @@
     "test:unit": "jest --config config/jest/jest.config.js",
     "test:flow": "flow status",
     "test:eslint": "BABLE_ENV=test eslint src -c .eslintrc --ext js,jsx",
+    "apollo:serv": "nodemon src/apollo/index.js",
     "clearDist": "rm -r -v dist/*"
   },
   "keywords": [],
