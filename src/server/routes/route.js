@@ -1,5 +1,6 @@
 import path from 'path';
 import paths from "../../../config/webpack/paths"
+import mockList from "../../../config/mocks/mockList"
 import { appHandler } from '../handlers/appHandler';
 
 export const Routes = [
@@ -15,18 +16,19 @@ export const Routes = [
 	},
 	{
 		method: 'GET',
-		path: '/',
+		path: '/{param?}',
 		handler: (request) => {
       return appHandler(request);
 		}
 	},
   {
     method: 'GET',
-    path: '/page',
-    handler: (request) => {
-      return appHandler(request);
+    path: '/api/list',
+    handler: () => {
+      return mockList;
     }
   }
+
 ]
 
 
