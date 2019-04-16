@@ -11,42 +11,46 @@ import { ApolloProvider } from 'react-apollo';
 import { getDataFromTree } from 'react-apollo'
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import fetch from 'node-fetch';
 
+
+// const link =;
+const client = new ApolloClient({
+  ssrMode: true,
+  link:  createHttpLink({
+    uri: 'http://localhost:4000', fetch
+
+  }),
+  cache: new InMemoryCache(),
+});
 
 export const appHandler = (req) => {
-  console.log('111111111111111111111111');
 
   const store = createStore(rootReducer);
   const context = {};
   const reduxState = store.getState();
 
 
-  const client = new ApolloClient({
-    ssrMode: true,
-    link: createHttpLink({
-      uri: 'http://localhost:4000',
-
-    }),
-    cache: new InMemoryCache(),
-  });
-
-  const App = (<ApolloProvider client={client}>
-    <Provider store={store}>
-      <StaticRouter location={req.url} context={context}>
-        <App/>
-      </StaticRouter>
-    </Provider>
-  </ApolloProvider>);
-
-  getDataFromTree(App).then(() => {
-    let apolloState = client.extract();
-
-    const content = renderToString(App);
-    return template(content, reduxState, apolloState)
-
-  });
+  const html = (
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <StaticRouter location={req.url} context={context}>
+          <App/>
+        </StaticRouter>
+      </Provider>
+    </ApolloProvider>
+  );
 
 
+  return getDataFromTree(html)
+    .then(() => {
+      let apolloState = client.extract();
+      const content = renderToString(html);
+      return template(content, reduxState, apolloState)
+
+    })
+
+// return template
 
 };
 
