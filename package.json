@@ -14,7 +14,8 @@
     "test:unit": "jest --config config/jest/jest.config.js",
     "test:flow": "flow status",
     "test:eslint": "BABLE_ENV=test eslint src -c .eslintrc --ext js,jsx",
-    "apollo:serv": "nodemon src/apollo/index.js",
+    "apollo": "node src/server/apollo/index.js",
+    "apollo:serv": "nodemon src/server/apollo/index.js",
     "clearDist": "rm -r -v dist/*"
   },
   "keywords": [],
@@ -62,6 +63,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-dynamic-import-node": "^2.2.0",
+    "babel-plugin-graphql-tag": "^2.1.0",
     "css-loader": "^2.1.1",
     "empty": "^0.10.1",
     "enzyme": "^3.9.0",

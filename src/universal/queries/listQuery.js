@@ -1,10 +1,17 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const GET_LIST = gql`
-      {
-        list {
-          title
-          
-        }
-      }
-    `
+  {
+    list {
+      title
+    }
+  }
+`
+
+export const CREATE_POST = gql`
+  mutation createPost( $title: String) {
+    createPost(title: $title){
+      title
+    }
+  }
+`

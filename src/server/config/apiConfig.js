@@ -1,5 +1,5 @@
 module.exports = {
-  apiUrl: "http://localhost:9080/api/",
+  apiUrl: "http://localhost:8080/api/",
   listUrl: 'list',
 }
 
