@@ -58,7 +58,7 @@ export const appHandler = (req) => {
 // import { renderToString } from 'react-dom/server';
 // import { createStore } from 'redux';
 // import { Provider } from 'react-redux';
-// import rootReducer from '../../universal/reducer/roote.reducer';
+// import rootReducer from '../../universal/reducers/roote.reducers';
 // import App from '../../universal/components/App/App';
 // import { template } from '../template';
 // import { StaticRouter } from 'react-router';
