@@ -1,16 +1,17 @@
 const { ApolloServer } = require('apollo-server/dist/index');
-const typeDefs = require('./schema/listSchema');
-const ListAPI = require('./datasources/list');
+const typeDefs = require('./schema/usersSchema');
+const postloader = require('./loaders/postLoader');
 const resolvers = require('./resolvers/resolver');
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  dataSources: () => ({
-    listAPI: new ListAPI()
-  })
+
+  // dataSources: () => ({
+  //   UserListAPI: new UserListAPI()
+  // })
 });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+  console.log(`Server ready at ${url}`);
 });

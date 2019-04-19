@@ -1,12 +1,23 @@
+const axios = require('axios');
+const url = require("../../config/apiConfig");
+
 module.exports = {
   Query: {
-    // parent, args, context, info
-    list: async (_, __, {dataSources}) =>
-      dataSources.listAPI.getList(),
+    posts: (_,__,context) => {
+      const loadPost = async () => await axios.get(url.apiUrl).then()
+    }
   },
-  Mutation:{
-    createPost: async (_,title,{dataSources}) => {
-      dataSources.listAPI.createPost(title)
+  Post: {
+    comments: (ids, args, context) => {
+
+      const loadComments = async (keys) => await Promise.all(keys.map((key) => httpCLient.get(key)));
+      let loader = context.commentLoader;
+      if (!loader) {
+        context.commentLoader = loader = new DataLoader((keys) => loadComments(keys));
+      }
+
+      return loader.load(ids);
     }
   }
+
 };

@@ -1,34 +1,40 @@
 import gql from 'graphql-tag';
 
-export const GET_LIST = gql`
+gql`
+    query PostsQuery(page: $page) {
+        posts {
+        
+    }  
+    }
+`
+export const GET_USERS = gql`
   {
-    list {
-      title
+    users {
+      id
+      username
+      fullname
+      email
+      role
+      phone
     }
   }
 `
 
-export const GET_USERS = gql`
+export const GET_USER = gql`
   {
-    users {
+    user {
+      id
       username
     }
   }
 `
 
 export const DELETE_USER = gql`
-mutation deleteUser($id: Int) {
-  deleteUser(id: $id) {
-    id
-  }
-  
-} 
-`
-
-export const CREATE_POST = gql`
-  mutation createPost( $title: String) {
-    createPost(title: $title){
-      title
+  mutation deleteUser($id: Int) {
+    deleteUser(id: $id) {
+      id
     }
   }
 `
+
+
