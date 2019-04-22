@@ -1,6 +1,7 @@
 const axios = require('axios');
 const url = require('../../config/apiConfig');
 const DataLoader = require('dataloader');
+
 module.exports = {
   Query: {
     posts: (_, __, context) => {

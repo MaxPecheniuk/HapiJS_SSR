@@ -33,6 +33,7 @@
         "hapi": "^18.1.0",
         "hapi-pino": "^5.4.1",
         "inert": "^5.1.2",
+        "lodash": "^4.17.11",
         "postcss": "^7.0.14",
         "postcss-scss": "^2.0.0",
         "react": "^16.8.6",

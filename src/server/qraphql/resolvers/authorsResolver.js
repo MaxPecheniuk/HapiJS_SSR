@@ -8,7 +8,6 @@ module.exports = {
       //posts = object{id, title, comments array ids}
       const loaderComments = async (keys) => await Promise.all(keys.map((key) =>
         axios.get(url.apiUrl)
-        // comments array
           .then((res) => res.data.comments)
           .then(comments => comments.filter(comment => key.includes(comment.id))
           )
