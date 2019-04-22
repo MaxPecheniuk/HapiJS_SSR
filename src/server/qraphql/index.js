@@ -1,7 +1,7 @@
 const { ApolloServer } = require('apollo-server/dist/index');
 const typeDefs = require('./schema/usersSchema');
 const postloader = require('./loaders/postLoader');
-const resolvers = require('./resolvers/resolver');
+const resolvers = require('./resolvers/rootResolver');
 
 const server = new ApolloServer({
   typeDefs,
