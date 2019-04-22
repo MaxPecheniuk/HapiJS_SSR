@@ -11,7 +11,7 @@ var _path = _interopRequireDefault(require("path"));
 
 var _paths = _interopRequireDefault(require("../../../config/webpack/paths"));
 
-var _mockList = _interopRequireDefault(require("../../../config/mocks/mockList"));
+var _mockPost = _interopRequireDefault(require("../../../config/mocks/mockPost"));
 
 var _appHandler = require("../handlers/appHandler");
 
@@ -32,9 +32,9 @@ var Routes = [{
   }
 }, {
   method: 'GET',
-  path: '/api/list',
+  path: '/api/post',
   handler: function handler() {
-    return _mockList.default;
+    return _mockPost.default;
   }
 }];
 exports.Routes = Routes;

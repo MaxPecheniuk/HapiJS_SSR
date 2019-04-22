@@ -1,9 +1,9 @@
-.user {
+.post {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-top: 15px;
   border: 1px solid black;
   padding: 5px;
-
-  width: 150px;
+  width: 200px;
 }

@@ -5,7 +5,6 @@ const DataLoader = require('dataloader');
 module.exports = {
   Post: {
     comments: (posts, __, context) => {
-      //posts = object{id, title, comments array ids}
       const loaderComments = async (keys) => await Promise.all(keys.map((key) =>
         axios.get(url.apiUrl)
           .then((res) => res.data.comments)

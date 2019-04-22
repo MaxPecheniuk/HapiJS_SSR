@@ -59,7 +59,7 @@ export class Home extends Component<Props, State> {
           {blockContainer}
 
         <div>
-          <Link to='/list'>Link to Users list</Link>
+          <Link to='/posts'>Link to Users list</Link>
         </div>
       </div>
     )
