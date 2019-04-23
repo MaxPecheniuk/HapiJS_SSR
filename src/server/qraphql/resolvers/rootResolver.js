@@ -1,8 +1,7 @@
-const posts = require('./postsResolver');
-const comments = require('./commentsResolver');
-const authors = require('./authorsResolver');
-
+import { postsResolver } from './postsResolver';
+import { commentsResolver } from './commentsResolver';
+import { authorResolver } from './authorsResolver';
 const { merge } = require('lodash');
 
-
-module.exports = merge(posts, comments, authors);
+const resolvers = merge(postsResolver, commentsResolver, authorResolver);
+export default resolvers;

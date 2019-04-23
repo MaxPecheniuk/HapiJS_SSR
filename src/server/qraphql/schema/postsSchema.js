@@ -1,6 +1,6 @@
-const {gql} = require('apollo-server/dist/index');
+import gql from 'graphql-tag';
 
-const typeDefs = gql`
+export const typeDefs = gql`
   type Post {
     id: ID!
     title: String
@@ -15,9 +15,7 @@ const typeDefs = gql`
   type Author{
     id: ID!
     name: String
-  }
-  
- 
+  } 
 
   type Query {
     posts: [Post]
@@ -26,4 +24,3 @@ const typeDefs = gql`
     
   }
 `;
-module.exports = typeDefs;

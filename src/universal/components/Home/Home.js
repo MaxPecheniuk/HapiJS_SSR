@@ -5,14 +5,12 @@ import { decrease, increase } from './action-creator';
 import '../../index.scss';
 import { Link } from 'react-router-dom';
 
-type
-Props = {
+type Props = {
   count: any,
   increase: any,
   decrease: any
 }
-type
-State = {
+type State = {
   showBlock: boolean
 }
 
@@ -37,15 +35,7 @@ export class Home extends Component<Props, State> {
 
   render() {
     const {showBlock} = this.state;
-    // TODO: good or not?
-    let blockContainer = null;
     const {count, increase, decrease} = this.props;
-    if (showBlock) {
-      blockContainer =
-        <div className="red">
-          BLOCK
-        </div>
-    }
 
     return (
       <div>
@@ -56,7 +46,11 @@ export class Home extends Component<Props, State> {
         </div>
 
           <button data-testid="btn-testId" className='btn' onClick={this.onToggleChange}>Show block</button>
-          {blockContainer}
+          {showBlock && (
+            <div className="red">
+              BLOCK
+            </div>
+          )}
 
         <div>
           <Link to='/posts'>Link to Users list</Link>

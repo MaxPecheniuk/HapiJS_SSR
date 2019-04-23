@@ -14,5 +14,5 @@ module.exports = {
   appIndexJs: resolveApp("src/universal/index.js"), // Universal entry point
   appIndexJsServer: resolveApp("src/server/server.js"), // Server entry point
   appSrc: resolveApp("src/universal"), // Home source
-  appTest: resolveApp("src/__test__") // Home source
+  appTest: resolveApp("src/__tests__") // Home source
 };

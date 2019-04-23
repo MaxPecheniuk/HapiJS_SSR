@@ -22,6 +22,7 @@ describe('Home component', () => {
       .simulate('keydown', {keyCode: 32})
       .simulate('click');
     expect(component).toMatchSnapshot();
+    //sim
     component.unmount();
   });
   it('use jsdom in this test file', () => {

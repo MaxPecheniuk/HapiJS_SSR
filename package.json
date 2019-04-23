@@ -14,7 +14,7 @@
         "test:unit": "jest --config config/jest/jest.config.js",
         "test:flow": "flow status",
         "test:eslint": "BABLE_ENV=test eslint src -c .eslintrc --ext js,jsx",
-        "apollo": "nodemon src/server/qraphql/index.js",
+        "apollo": "BABEL_ENV=server nodemon src/server/qraphql/index.js",
         "clearDist": "rm -r -v dist/*"
     },
     "keywords": [],
