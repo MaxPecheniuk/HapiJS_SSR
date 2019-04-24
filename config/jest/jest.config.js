@@ -11,6 +11,7 @@ module.exports = {
   testEnvironment: "jest-environment-jsdom-global",
   collectCoverage: true,
   coverageReporters: ["text", "text-summary"],
+  collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx}'],
   coverageThreshold: {
     global: {
       branches: 80,

@@ -3,7 +3,7 @@ import paths from "../../../config/webpack/paths"
 import mockPost from "../../../config/mocks/mockPost"
 import { appHandler } from '../handlers/appHandler';
 
-export const Routes = [
+const Routes = [
 	{
 		method: 'GET',
 		path: '/{param*}',
@@ -31,5 +31,5 @@ export const Routes = [
 
 ]
 
-
+module.exports = Routes;
 

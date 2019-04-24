@@ -12,9 +12,10 @@
         "build:server": "NODE_ENV=production BABEL_ENV=server babel src --out-dir dist",
         "build:client": "NODE_ENV=production  BABEL_ENV=universal webpack --config config/webpack/webpack.config.js",
         "test:unit": "jest --config config/jest/jest.config.js",
+
         "test:flow": "flow status",
         "test:eslint": "BABLE_ENV=test eslint src -c .eslintrc --ext js,jsx",
-        "apollo": "BABEL_ENV=server nodemon src/server/qraphql/index.js",
+        "apollo": "BABEL_ENV=server nodemon src/server/graphql/index.js",
         "clearDist": "rm -r -v dist/*"
     },
     "keywords": [],

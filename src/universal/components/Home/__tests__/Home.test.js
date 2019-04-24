@@ -2,12 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme/build';
 import * as actions from '../action-creator';
 import * as types from '../../../constants/constants'
-import  { Home } from '../Home';
+import { Home } from '../Home';
 
 
 describe('Home component', () => {
   let component;
-  beforeEach(()=>{
+  beforeEach(() => {
     component = shallow(<Home/>);
   })
 
@@ -21,8 +21,8 @@ describe('Home component', () => {
       .find('.btn')
       .simulate('keydown', {keyCode: 32})
       .simulate('click');
+    expect(component.state('showBlock')).toBe(true);
     expect(component).toMatchSnapshot();
-    //sim
     component.unmount();
   });
   it('use jsdom in this test file', () => {
@@ -32,7 +32,7 @@ describe('Home component', () => {
 
 })
 
-describe('action creator', ()=> {
+describe('action creator', () => {
   it('should AC an action increase value', () => {
     const expectedAction = {
       type: types.INCREASE

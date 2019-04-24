@@ -1,31 +1,30 @@
-// const cssHook = require('./plugins/cssHook');
-import {Routes} from "./routes/route";
+const cssHook = require('./plugins/cssHook');
+const routesPlugin = require('./plugins/routes');
 const Hapi = require('hapi');
 const Inert = require('inert');
 
 
 const server = Hapi.server({
-	port: 9080,
-	host: 'localhost',
+  port: 9080,
+  host: 'localhost',
 });
 
 const init = async () => {
-	await server.register(
-		[
-      // cssHook.plugin,
-			{
-				plugin: require('hapi-pino'),
-				options: {
-					prettyPrint: true,
-					logEvents: ['response', 'onPostStart']
-				}
-			},
-//static file
-			Inert
-		]);
+  await server.register(
+    [
+      cssHook.plugin,
+      Inert,
+      routesPlugin.plugin,
+      {
+        plugin: require('hapi-pino'),
+        options: {
+          prettyPrint: true,
+          logEvents: ['response', 'onPostStart']
+        }
+      }
+    ]);
 
-	server.route(Routes);
-	await server.start();
+  await server.start();
   // eslint-disable-next-line
   console.log(`Server running at: ${server.info.uri}`);
 };
@@ -34,7 +33,7 @@ process.on('unhandledRejection', (err) => {
   // eslint-disable-next-line
   console.log(err);
 // eslint-disable-next-line
-	process.exit(1);
+  process.exit(1);
 });
 
 init();

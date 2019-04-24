@@ -1,8 +1,6 @@
 import { authorsLoader } from '../loader/authorsLoader';
 import { authorsQuery } from '../queries/authorsQuery';
 
-
-
 export const authorResolver = {
   Query: {
     authors: (_, __, context) => {
