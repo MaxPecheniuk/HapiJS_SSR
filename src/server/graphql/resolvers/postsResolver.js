@@ -4,7 +4,6 @@ export const postsResolver = {
 
   Query: {
     posts: (_, __, context) => {
-
       return postsLoader(_, __, context);
     },
   },

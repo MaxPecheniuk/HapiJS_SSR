@@ -44,14 +44,12 @@ export class Home extends Component<Props, State> {
           <button className="test" onClick={increase}>+</button>
           <button onClick={decrease}>-</button>
         </div>
-
           <button data-testid="btn-testId" className='btn' onClick={this.onToggleChange}>Show block</button>
           {showBlock && (
             <div className="red">
               BLOCK
             </div>
           )}
-
         <div>
           <Link to='/posts'>Link to Users list</Link>
         </div>

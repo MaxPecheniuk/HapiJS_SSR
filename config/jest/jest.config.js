@@ -10,16 +10,16 @@ module.exports = {
     '<rootDir>/config/jest/setupTests.js'
   ],
 
-  // collectCoverage: true,
-  // coverageReporters: ["text", "text-summary"],
-  // coverageThreshold: {
-  //   global: {
-  //     branches: 80,
-  //     functions: 80,
-  //     lines: 80,
-  //     statements: 80
-  //   }
-  // }
+  collectCoverage: true,
+  coverageReporters: ["text", "text-summary"],
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80
+    }
+  }
 
 }
 

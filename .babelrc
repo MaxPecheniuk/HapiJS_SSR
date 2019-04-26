@@ -14,7 +14,8 @@
         "@babel/plugin-transform-runtime",
         "dynamic-import-node",
         "@babel/plugin-proposal-class-properties",
-        "graphql-tag"
+        "graphql-tag",
+        "@babel/plugin-proposal-throw-expressions"
       ]
     },
 

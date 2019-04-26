@@ -8,7 +8,7 @@ export const commentsLoader = (posts, __, context) => {
     axios.get(apiUrl)
       .then((res) => res.data.comments)
       .then(comments => comments.filter(comment => key.includes(comment.id)))
-  ));
+      .catch((e) => throw Error(e.response.statusText))));
 
   let loader = context.loaderComment;
   if (!loader) {
