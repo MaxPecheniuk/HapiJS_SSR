@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react';
 import { shallow } from 'enzyme/build';
 import * as actions from '../action-creator';

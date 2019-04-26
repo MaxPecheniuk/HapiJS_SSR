@@ -4,7 +4,7 @@
     "description": "",
     "main": "src/server/index.js",
     "scripts": {
-        "test": "BABLE_ENV=universal npm run test:eslint && npm run test:flow && npm run test:unit ",
+        "test": "npm run test:eslint && npm run test:flow && npm run test:unit ",
         "start": "NODE_ENV=development BABEL_ENV=universal webpack-dev-server --config config/webpack/webpack.config.js",
         "build": " npm run build:server && npm run build:client",
         "server": "NODE_ENV=development BABEL_ENV=server node src/server/index.js",
@@ -12,10 +12,9 @@
         "build:server": "NODE_ENV=production BABEL_ENV=server babel src --out-dir dist",
         "build:client": "NODE_ENV=production  BABEL_ENV=universal webpack --config config/webpack/webpack.config.js",
         "test:unit": "jest --config config/jest/jest.config.js",
-
         "test:flow": "flow status",
         "test:eslint": "BABLE_ENV=test eslint src -c .eslintrc --ext js,jsx",
-        "apollo": "BABEL_ENV=server nodemon src/server/graphql/index.js",
+        "apollo": "BABEL_ENV=server node src/server/graphql/index.js",
         "clearDist": "rm -r -v dist/*"
     },
     "keywords": [],
@@ -31,9 +30,11 @@
         "css-modules-require-hook": "^4.2.3",
         "dataloader": "^1.4.0",
         "graphql": "^14.2.1",
+        "graphql-tools": "^4.0.4",
         "hapi": "^18.1.0",
         "hapi-pino": "^5.4.1",
         "inert": "^5.1.2",
+        "jest-environment-node": "^24.7.1",
         "lodash": "^4.17.11",
         "postcss": "^7.0.14",
         "postcss-scss": "^2.0.0",
