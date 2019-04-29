@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { decrease, increase } from './action-creator';
+import { decrease, increase } from './actionCreators/action-creator';
 import '../../index.scss';
 import { Link } from 'react-router-dom';
 

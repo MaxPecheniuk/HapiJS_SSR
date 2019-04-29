@@ -1,4 +1,4 @@
-import { INCREASE, DECREASE } from '../../constants/constants';
+import { INCREASE, DECREASE } from '../../../constants/constants';
 
 export const initialState = {
   count: 14,

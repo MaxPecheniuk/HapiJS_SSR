@@ -21,6 +21,7 @@ export const typeDefs = gql`
     posts: [Post]
     comments: [Comment]
     authors: [Author]
+	  postById(id: ID!): Post
     
   }
 `;

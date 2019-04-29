@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from '../../universal/reducer/roote.reducer';
-import App from '../../universal/components/App/App';
+import App from '../../universal/components/app/app';
 import { template } from '../template';
 import { StaticRouter } from 'react-router';
 import ApolloClient from 'apollo-client';
@@ -14,7 +14,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import fetch from 'node-fetch';
 
 
-// const link =;
+
 const client = new ApolloClient({
   ssrMode: true,
   link:  createHttpLink({
@@ -30,7 +30,6 @@ export const appHandler = (req) => {
   const context = {};
   const reduxState = store.getState();
 
-
   const html = (
     <ApolloProvider client={client}>
       <Provider store={store}>
@@ -41,39 +40,10 @@ export const appHandler = (req) => {
     </ApolloProvider>
   );
 
-
   return getDataFromTree(html)
     .then(() => {
       let apolloState = client.extract();
       const content = renderToString(html);
       return template(content, reduxState, apolloState)
-
     })
-
-// return template
-
 };
-
-// import React from 'react';
-// import { renderToString } from 'react-dom/server';
-// import { createStore } from 'redux';
-// import { Provider } from 'react-redux';
-// import rootReducer from '../../universal/reducers/roote.reducers';
-// import App from '../../universal/components/App/App';
-// import { template } from '../template';
-// import { StaticRouter } from 'react-router';
-//
-// export const appHandler = (req) => {
-//   const store = createStore(rootReducer);
-//   const context = {};
-//   const state = store.getState();
-//
-//   let content = renderToString(
-//     <Provider store={store}>
-//       <StaticRouter location={req.url} context={context}>
-//         <App/>
-//       </StaticRouter>
-//     </Provider>
-//   );
-//   return template(content, state)
-// };

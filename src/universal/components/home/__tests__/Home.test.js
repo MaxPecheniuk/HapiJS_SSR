@@ -3,12 +3,12 @@
  */
 import React from 'react';
 import { shallow } from 'enzyme/build';
-import * as actions from '../action-creator';
+import * as actions from '../actionCreators/action-creator';
 import * as types from '../../../constants/constants'
-import { Home } from '../Home';
+import { Home } from '../home';
 
 
-describe('Home component', () => {
+describe('Home.component component', () => {
   let component;
   beforeEach(() => {
     component = shallow(<Home/>);
