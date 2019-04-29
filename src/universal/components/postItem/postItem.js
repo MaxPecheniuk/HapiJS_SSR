@@ -19,7 +19,6 @@ export class PostItem extends React.Component {
 								<span className="post-item__info__description">{data.postById.description}</span>
 							</div>
 							<Comments comments={data.postById.comments}/>
-
 						</div>
 					)
 				}}
