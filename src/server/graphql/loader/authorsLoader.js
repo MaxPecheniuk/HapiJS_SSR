@@ -8,6 +8,7 @@ export const authorsLoader = (root, __, context) => {
         .then((res) => res.data.authors)
         .then(authors => authors.find(author => author.id === key.id))
         .catch((e) => throw Error(e.response.statusText))));
+
   let loader = context.loaderAuthor;
   if (!loader) {
     context.loaderAuthor = loader = new DataLoader((key) => loaderAuthor(key))

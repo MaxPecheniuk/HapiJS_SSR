@@ -6,7 +6,7 @@ export const commentsQuery = (_, __, context) => {
   const loaderComments = async (keys) =>
     await Promise.all(keys.map(() =>
       axios.get(apiUrl)
-        .then((res) => res.data.comments)
+        .then((res) => res.data.postComments)
         .catch((e) => throw Error(e.response.statusText))));
 
   let loader = context.loaderComments;

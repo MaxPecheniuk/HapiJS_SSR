@@ -1,12 +1,18 @@
+//@flow
 import * as React from 'react';
-import './comments.scss'
-export class Comments extends React.Component {
+import './postComments.scss'
+import type {CommentTypes} from '../../types/post.types';
+
+type PostCommetnsProps ={
+  comments: Array<CommentTypes>
+}
+
+export class PostComments extends React.Component<PostCommetnsProps> {
 	render() {
-		const comments = this.props.comments;
-		console.log(comments);
+		const {comments} = this.props;
 		return (
 			<div className="post-item__comments">
-				{comments.map((comment, index) => {
+				{comments.map((comment: CommentTypes, index: number) => {
 					return (
 						<div className="post-item__comments__item" key={index}>
 							<span className="post-item__comments__item__author-name">{comment.author.name}</span>

@@ -82,7 +82,7 @@ describe('post resolver', () => {
   it('should child query response equal mock data', async () => {
     const result = await graphql(schema, childQuery, null, {});
     result.data.posts.forEach((item) => {
-      item.comments.forEach(comment => {
+      item.postComments.forEach(comment => {
           expect(comment).toHaveProperty('id');
         expect(comment).toHaveProperty('author');
         }

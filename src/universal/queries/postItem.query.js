@@ -7,6 +7,7 @@ export const GET_POST = gql`
 			id
 			title
 			description
+      date
 			comments{
 				id
 				text

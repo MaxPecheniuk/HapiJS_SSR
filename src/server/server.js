@@ -1,7 +1,7 @@
 // const cssHook = require('./plugins/cssHook');
-const routesPlugin = require('./plugins/routes');
 const Hapi = require('hapi');
 const Inert = require('inert');
+const routesPlugin = require('./plugins/routes');
 
 
 const server = Hapi.server({
@@ -13,7 +13,6 @@ const init = async () => {
   await server.register(
     [
       // cssHook.plugin,
-      Inert,
       {
         plugin: require('hapi-pino'),
         options: {
@@ -21,7 +20,8 @@ const init = async () => {
           logEvents: ['response', 'onPostStart']
         }
       },
-	    routesPlugin.plugin
+      Inert,
+      routesPlugin.plugin
     ]);
 
   await server.start();

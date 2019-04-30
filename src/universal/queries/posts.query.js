@@ -7,12 +7,7 @@ export const GET_POSTS = gql`
      id
      title
      description
-     comments{
-       text
-       author{
-         name
-       }
-     }
+     date
    }
   }
 `

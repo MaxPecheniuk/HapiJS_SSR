@@ -6,7 +6,7 @@ export const commentsLoader = (posts, __, context) => {
   // debugger
   const loaderComment = async (keys) => await Promise.all(keys.map((key) =>
     axios.get(apiUrl)
-      .then((res) => res.data.comments)
+      .then(res => res.data.comments)
       .then(comments => comments.filter(comment => key.includes(comment.id)))
       .catch((e) => throw Error(e.response.statusText))));
 
