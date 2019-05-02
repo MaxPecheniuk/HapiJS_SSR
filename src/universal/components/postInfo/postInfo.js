@@ -13,6 +13,7 @@ export class PostInfo extends React.Component<PostInfoProps> {
     return (
       <div className="post-item__info">
         <span className="post-item__info__title">{postInfo.title}</span>
+        <span className="post-item__info__date">{new Date(postInfo.date * 1000).toLocaleDateString()}</span>
         <span className="post-item__info__description">{postInfo.description}</span>
       </div>
     );

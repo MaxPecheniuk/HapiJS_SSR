@@ -1,5 +1,6 @@
 const path = require("path");
 const paths = require("./paths");
+const webpack = require('webpack');
 
 
 const Port = 8080;
@@ -31,11 +32,17 @@ module.exports = {
       warnings: false,
       errors: true
     },
+    hot:true,
     quiet: false,
     noInfo: false,
     watchContentBase: true,
     after() {
       process.stdout.write(`Dev server is running: http://${Host}:${Port}\n`);
     }
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true
+    })
+  ]
 }
