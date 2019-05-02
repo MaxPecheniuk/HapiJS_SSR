@@ -1,4 +1,7 @@
 // const cssHook = require('./plugins/cssHook');
+import path from "path";
+import paths from '../../config/webpack/paths';
+
 const Hapi = require('hapi');
 const Inert = require('inert');
 const routesPlugin = require('./plugins/routes');
@@ -7,6 +10,7 @@ const routesPlugin = require('./plugins/routes');
 const server = Hapi.server({
   port: 9080,
   host: 'localhost',
+
 });
 
 const init = async () => {

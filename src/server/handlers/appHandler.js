@@ -40,6 +40,7 @@ export const appHandler = (req) => {
     </ApolloProvider>
   );
 
+
   return getDataFromTree(html)
     .then(() => {
       let apolloState = client.extract();

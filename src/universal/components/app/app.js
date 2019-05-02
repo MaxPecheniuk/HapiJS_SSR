@@ -8,8 +8,10 @@ import { Header } from '../header/header';
 
 export default function App() {
   return (
-    <Fragment>
+    <div className="sss">
       <Header/>
+      MAXXXXsss
+
       <div className='container'>
         <Switch>
           {/*<Route exact path="/" component={Home}/>*/}
@@ -17,7 +19,7 @@ export default function App() {
           <Route path="/post/:id" component={PostItem}/>
         </Switch>
       </div>
-    </Fragment>
+    </div>
 
   );
 }

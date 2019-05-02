@@ -12,7 +12,7 @@ export const template = (content = '', reduxState, apolloState) => {
     
     	<div id="root">${content}</div>
     
-      <script src="client.js"></script>
+      <script src="/static/client.js"></script>
       <script> window.__APOLLO_STATE__ = ${JSON.stringify(apolloState).replace(/</g, '\\\u003c')}</script> 
 
 

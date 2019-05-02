@@ -16,7 +16,7 @@ module.exports = {
   output: {
     path: path.resolve(paths.appDist),
     filename: 'client.js',
-    publicPath: '/'
+    publicPath: '/static/'
   },
 
   devServer: {
@@ -43,6 +43,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin({
       multiStep: true
-    })
+    }),
+    new webpack.SourceMapDevToolPlugin({})
   ]
 }

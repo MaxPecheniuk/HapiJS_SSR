@@ -8,13 +8,18 @@ import { PostInfo } from '../postInfo/postInfo';
 import './postItem.scss'
 
 type PostItemProps = {
-  match: any
+  match: any,
+  postId: string
 }
 
-export class PostItem extends React.Component<PostItemProps> {
-  render() {
-    const id = this.props.match.params.id;
-    return (
+export const PostItem: React.SFC<PostItemProps> = (props: PostItemProps) => {
+  let id;
+  if (props.match === undefined) {
+    id = props.postId;
+  } else {
+    id = props.match.params.id
+  }
+  return (
       <Query query={GET_POST} variables={{'id': id}}>
         {({data, loading, error}) => {
           if (loading) return <div>Loading</div>;
@@ -22,11 +27,11 @@ export class PostItem extends React.Component<PostItemProps> {
           return (
             <div className="post-item">
               <PostInfo postInfo={data.postById}/>
-              <PostComments comments={data.postById.comments}/>
+              {props.match && (<PostComments comments={data.postById.comments}/>)}
             </div>
           )
         }}
       </Query>
     );
-  }
+
 }
