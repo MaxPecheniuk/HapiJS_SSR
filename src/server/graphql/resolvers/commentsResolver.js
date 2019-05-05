@@ -11,8 +11,8 @@ export const commentsResolver = {
   },
 
   Query: {
-    comments: (_, __, context) => {
-      return commentsQuery(_, __, context)
+    comments: (_, ids, context) => {
+      return commentsQuery(_, ids, context)
     }
   }
 }

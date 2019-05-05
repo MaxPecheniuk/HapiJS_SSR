@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from '../../universal/reducer/roote.reducer';
-import App from '../../universal/components/app/app';
+import App from '../../universal/components/app/App';
 import { template } from '../template';
 import { StaticRouter } from 'react-router';
 import ApolloClient from 'apollo-client';
@@ -17,7 +17,9 @@ import fetch from 'node-fetch';
 
 const client = new ApolloClient({
   ssrMode: true,
-  link:  createHttpLink({
+	connectToDevTools: true,
+
+	link:  createHttpLink({
     uri: 'http://localhost:4000', fetch
 
   }),
@@ -29,6 +31,7 @@ export const appHandler = (req) => {
   const store = createStore(rootReducer);
   const context = {};
   const reduxState = store.getState();
+
 
   const html = (
     <ApolloProvider client={client}>

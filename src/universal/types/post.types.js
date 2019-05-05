@@ -16,5 +16,6 @@ export type CommentTypes = {
 
 export type AuthorTypes = {
   id: string,
+	avatar: string,
   name: string
 }

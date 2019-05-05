@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import App from './components/app/app';
+import App from './components/app/App';
 import rootReducer from './reducer/roote.reducer';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
@@ -23,6 +23,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
   link: createHttpLink({uri: 'http://localhost:4000'}),
   connectToDevTools: true,
+	ssrMode: true,
+
 });
 
 ReactDOM.hydrate(

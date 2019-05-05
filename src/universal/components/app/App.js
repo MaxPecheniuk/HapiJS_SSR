@@ -1,17 +1,15 @@
 import React, {Fragment} from 'react';
 // import Home from '../home/home';
 import { Route, Switch } from 'react-router';
-import PostsList from '../postsList/postsList';
-import { PostItem } from '../postItem/postItem';
-import './app.scss';
-import { Header } from '../header/header';
+import PostsList from '../PostsList/PostsList';
+import { PostItem } from '../PostItem/PostItem';
+import './App.scss';
+import { Header } from '../Header/Header';
 
 export default function App() {
   return (
     <div className="sss">
       <Header/>
-      MAXXXXsss
-
       <div className='container'>
         <Switch>
           {/*<Route exact path="/" component={Home}/>*/}
