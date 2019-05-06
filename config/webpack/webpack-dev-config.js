@@ -9,7 +9,7 @@ const Host = "localhost";
 
 module.exports = {
   mode: "development",
-  devtool: "eval",
+  devtool: "source-map",
   entry: {
     path: path.resolve(paths.appIndexJs)
   },
@@ -43,7 +43,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin({
       multiStep: true
-    }),
-    new webpack.SourceMapDevToolPlugin({})
+    })
   ]
 }

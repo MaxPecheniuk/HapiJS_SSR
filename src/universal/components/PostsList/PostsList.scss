@@ -1,23 +1,5 @@
 @import '../../styles/variables';
 .posts-list {
-  &__item {
-    width: 60%;
-    margin: 20px auto;
-    padding: 10px;
-    @extend %cardBackground;
-    * {
-      margin-bottom: 10px;
-    }
-    :nth-last-child(1){
-      margin: 0;
-    }
-    &__title {
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-    &__date{
-      color: $grey;
-      font-size: 0.9rem;
-    }
-  }
+  width: 60%;
+  margin: 0 auto;
 }

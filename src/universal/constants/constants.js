@@ -1,2 +1,1 @@
-export const INCREASE = 'INCREASE';
-export const DECREASE = 'DECREASE';
+export const ADD_SEARCH_VALUE = 'ADD_SEARCH_VALUE';

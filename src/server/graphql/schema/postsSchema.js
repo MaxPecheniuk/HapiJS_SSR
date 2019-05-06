@@ -6,7 +6,7 @@ export const typeDefs = gql`
     title: String
     description: String
     date: Int
-	  comment: [ID!]
+	  commentsIds: [ID!]
     comments: [Comment]
   }
   type Comment {
@@ -22,6 +22,7 @@ export const typeDefs = gql`
 
   type Query {
     posts: [Post]
+    searchPosts(title: String): [Post]
     comments(id: [ID!]): [Comment]
     authors: [Author]
 	  postById(id: ID!): Post

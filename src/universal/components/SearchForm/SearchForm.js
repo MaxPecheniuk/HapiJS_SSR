@@ -1,37 +1,55 @@
 //@flow
-import * as React from 'react';
+import React from 'react';
 import { InputText } from '../share.components/inputText/inputText';
+import { searchFormActionCreators } from './actionCreators/searchForm.actionCreators';
+import { connect } from 'react-redux';
+
+import './searchForm.scss';
 
 type SearchFormState = {
   inputValue: string
 }
+type Props = {
+  dispatch: any
+}
 
-export class SearchForm extends React.Component<{}, SearchFormState> {
+class SearchForm extends React.Component<Props, SearchFormState> {
   state = {
     inputValue: ''
   }
 
-  onChange =(event: SyntheticEvent<HTMLInputElement>) => {
+  onChange = (event: SyntheticEvent<HTMLInputElement>) => {
     this.setState({
-      inputValue: event.currentTarget.value
+      inputValue: event.currentTarget.value.toLowerCase()
     })
   }
 
-  onSubmit =(event: SyntheticEvent<HTMLFormElement>) => {
+  onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
+    this.props.dispatch(searchFormActionCreators(this.state.inputValue))
+    this.setState({
+      inputValue: ''
+    })
   }
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <InputText
-          value={this.state.inputValue}
-          placeholder="Search"
-          onChange={this.onChange}
-          name='inputValue'
-        />
-        {/*<button onSubmit={this.onSubmit}>submit</button>*/}
-      </form>
+        <form onSubmit={this.onSubmit} className="search-form">
+          <InputText
+            value={this.state.inputValue}
+            placeholder="Search title"
+            onChange={this.onChange}
+            name="inputValue"
+            className="search-form__input-field"
+          />
+          <button
+            onSubmit={this.onSubmit}
+            className="search-form__submit-btn"
+          >Submit</button>
+        </form>
     )
   }
 }
+
+
+export default connect()(SearchForm)

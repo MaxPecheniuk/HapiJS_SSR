@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from '../../universal/reducer/roote.reducer';
-import App from '../../universal/components/app/App';
+import App from '../../universal/components/App/App';
 import { template } from '../template';
 import { StaticRouter } from 'react-router';
 import ApolloClient from 'apollo-client';
@@ -13,15 +13,11 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import fetch from 'node-fetch';
 
-
-
 const client = new ApolloClient({
   ssrMode: true,
 	connectToDevTools: true,
-
 	link:  createHttpLink({
     uri: 'http://localhost:4000', fetch
-
   }),
   cache: new InMemoryCache(),
 });
@@ -42,7 +38,6 @@ export const appHandler = (req) => {
       </Provider>
     </ApolloProvider>
   );
-
 
   return getDataFromTree(html)
     .then(() => {

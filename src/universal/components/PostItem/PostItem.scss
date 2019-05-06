@@ -1,5 +1,12 @@
+@import "../../styles/variables";
+
 .post-item{
   display: flex;
-
-
+  flex-direction:column;
+  @extend %cardBackground;
+  &__comments-count{
+    border-top: 2px solid $backgroundColor;
+    padding: 10px 20px;
+    text-align: end;
+  }
 }

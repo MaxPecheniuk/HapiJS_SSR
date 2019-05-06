@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Home component should be possible to activate button with spacebar and click 1`] = `ShallowWrapper {}`;
-
-exports[`Home component should render correctly with no props 1`] = `ShallowWrapper {}`;
