@@ -15,8 +15,10 @@ module.exports = {
   },
   output: {
     path: path.resolve(paths.appDist),
-    filename: 'client.js',
-    publicPath: '/static/'
+    // filename: 'client.js',
+    // publicPath: '/static/'
+    filename: '[name].js',
+    chunkFilename: '[name].bundle.js',
   },
 
   devServer: {
@@ -44,5 +46,16 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin({
       multiStep: true
     })
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "all"
+        }
+      }
+    }
+  }
 }

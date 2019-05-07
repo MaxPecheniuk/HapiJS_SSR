@@ -38,6 +38,6 @@ module.exports = {
       // filename: "[chunkhash]_[name].css",
       filename: "[name].css",
     })
-  ],
+  ]
 }
 
