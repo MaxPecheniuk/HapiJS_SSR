@@ -26,7 +26,6 @@ var _apolloCacheInmemory = require("apollo-cache-inmemory");
 
 require("./index.scss");
 
-// import fetch from 'node-fetch';
 // eslint-disable-next-line
 var state = window.__REDUX_STATE__; // eslint-disable-next-line
 
@@ -36,7 +35,9 @@ var client = new _apolloClient.default({
   cache: new _apolloCacheInmemory.InMemoryCache().restore(window.__APOLLO_STATE__),
   link: (0, _apolloLinkHttp.createHttpLink)({
     uri: 'http://localhost:4000'
-  })
+  }),
+  connectToDevTools: true,
+  ssrMode: true
 });
 
 _reactDom.default.hydrate(_react.default.createElement(_reactApollo.ApolloProvider, {

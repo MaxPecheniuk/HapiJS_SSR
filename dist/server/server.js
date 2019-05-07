@@ -6,15 +6,18 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _route = require("./routes/route");
-
-// const cssHook = require('./plugins/cssHook');
 var Hapi = require('hapi');
 
 var Inert = require('inert');
 
+var port = 9080;
+
+if (process.env.NODE_ENV === "production") {
+  port = 8080;
+}
+
 var server = Hapi.server({
-  port: 9080,
+  port: port,
   host: 'localhost'
 });
 
@@ -29,26 +32,27 @@ function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return server.register([// cssHook.plugin,
-            {
+            return server.register([{
+              plugin: require('./plugins/cssHook')
+            }, {
               plugin: require('hapi-pino'),
               options: {
                 prettyPrint: true,
                 logEvents: ['response', 'onPostStart']
               }
-            }, //static file
-            Inert]);
+            }, Inert, {
+              plugin: require('./plugins/routes')
+            }]);
 
           case 2:
-            server.route(_route.Routes);
-            _context.next = 5;
+            _context.next = 4;
             return server.start();
 
-          case 5:
+          case 4:
             // eslint-disable-next-line
             console.log("Server running at: ".concat(server.info.uri));
 
-          case 6:
+          case 5:
           case "end":
             return _context.stop();
         }

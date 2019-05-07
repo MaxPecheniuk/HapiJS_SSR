@@ -24,9 +24,17 @@ type postsListProps = {
 const PostsList: React.SFC<postsListProps> = (props: postsListProps) => {
   let query = GET_POSTS;
   let variables;
+  console.log(props.location.search);
+  let  a = props.location.search;
+  decodeURIComponent(props.location.search);
+  console.log(a);
+  a.replace(/(^|\s+)?(\s+|$)/g, ' ')
+  console.log(a);
+
   if (props.searchValue !== '') {
+    // props.history.push
     query = SEARCH_POSTS;
-    variables = {'title': props.searchValue}
+    variables = {'title': props.location.search.toLowerCase()}
   }
   return (
     <Fragment>
@@ -62,3 +70,16 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(PostsList);
+
+//
+//
+//
+// <div>
+//   props.data
+// </div>
+//
+//
+// function sq(Component) {
+// }
+//
+// function lq()

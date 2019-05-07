@@ -7,10 +7,10 @@ exports.default = void 0;
 
 var _redux = require("redux");
 
-var _reducer = require("../components/Home/reducer");
+var _searchForm = require("../components/SearchForm/reducer/searchForm.reducer");
 
 var rootReducer = (0, _redux.combineReducers)({
-  HomeReducer: _reducer.HomeReducer
+  searchFormReducer: _searchForm.searchFormReducer
 });
 var _default = rootReducer;
 exports.default = _default;

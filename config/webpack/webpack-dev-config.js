@@ -16,7 +16,7 @@ module.exports = {
   output: {
     path: path.resolve(paths.appDist),
     filename: 'client.js',
-    publicPath: '/static/'
+    publicPath: '/public/'
   },
 
   devServer: {
@@ -25,6 +25,8 @@ module.exports = {
     proxy: {
       '*': {
         target: `http://${Host}:${HapiPort}`,
+        // proxyTimeout: 5000,
+        // timeout: 5000
       }
     },
     open: true,

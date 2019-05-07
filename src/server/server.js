@@ -1,14 +1,12 @@
-// const cssHook = require('./plugins/cssHook');
-import path from "path";
-import paths from '../../config/webpack/paths';
-
 const Hapi = require('hapi');
-const Inert = require('inert');
-const routesPlugin = require('./plugins/routes');
 
+let port = 9080; //dev port
+if(process.env.NODE_ENV === "production"){
+  port = 8080
+}
 
 const server = Hapi.server({
-  port: 9080,
+  port: port,
   host: 'localhost',
 
 });
@@ -16,16 +14,24 @@ const server = Hapi.server({
 const init = async () => {
   await server.register(
     [
-      // cssHook.plugin,
       {
+        plugin: require('./plugins/cssHook')
+      },
+      {
+        //console
         plugin: require('hapi-pino'),
         options: {
           prettyPrint: true,
           logEvents: ['response', 'onPostStart']
         }
       },
-      Inert,
-      routesPlugin.plugin
+      {
+        //static file
+        plugin: require('inert')
+      },
+      {
+        plugin: require('./plugins/routes')
+      }
     ]);
 
   await server.start();

@@ -3,7 +3,6 @@
 
     "server": {
       "ignore": ["**/*.test.js"],
-
       "presets": [
         "@babel/env",
         "@babel/react",
@@ -21,7 +20,6 @@
 
     "universal": {
       "ignore": ["**/*.test.js"],
-
       "presets": [
         "@babel/env",
         "@babel/react"
@@ -35,7 +33,6 @@
         "graphql-tag"
       ]
     },
-
     "test": {
       "presets": [
         "@babel/env",
