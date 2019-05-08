@@ -25,11 +25,16 @@ module.exports = {
     proxy: {
       '*': {
         target: `http://${Host}:${HapiPort}`,
-        // proxyTimeout: 5000,
-        // timeout: 5000
+        onError: function onError(err, req, res) {
+          if(err){
+            req.setTimeout(3500)
+
+          }
+        }
+
       }
     },
-    open: true,
+    // open: true,
     overlay: {
       warnings: false,
       errors: true

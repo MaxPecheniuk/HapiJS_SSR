@@ -4,9 +4,9 @@ import { Query } from 'react-apollo';
 import { GET_POST } from '../../queries/postItem.query';
 import { PostComments } from '../PostComments/PostComments';
 import { PostInfo } from '../PostInfo/PostInfo';
+import ClearPost from '../share.components/ClearPost/ClearPost';
 
 import './PostItem.scss'
-import { Link } from 'react-router-dom';
 
 type PostItemProps = {
   match: any,
@@ -38,7 +38,7 @@ export class PostItem extends React.Component<PostItemProps, PostItemState> {
     return (
       <Query query={GET_POST} variables={{'id': id}}>
         {({data, loading, error}) => {
-          if (loading) return <div>Loading</div>;
+          if (loading) return (<div><ClearPost/></div>);
           if (error) return <div>Error</div>;
           return (
             <div className="post-item">

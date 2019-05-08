@@ -1,0 +1,11 @@
+
+@import "../../../styles/variables";
+.clear-post{
+  filter: blur(4px);
+  display: flex;
+  flex-direction:column;
+  width: 60%;
+  margin: 40px auto;
+
+  @extend %cardBackground;
+}

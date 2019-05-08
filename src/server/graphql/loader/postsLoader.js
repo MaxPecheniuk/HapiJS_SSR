@@ -3,7 +3,6 @@ import DataLoader from 'dataloader';
 import { apiUrl } from '../../config/apiConfig';
 
 export const postsLoader = (_, {title}, context) => {
-  console.log(title);
   const loaderPosts = async (keys) =>
     await Promise.all(keys.map(() =>
       axios.get(apiUrl)

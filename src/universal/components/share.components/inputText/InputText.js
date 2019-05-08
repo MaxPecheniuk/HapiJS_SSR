@@ -1,11 +1,12 @@
 //@flow
 import React from 'react';
-import './inputText.scss';
+import './InputText.scss';
 
 type InputTextProps = {
   value: string,
   placeholder: string,
   className: string,
+  // eslint-disable-next-line
   onChange(inputValue: SyntheticEvent<HTMLInputElement>) : void
 }
 

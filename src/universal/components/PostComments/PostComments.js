@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import { GET_COMMENTS } from '../../queries/comments.query';
 
 import './PostComments.scss'
+import SpinnerLoader from '../share.components/SpinerLoader/SpinnerLoader';
 
 export type CommentTypes = {
   id: string,
@@ -22,13 +23,11 @@ type PostCommentsProps = {
 }
 
 export const PostComments: React.SFC<PostCommentsProps> = (props: PostCommentsProps) => {
-  console.log(props);
   return (
     <Query query={GET_COMMENTS} variables={{'id': props.commentsIds}}>
       {({data, loading, error}) => {
-        if (loading) return <div>Loading</div>;
-        if (error) return <div>Essrror</div>;
-        console.log(props);
+        if (loading) return <SpinnerLoader/>;
+        if (error) return <div>Error</div>;
         return (
           <div className="post-item__comments">
             {data.comments.map((comment: CommentTypes, index: number) => {

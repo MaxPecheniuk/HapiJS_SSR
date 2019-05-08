@@ -3,6 +3,8 @@
 .post-item{
   display: flex;
   flex-direction:column;
+  width: 60%;
+  margin: 40px auto;
   @extend %cardBackground;
   &__comments-count{
     border-top: 2px solid $backgroundColor;

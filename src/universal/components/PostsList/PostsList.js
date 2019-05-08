@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
 import { GET_POSTS } from '../../queries/posts.query';
 import { PostItem } from '../PostItem/PostItem';
 import type { CommentTypes } from '../PostComments/PostComments';
 
 import './PostsList.scss';
+import  ClearPost  from '../share.components/ClearPost/ClearPost';
 
 export type PostTypes = {
   id: string,
@@ -24,11 +25,10 @@ const PostsList: React.SFC<postsListProps> = (props: postsListProps) => {
     variables = {'title': decodeURIComponent(props.location.search.replace('?search=', '')).toLowerCase()}
   }
   return (
-    <Fragment>
       <div className="posts-list">
         <Query query={GET_POSTS} variables={variables} ssr={false}>
-          {({data, loading, error}) => {
-            if (loading) return <div>Loading</div>;
+          {({data, loading,  error}) => {
+            if (loading) return null;
             if (error) return <div>Error</div>;
             return (
               data.posts.map((post: PostTypes, i) => {
@@ -40,7 +40,6 @@ const PostsList: React.SFC<postsListProps> = (props: postsListProps) => {
           }}
         </Query>
       </div>
-    </Fragment>
   )
 }
 

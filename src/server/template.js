@@ -1,6 +1,6 @@
 export const template = (content = '', reduxState, apolloState) => {
   let scripts = `<script src="/public/client.js"></script>`;
-  let styles = ``;
+  let styles = `<link rel="stylesheet" href="/public/path.css">`;
 
   if (process.env.NODE_ENV === 'production') {
     styles = `<link rel="stylesheet" href="/public/universal.css">`;
@@ -8,7 +8,6 @@ export const template = (content = '', reduxState, apolloState) => {
       <script src="/public/vendor.js"></script>
       <script src="/public/universal.js"></script>`
   }
-
   const page = `
 <!doctype html>
 	<html>
