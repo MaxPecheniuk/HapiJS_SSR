@@ -1,11 +1,9 @@
 //@flow
 import React, {Fragment} from 'react';
 import { InputText } from '../share.components/inputText/inputText';
-import { searchFormActionCreators } from './actionCreators/searchForm.actionCreators';
-import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import './searchForm.scss';
-import { withRouter } from 'react-router';
 
 type SearchFormState = {
   inputValue: string
@@ -17,7 +15,12 @@ type Props = {
 class SearchForm extends React.Component<Props, SearchFormState> {
   state = {
     inputValue: '',
-    redirect: false
+  }
+
+  componentDidMount(){
+    this.setState({
+      inputValue: decodeURIComponent(this.props.location.search.replace('?search=', ''))
+    })
   }
 
   onChange = (event: SyntheticEvent<HTMLInputElement>) => {
@@ -28,21 +31,12 @@ class SearchForm extends React.Component<Props, SearchFormState> {
 
   onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
-    this.props.history.push({search: this.state.inputValue});
-    this.props.dispatch(searchFormActionCreators(this.state.inputValue))
-
-
+    this.props.history.push({search: `?search=${this.state.inputValue}`});
   }
 
   render() {
-    // console.log(this.state.redirect);
-    // if (this.state.redirect){
-    console.log(this.props);
-    //   return  <Redirect to={"/home"} />
-    // }
     return (
       <Fragment>
-
         <form onSubmit={this.onSubmit} className="search-form">
           <InputText
             value={this.state.inputValue}
@@ -62,4 +56,4 @@ class SearchForm extends React.Component<Props, SearchFormState> {
 }
 
 
-export default withRouter(connect()(SearchForm))
+export default withRouter(SearchForm)

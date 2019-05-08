@@ -15,7 +15,8 @@
     "test:unit": "jest --config config/jest/jest.config.js",
     "test:flow": "flow status",
     "test:eslint": "BABLE_ENV=test eslint src -c .eslintrc --ext js,jsx",
-    "apollo": "BABEL_ENV=server NODE_ENV=production node src/server/graphql/index.js",
+    "apollo": "BABEL_ENV=server node src/server/graphql/index.js",
+    "apollo:prod": "BABEL_ENV=server NODE_ENV=production node src/server/graphql/index.js",
     "clearDist": "rm -r -v dist/*"
   },
   "keywords": [],

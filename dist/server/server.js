@@ -8,9 +8,7 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var Hapi = require('hapi');
 
-var Inert = require('inert');
-
-var port = 9080;
+var port = 9080; //dev port
 
 if (process.env.NODE_ENV === "production") {
   port = 8080;
@@ -35,12 +33,16 @@ function () {
             return server.register([{
               plugin: require('./plugins/cssHook')
             }, {
+              //console info
               plugin: require('hapi-pino'),
               options: {
                 prettyPrint: true,
                 logEvents: ['response', 'onPostStart']
               }
-            }, Inert, {
+            }, {
+              //static file
+              plugin: require('inert')
+            }, {
               plugin: require('./plugins/routes')
             }]);
 

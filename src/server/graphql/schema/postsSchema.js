@@ -21,8 +21,7 @@ export const typeDefs = gql`
   } 
 
   type Query {
-    posts: [Post]
-    searchPosts(title: String): [Post]
+    posts(title: String = undefined): [Post]
     comments(id: [ID!]): [Comment]
     authors: [Author]
 	  postById(id: ID!): Post

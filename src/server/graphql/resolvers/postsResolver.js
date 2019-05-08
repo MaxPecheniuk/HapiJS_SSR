@@ -3,8 +3,8 @@ import { postsLoader } from '../loader/postsLoader';
 export const postsResolver = {
 
   Query: {
-    posts: (_, __, context) => {
-      return postsLoader(_, __, context);
+    posts: (_, {title}, context) => {
+      return postsLoader(_, {title}, context);
     },
   },
 }
