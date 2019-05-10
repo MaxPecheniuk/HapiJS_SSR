@@ -15,9 +15,16 @@ module.exports = {
   },
   output: {
     path: path.resolve(paths.appDist),
-    filename: 'client.js',
-    publicPath: '/public/'
+
+    chunkFilename: '[name].js',
+    filename: '[name].js',
+    // publicPath: '/public/'
   },
+  // output: {
+  //   path: path.resolve(paths.appDist),
+  //   filename: 'client.js',
+  //   publicPath: '/public/'
+  // },
 
   devServer: {
     port: Port,

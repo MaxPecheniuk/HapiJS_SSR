@@ -10,6 +10,7 @@ import ApolloClient from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import './index.scss';
+import { loadableReady } from '@loadable/component';
 
 
 // eslint-disable-next-line
@@ -26,16 +27,17 @@ const client = new ApolloClient({
 	ssrMode: true,
 
 });
-
-ReactDOM.hydrate(
-  <ApolloProvider client={client}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App/>
-      </BrowserRouter>
-    </Provider>
-  </ApolloProvider>
-  ,
-  // eslint-disable-next-line
-  document.getElementById('root')
-);
+loadableReady(()=> {
+  ReactDOM.hydrate(
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App/>
+        </BrowserRouter>
+      </Provider>
+    </ApolloProvider>
+    ,
+    // eslint-disable-next-line
+    document.getElementById('root')
+  );
+})

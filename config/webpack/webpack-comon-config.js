@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const paths = require('./paths');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const LoadablePlugin = require('@loadable/webpack-plugin')
 const env = process.env.NODE_ENV;
 
 module.exports = {
@@ -12,6 +12,7 @@ module.exports = {
     extensions: ['.js', '.jsx', 'css', 'scss'],
     modules: [path.resolve(paths.appSrc), 'node_modules'],
   },
+
   module: {
     rules: [
       {
@@ -25,7 +26,7 @@ module.exports = {
         exclude: /node_modules/,
         include: [path.resolve(paths.appSrc)],
         // use: [env === 'production' ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       }
     ]
   },
@@ -37,8 +38,20 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       // filename: "[chunkhash]_[name].css",
-      filename: "[name].css",
-    })
-  ]
+      filename: '[name].css',
+    }),
+    new LoadablePlugin({writeToDisk: true })
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    }
+  }
 }
 

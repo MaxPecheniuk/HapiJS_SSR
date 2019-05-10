@@ -9,7 +9,7 @@
     "build": " npm run build:server && npm run build:client",
     "production": "NODE_ENV=production node dist/server/server.js",
     "server": "NODE_ENV=development BABEL_ENV=server node src/server/index.js",
-    "server:dev": "NODE_ENV=development BABEL_ENV=server nodemon src/server/index.js",
+    "server:dev": "NODE_ENV=development BABEL_ENV=server nodemon --inspect src/server/index.js",
     "build:server": "NODE_ENV=production BABEL_ENV=server babel src --out-dir dist --copy-files",
     "build:client": "NODE_ENV=production  BABEL_ENV=universal webpack --config config/webpack/webpack.config.js",
     "test:unit": "jest --config config/jest/jest.config.js",
@@ -17,7 +17,7 @@
     "test:eslint": "BABLE_ENV=test eslint src -c .eslintrc --ext js,jsx",
     "apollo": "BABEL_ENV=server node src/server/graphql/index.js",
     "apollo:prod": "BABEL_ENV=server NODE_ENV=production node src/server/graphql/index.js",
-    "clearDist": "rm -r -v dist/*"
+    "clean": "rm -r -v dist/*"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,8 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
     "@babel/runtime": "^7.4.2",
+    "@loadable/component": "^5.9.0",
+    "@loadable/server": "^5.9.0",
     "apollo-boost": "^0.3.1",
     "apollo-datasource-rest": "^0.3.2",
     "apollo-server": "^2.4.8",
@@ -64,6 +66,8 @@
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.0",
+    "@loadable/babel-plugin": "^5.8.0",
+    "@loadable/webpack-plugin": "^5.7.1",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
     "apollo-link-http": "^1.5.14",

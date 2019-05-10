@@ -1,9 +1,11 @@
 import React, {Fragment} from 'react';
 import { Route, Switch } from 'react-router';
-import PostsList from '../PostsList/PostsList';
-import { PostItem } from '../PostItem/PostItem';
-import './App.scss';
+import loadable from '@loadable/component';
 import { Header } from '../Header/Header';
+import './App.scss';
+
+const PostsList = loadable(()=> import ('../PostsList/PostsList'));
+const PostItem = loadable(()=> import ('../PostItem/PostItem'));
 
 export default function App() {
   return (
