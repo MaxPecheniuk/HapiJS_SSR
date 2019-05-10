@@ -34,7 +34,7 @@ module.exports = {
 
       }
     },
-    // open: true,
+    open: true,
     overlay: {
       warnings: false,
       errors: true

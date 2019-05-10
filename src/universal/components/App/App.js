@@ -10,10 +10,8 @@ export default function App() {
     <Fragment>
       <Header/>
       <div className='container'>
-
         <Switch>
-
-          <Route exact path="/" component={PostsList}/>
+          <Route exact path={["/","/*/:search="]} component={PostsList}/>
           <Route path="/post/:id" component={PostItem}/>
         </Switch>
       </div>

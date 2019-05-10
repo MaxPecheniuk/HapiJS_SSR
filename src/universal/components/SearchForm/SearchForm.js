@@ -1,7 +1,7 @@
 //@flow
 import React, {Fragment} from 'react';
 import { InputText } from '../share.components/inputText/InputText';
-import { withRouter } from 'react-router';
+import { Redirect, withRouter } from 'react-router';
 
 import './searchForm.scss';
 
@@ -16,6 +16,7 @@ type Props = {
 class SearchForm extends React.Component<Props, SearchFormState> {
   state = {
     inputValue: '',
+    redirect: false
   }
 
   componentDidMount(){
@@ -23,24 +24,43 @@ class SearchForm extends React.Component<Props, SearchFormState> {
       inputValue: decodeURIComponent(this.props.location.search.replace('?search=', ''))
     })
   }
+
+  componentDidUpdate() {
+    if (this.props.location.pathname === '/' && this.state.redirect){
+      this.setState({
+        redirect: false
+      })
+    }
+  }
+
 // eslint-disable-next-line
   onChange = (event: SyntheticEvent<HTMLInputElement>) => {
     this.setState({
       inputValue: event.currentTarget.value
     })
   }
-// eslint-disable-next-line
+
+  // eslint-disable-next-line
   onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (this.props.location.pathname !== '/'){
+      this.setState({
+        redirect: true
+      })
+    }
     this.props.history.push({search: `?search=${this.state.inputValue}`});
   }
 
   render() {
+    const {redirect , inputValue} = this.state;
+    if (redirect) {
+      return <Redirect to={{pathname: "/", search: `?search=${inputValue}`}}/>
+    }
     return (
       <Fragment>
         <form onSubmit={this.onSubmit} className="search-form">
           <InputText
-            value={this.state.inputValue}
+            value={inputValue}
             placeholder="Search title"
             onChange={this.onChange}
             name="inputValue"

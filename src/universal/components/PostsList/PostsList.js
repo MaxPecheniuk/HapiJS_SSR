@@ -5,7 +5,6 @@ import { PostItem } from '../PostItem/PostItem';
 import type { CommentTypes } from '../PostComments/PostComments';
 
 import './PostsList.scss';
-import  ClearPost  from '../share.components/ClearPost/ClearPost';
 
 export type PostTypes = {
   id: string,
@@ -30,6 +29,7 @@ const PostsList: React.SFC<postsListProps> = (props: postsListProps) => {
           {({data, loading,  error}) => {
             if (loading) return null;
             if (error) return <div>Error</div>;
+            if (data.posts.length < 1) return <div>Length</div>
             return (
               data.posts.map((post: PostTypes, i) => {
                 return (
