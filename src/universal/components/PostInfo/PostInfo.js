@@ -13,7 +13,7 @@ type State = {
   showComments: boolean
 }
 
-export class PostInfo extends React.Component<PostInfoProps, State> {
+class PostInfo extends React.Component<PostInfoProps, State> {
   render() {
     const {postInfo} = this.props;
     return (
@@ -29,3 +29,4 @@ export class PostInfo extends React.Component<PostInfoProps, State> {
     );
   }
 }
+export default PostInfo;

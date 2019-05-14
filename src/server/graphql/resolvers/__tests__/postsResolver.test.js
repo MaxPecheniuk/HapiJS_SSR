@@ -4,7 +4,23 @@ import { typeDefs } from '../../schema/postsSchema';
 import { graphql } from 'graphql';
 
 const mock = {
-  data: {"posts": [{"id": "p1", "title": "Post 1"}, {"id": "p2", "title": "Post 2"}, {"id": "p3", "title": "Post 3"}]}
+  data: {
+    'posts':
+      [
+        {
+          'id': "p1",
+          'title': "Post 1 Title 1Post 1 Title 1Post 1 Title 1",
+        },
+        {
+          'id': 'p2',
+          'title': "Post 2 Title 2 Post 2 Title 2 Post 2 Title 2",
+        },
+        {
+          'id': 'p3',
+          'title': "Post 3 Title 3 Post 3 Title 3 Post 3 Title 3 ",
+        }
+      ]
+  }
 }
 
 describe('post resolver', () => {
@@ -18,7 +34,7 @@ describe('post resolver', () => {
   }`;
 
   it('should response equal mock data', async () => {
-    const result = await graphql(schema, query,null, {});
+    const result = await graphql(schema, query, null, {});
     expect(result).toEqual(mock)
   });
 })

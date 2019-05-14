@@ -2,7 +2,6 @@ const path = require("path");
 const paths = require("./paths");
 const webpack = require('webpack');
 
-
 const Port = 8080;
 const HapiPort = 9080;
 const Host = "localhost";
@@ -11,15 +10,35 @@ module.exports = {
   mode: "development",
   devtool: "source-map",
   entry: {
-    path: path.resolve(paths.appIndexJs)
+    main: path.resolve(paths.appIndexJs)
   },
-  output: {
-    path: path.resolve(paths.appDist),
+  // output: {
+  //   path: path.resolve(paths.appPublic),
+  //   publicPath: '/public/',
+  //   filename: "[name].js",
+  //   chunkFilename: "[name].js"
+  // },
+  // optimization: {
+  //   runtimeChunk: 'single',
+  //   splitChunks: {
+  //     chunks: 'all',
+  //     //кол-во параллельных запросов
+  //     maxInitialRequests: Infinity,
+  //     //chunk min size
+  //     minSize: 0,
+  //     cacheGroups: {
+  //       vendor: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         name(module) {
+  //           // get package name
+  //           const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+  //           return `npm.${packageName.replace('@', '')}`;
+  //         },
+  //       },
+  //     },
+  //   },
+  // },
 
-    chunkFilename: '[name].js',
-    filename: '[name].js',
-    // publicPath: '/public/'
-  },
   // output: {
   //   path: path.resolve(paths.appDist),
   //   filename: 'client.js',
@@ -54,6 +73,7 @@ module.exports = {
       process.stdout.write(`Dev server is running: http://${Host}:${Port}\n`);
     }
   },
+
   plugins: [
     new webpack.HotModuleReplacementPlugin({
       multiStep: true

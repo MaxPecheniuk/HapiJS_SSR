@@ -6,7 +6,8 @@ import { Redirect, withRouter } from 'react-router';
 import './searchForm.scss';
 
 type SearchFormState = {
-  inputValue: string
+  inputValue: string,
+  redirect: boolean
 }
 type Props = {
   history: any,

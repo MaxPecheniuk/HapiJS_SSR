@@ -18,30 +18,6 @@ const mock = {
         'id': 'p1_c3',
         'text': 'Post 1 comment 3'
       },
-      {
-        'id': 'p2_c1',
-        'text': 'Post 2 comment 1'
-      },
-      {
-        'id': 'p2_c2',
-        'text': 'Post 2 comment 2'
-      },
-      {
-        'id': 'p2_c3',
-        'text': 'Post 2 comment 3'
-      },
-      {
-        'id': 'p3_c1',
-        'text': 'Post 3 comment 1'
-      },
-      {
-        'id': 'p3_c2',
-        'text': 'Post 3 comment 2'
-      },
-      {
-        'id': 'p3_c3',
-        'text': 'Post 3 comment 3'
-      }
     ]
   }
 }
@@ -56,12 +32,12 @@ describe('post resolver', () => {
   })
 
   const rootQuery = `
-  {
-    comments {
-      id
-      text
-      }
-  }`;
+ query comments($id: [ID!]) {
+		comments(id: $id){
+			id
+			text
+		}
+	}`;
   const childQuery = `
   {
     posts {
@@ -75,14 +51,14 @@ describe('post resolver', () => {
 
 
   it('should rootQuery response equal mock data', async () => {
-    result = await graphql(schema, rootQuery, null, {});
-    expect(result).toEqual(mock)
+    result = await graphql(schema, rootQuery, null, {}, {"id":["p1_c1", "p1_c2", "p1_c3"]});
+    expect(result.data.comments).toEqual(mock.data.comments)
   });
 
   it('should child query response equal mock data', async () => {
     const result = await graphql(schema, childQuery, null, {});
     result.data.posts.forEach((item) => {
-      item.postComments.forEach(comment => {
+      item.comments.forEach(comment => {
           expect(comment).toHaveProperty('id');
         expect(comment).toHaveProperty('author');
         }

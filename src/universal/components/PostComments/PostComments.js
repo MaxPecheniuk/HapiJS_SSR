@@ -1,5 +1,5 @@
 //@flow
-import * as React from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
 import { GET_COMMENTS } from '../../queries/comments.query';
 
@@ -22,7 +22,7 @@ type PostCommentsProps = {
   commentsIds: Array<String>
 }
 
-export const PostComments: React.SFC<PostCommentsProps> = (props: PostCommentsProps) => {
+const PostComments = (props: PostCommentsProps) => {
   return (
     <Query query={GET_COMMENTS} variables={{'id': props.commentsIds}}>
       {({data, loading, error}) => {
@@ -50,3 +50,4 @@ export const PostComments: React.SFC<PostCommentsProps> = (props: PostCommentsPr
     </Query>
   );
 }
+export default PostComments;

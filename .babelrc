@@ -15,7 +15,8 @@
         "@babel/plugin-proposal-class-properties",
         "graphql-tag",
         "@babel/plugin-proposal-throw-expressions",
-        "@loadable/babel-plugin"
+        "@loadable/babel-plugin",
+        "@babel/plugin-syntax-dynamic-import"
 
       ]
     },
@@ -33,7 +34,8 @@
         "@babel/plugin-transform-flow-strip-types",
         "@babel/plugin-proposal-class-properties",
         "graphql-tag",
-        "@loadable/babel-plugin"
+        "@loadable/babel-plugin",
+        "@babel/plugin-syntax-dynamic-import"
       ]
     },
     "test": {
@@ -44,7 +46,8 @@
       "plugins": [
         "@babel/plugin-transform-runtime",
         "@babel/plugin-transform-flow-strip-types",
-        "@babel/plugin-proposal-class-properties"
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-throw-expressions"
       ]
     }
   }

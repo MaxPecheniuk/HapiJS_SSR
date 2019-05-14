@@ -1,7 +1,6 @@
 import React from 'react';
-const paths = require("../../../config/webpack/paths");
+const paths = require('../../../config/webpack/paths');
 const path = require('path');
-
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -27,28 +26,30 @@ const client = new ApolloClient({
 });
 
 export const appHandler = (req) => {
-  // debugger
-  const statsFile = path.resolve(paths.sF);
-  const extractor = new ChunkExtractor({ statsFile });
+  const statsFile = path.resolve(paths.loadableStats);
+  const extractor = new ChunkExtractor({statsFile});
   const store = createStore(rootReducer);
   const context = {};
   const reduxState = store.getState();
 
-  const html = extractor.collectChunks(
+  const html = (
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <StaticRouter location={req.url} context={context}>
-          <App/>
-        </StaticRouter>
+          <StaticRouter location={req.url} context={context}>
+            <App/>
+          </StaticRouter>
       </Provider>
     </ApolloProvider>
+
   );
+
 
   return getDataFromTree(html)
     .then(() => {
       let apolloState = client.extract();
-      const a = extractor.getScriptElements();
-      const content = renderToString(html);
-      return template(content, reduxState, apolloState)
+      const content = renderToString(extractor.collectChunks(html));
+      const scriptTags = extractor.getScriptTags();
+      const styleTags = extractor.getStyleTags();
+      return template(content, reduxState, apolloState, scriptTags, styleTags)
     })
 };

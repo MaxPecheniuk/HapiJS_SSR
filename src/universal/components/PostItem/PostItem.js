@@ -2,11 +2,13 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { GET_POST } from '../../queries/postItem.query';
-import { PostComments } from '../PostComments/PostComments';
-import { PostInfo } from '../PostInfo/PostInfo';
 import ClearPost from '../share.components/ClearPost/ClearPost';
+import loadable from '@loadable/component';
 
 import './PostItem.scss'
+
+const PostInfo = loadable(()=> import('../PostInfo/PostInfo'));
+const PostComments = loadable(()=> import('../PostComments/PostComments'));
 
 type PostItemProps = {
   match: any,
@@ -17,7 +19,7 @@ type PostItemState = {
   showComments: boolean
 }
 
-export class PostItem extends React.Component<PostItemProps, PostItemState> {
+class PostItem extends React.Component<PostItemProps, PostItemState> {
   state = {
     showComments: false
   }
@@ -29,11 +31,13 @@ export class PostItem extends React.Component<PostItemProps, PostItemState> {
   }
 
   render() {
+    const {match, postId} = this.props;
+    const {showComments} = this.state;
     let id: string;
-    if (this.props.match === undefined) {
-      id = this.props.postId;
+    if (match === undefined) {
+      id = postId;
     } else {
-      id = this.props.match.params.id
+      id = match.params.id
     }
     return (
       <Query query={GET_POST} variables={{'id': id}}>
@@ -46,7 +50,7 @@ export class PostItem extends React.Component<PostItemProps, PostItemState> {
               <div className="post-item__comments-count">
                 <span onClick={this.onCommentToggle}>{data.postById.commentsIds.length} comments</span>
               </div>
-              {this.state.showComments && <PostComments commentsIds={data.postById.commentsIds}/>}
+              {showComments && <PostComments commentsIds={data.postById.commentsIds}/>}
             </div>
 
           )
@@ -56,3 +60,4 @@ export class PostItem extends React.Component<PostItemProps, PostItemState> {
   }
 
 }
+export default PostItem;
