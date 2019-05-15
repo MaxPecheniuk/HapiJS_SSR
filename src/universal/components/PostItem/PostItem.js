@@ -48,7 +48,9 @@ class PostItem extends React.Component<PostItemProps, PostItemState> {
             <div className="post-item">
               <PostInfo postInfo={data.postById}/>
               <div className="post-item__comments-count">
-                <span onClick={this.onCommentToggle}>{data.postById.commentsIds.length} comments</span>
+                <span onClick={this.onCommentToggle}>
+                  {showComments ? 'Hide' : data.postById.commentsIds.length} comments
+                </span>
               </div>
               {showComments && <PostComments commentsIds={data.postById.commentsIds}/>}
             </div>
