@@ -1,7 +1,7 @@
 import React from 'react';
 import './SpinnerLoader.scss';
 
-const SpinnerLoader: React.SFC<> = () => {
+const SpinnerLoader: React.FunctionComponent = () => {
   return (
     <div className="loader"/>
   )

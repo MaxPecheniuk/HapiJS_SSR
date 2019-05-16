@@ -1,25 +1,28 @@
-//@flow
 import React from 'react';
 import { Query } from 'react-apollo';
 import { GET_POST } from '../../queries/postItem.query';
-import ClearPost from '../share.components/ClearPost/ClearPost';
 import loadable from '@loadable/component';
 
-import './PostItem.scss'
+import './PostItem.scss';
+import ClearPost from '../share.components/ClearPost/ClearPost';
+import { PostTypes } from '../PostsList/PostsList';
 
-const PostComments = loadable(()=> import('../PostComments/PostComments'));
-const PostInfo = loadable(()=> import('../PostInfo/PostInfo'));
+const PostComments = loadable(() => import('../PostComments/PostComments'));
+const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
 
-type PostItemProps = {
-  match: any,
-  postId: string
+interface IPostItemProps {
+  match?: any;
+  postId: string;
 }
 
-type PostItemState = {
-  showComments: boolean
+interface IState {
+  showComments: boolean;
+}
+interface IPostType {
+  postById: PostTypes;
 }
 
-class PostItem extends React.Component<PostItemProps, PostItemState> {
+class PostItem extends React.Component<IPostItemProps, IState> {
   state = {
     showComments: false
   }
@@ -27,7 +30,7 @@ class PostItem extends React.Component<PostItemProps, PostItemState> {
   onCommentToggle = () => {
     this.setState({
       showComments: !this.state.showComments
-    })
+    });
   }
 
   render() {
@@ -37,14 +40,14 @@ class PostItem extends React.Component<PostItemProps, PostItemState> {
     if (match === undefined) {
       id = postId;
     } else {
-      id = match.params.id
+      id = match.params.id;
     }
     return (
 
-      <Query query={GET_POST} variables={{'id': id}} >
+      <Query<IPostType> query={GET_POST} variables={{'id': id}} >
         {({data, loading, error}) => {
-          if (loading) return (<div><ClearPost/></div>);
-          if (error) return <div>Error</div>;
+          if (loading) { return <div><ClearPost/></div>; }
+          if (error) { return <div>Error</div>; }
           return (
             <div className="post-item">
               <PostInfo postInfo={data.postById}/>

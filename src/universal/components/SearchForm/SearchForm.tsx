@@ -1,20 +1,19 @@
-//@flow
-import React, {Fragment} from 'react';
+import React, { Fragment, SyntheticEvent } from 'react';
 import { InputText } from '../share.components/inputText/InputText';
-import { Redirect, withRouter } from 'react-router';
+import { Redirect, RouteComponentProps, withRouter } from 'react-router';
 
 import './searchForm.scss';
 
-type SearchFormState = {
-  inputValue: string,
-  redirect: boolean
+interface ISearchFormState  {
+  inputValue: string;
+  redirect: boolean;
 }
-type Props = {
-  history: any,
-  location: any
+interface IProps  {
+  history?: any;
+  location?: any;
 }
 
-class SearchForm extends React.Component<Props, SearchFormState> {
+class SearchForm extends React.Component<IProps & RouteComponentProps<{}>, ISearchFormState> {
   state = {
     inputValue: '',
     redirect: false
@@ -34,14 +33,12 @@ class SearchForm extends React.Component<Props, SearchFormState> {
     }
   }
 
-// eslint-disable-next-line
   onChange = (event: SyntheticEvent<HTMLInputElement>) => {
     this.setState({
       inputValue: event.currentTarget.value
     })
   }
 
-  // eslint-disable-next-line
   onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (this.props.location.pathname !== '/'){
@@ -68,7 +65,8 @@ class SearchForm extends React.Component<Props, SearchFormState> {
             className="search-form__input-field"
           />
           <button
-            onSubmit={this.onSubmit}
+            // onSubmit={this.onSubmit}
+            type='submit'
             className="search-form__submit-btn"
           >Submit</button>
         </form>

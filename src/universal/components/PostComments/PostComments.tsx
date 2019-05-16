@@ -1,25 +1,24 @@
-//@flow
 import React from 'react';
 import { Query } from 'react-apollo';
 import { GET_COMMENTS } from '../../queries/comments.query';
-
-import './PostComments.scss'
 import SpinnerLoader from '../share.components/SpinerLoader/SpinnerLoader';
 
-export type CommentTypes = {
-  id: string,
-  text: string,
-  author: AuthorTypes
+import './PostComments.scss';
+
+export interface CommentTypes  {
+  id: string;
+  text: string;
+  author: AuthorTypes;
 }
 
-export type AuthorTypes = {
-  id: string,
-  avatar: string,
-  name: string
+export interface AuthorTypes  {
+  id: string;
+  avatar: string;
+  name: string;
 }
 
-type PostCommentsProps = {
-  commentsIds: Array<String>
+interface PostCommentsProps  {
+  commentsIds: Array<String>;
 }
 
 const PostComments = (props: PostCommentsProps) => {

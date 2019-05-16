@@ -15,27 +15,27 @@ module.exports = {
   output: {
     path: path.resolve(paths.appPublic),
     publicPath: '/public/',
-    filename: "[name].js",
-    chunkFilename: "[name].js"
+    filename: '[name].js',
+    chunkFilename: '[name].js'
   },
   optimization: {
-    runtimeChunk: 'single',
+    // runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
       //кол-во параллельных запросов
-      maxInitialRequests: Infinity,
-      //chunk min size
-      minSize: 0,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            // get package name
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-            return `npm.${packageName.replace('@', '')}`;
-          },
-        },
-      },
+      // maxInitialRequests: Infinity,
+      // //chunk min size
+      // minSize: 0,
+      // cacheGroups: {
+      //   vendor: {
+      //     test: /[\\/]node_modules[\\/]/,
+      //     name(module) {
+      //       // get package name
+      //       const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+      //       return `npm.${packageName.replace('@', '')}`;
+      //     },
+      //   },
+      // },
     },
   },
 
@@ -47,7 +47,12 @@ module.exports = {
         include: path.resolve(paths.appSrc),
         use: ['babel-loader']
       },
-      {},
+      {
+        test: /\.tsx?$/,
+        exclude: [/node_modules/, /__tests__/],
+        include: path.resolve(paths.appSrc),
+        loader: 'ts-loader'
+      },
       {
         test: /\.(css|scss)$/,
         exclude: /node_modules/,
