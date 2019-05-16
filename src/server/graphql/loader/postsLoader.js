@@ -7,7 +7,7 @@ export const postsLoader = (_, {title}, context) => {
     await Promise.all(keys.map(() =>
       axios.get(apiUrl)
         .then((res) => res.data.posts)
-        .then(post => title !== undefined ? post.filter(item => item.title.toLowerCase().includes(title)) : post)
+        .then(posts => title !== undefined ? findPost(posts, title) : posts)
         .catch((e) => throw Error(e.response.statusText))));
 
   let loader = context.loaderPosts;
@@ -15,4 +15,8 @@ export const postsLoader = (_, {title}, context) => {
     context.loaderPosts = loader = new DataLoader((key) => loaderPosts(key))
   }
   return loader.load([])
-}
+};
+
+const findPost = (posts, title) => {
+  return posts.filter(item => item.title.toLowerCase().includes(title))
+};

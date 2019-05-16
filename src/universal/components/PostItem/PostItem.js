@@ -7,8 +7,8 @@ import loadable from '@loadable/component';
 
 import './PostItem.scss'
 
-const PostInfo = loadable(()=> import('../PostInfo/PostInfo'));
 const PostComments = loadable(()=> import('../PostComments/PostComments'));
+const PostInfo = loadable(()=> import('../PostInfo/PostInfo'));
 
 type PostItemProps = {
   match: any,
@@ -40,7 +40,8 @@ class PostItem extends React.Component<PostItemProps, PostItemState> {
       id = match.params.id
     }
     return (
-      <Query query={GET_POST} variables={{'id': id}}>
+
+      <Query query={GET_POST} variables={{'id': id}} >
         {({data, loading, error}) => {
           if (loading) return (<div><ClearPost/></div>);
           if (error) return <div>Error</div>;

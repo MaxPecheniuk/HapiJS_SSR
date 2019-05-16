@@ -47,6 +47,7 @@ module.exports = {
         include: path.resolve(paths.appSrc),
         use: ['babel-loader']
       },
+      {},
       {
         test: /\.(css|scss)$/,
         exclude: /node_modules/,

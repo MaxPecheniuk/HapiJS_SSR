@@ -1,20 +1,23 @@
 import React, {Fragment} from 'react';
-import { Route } from 'react-router';
-import loadable from '@loadable/component';
-import PostsList from '../PostsList/PostsList';
+import { Redirect, Route, Switch } from 'react-router';
+import PostItem from '../PostItem/PostItem';
 import { Header } from '../Header/Header';
 import './App.scss';
+import loadable from '@loadable/component';
 
-const PostItem = loadable(()=> import ('../PostItem/PostItem'));
+const PostsList = loadable(()=> import('../PostsList/PostsList'));
 
 const App = () => {
   return (
     <Fragment>
       <Header/>
       <div className='container'>
-
-          <Route exact path="/" component={PostsList}/>
-          <Route path="/post/:id" component={PostItem}/>
+        <Switch>
+        <Route path="/post/:id" render={({...props}) => <PostItem {...props}/>} />
+        <Route exact path="/list"  component={PostsList}/>
+          <Redirect to="/list" />
+        {/*<Route exact path="/" component={MaxComp}/>*/}
+        </Switch>
       </div>
     </Fragment>
 

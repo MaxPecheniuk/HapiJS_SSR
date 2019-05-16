@@ -17,8 +17,6 @@ import fetch from 'node-fetch';
 import { ChunkExtractor } from '@loadable/server'
 
 const client = new ApolloClient({
-  ssrMode: true,
-	connectToDevTools: true,
 	link:  createHttpLink({
     uri: 'http://localhost:4000', fetch
   }),
@@ -48,6 +46,7 @@ export const appHandler = (req) => {
     .then(() => {
       let apolloState = client.extract();
       const content = renderToString(extractor.collectChunks(html));
+
       const scriptTags = extractor.getScriptTags();
       const styleTags = extractor.getStyleTags();
       return template(content, reduxState, apolloState, scriptTags, styleTags)
