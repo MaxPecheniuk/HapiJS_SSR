@@ -2,10 +2,13 @@
   "compilerOptions": {
     "module": "commonjs",
     "sourceMap": true,
-    "target": "es5",
+    "target": "es6",
     "lib": [
-      "es2015",
+      "es5",
+      "es6",
       "es2017",
+      "es2015",
+      "es2016",
       "dom"
     ],
     "removeComments": true,
@@ -17,8 +20,8 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
+//    "noImplicitAny": true,
+//    "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "experimentalDecorators": true,
@@ -31,3 +34,32 @@
     "node_modules"
   ]
 }
+
+//  "compilerOptions": {
+////    "outDir": "build/dist",
+//    "module": "commonjs",
+//    "target": "es5",
+//    "lib": ["es6", "dom"],
+//    "sourceMap": true,
+//    "allowJs": true,
+//    "jsx": "react",
+//    "moduleResolution": "node",
+//    "rootDir": "src",
+//    "noImplicitReturns": true,
+//    "noImplicitThis": true,
+//    "noImplicitAny": true,
+//    "strictNullChecks": true
+//  },
+//  "exclude": [
+//    "node_modules",
+//    "build",
+//    "scripts",
+//    "acceptance-tests",
+//    "webpack",
+//    "jest",
+//    "src/setupTests.ts"
+//  ],
+//  "types": [
+//    "typePatches"
+//  ]
+//}

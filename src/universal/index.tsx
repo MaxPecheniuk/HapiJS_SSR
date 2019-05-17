@@ -10,7 +10,7 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import './index.scss';
 import { loadableReady } from '@loadable/component';
-import App from 'dist/universal/components/App/App';
+import App from './components/App/App';
 
 declare global {
   interface Window {

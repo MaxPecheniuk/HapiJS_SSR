@@ -20,15 +20,16 @@ interface PostsListProps {
 }
 interface IPostListResponse {
   data: any;
+  posts: any;
   loading: any;
   error: any;
 }
 
 const PostsList = (props: PostsListProps) => {
   let variables;
-  if (props.location.search !== '') {
-    variables = {'title': decodeURIComponent(props.location.search.replace('?search=', '')).toLowerCase()};
-  }
+  // if (props.location.search !== '') {
+  //   variables = {'title': decodeURIComponent(props.location.search.replace('?search=', '')).toLowerCase()};
+  // }
   return (
     <div className="posts-list">
       <Query<IPostListResponse> query={GET_POSTS} variables={variables} >
@@ -36,6 +37,7 @@ const PostsList = (props: PostsListProps) => {
           if (loading) { return null; }
           if (error) { return <div>Error</div>; }
           return (
+            /* tslint:disable-next-line */
             data.posts.map((post: PostTypes, i: string) =>
 
                 <PostItem postId={post.id} key={i}/>

@@ -5,7 +5,6 @@ import loadable from '@loadable/component';
 
 import './PostItem.scss';
 import ClearPost from '../share.components/ClearPost/ClearPost';
-import { PostTypes } from '../PostsList/PostsList';
 
 const PostComments = loadable(() => import('../PostComments/PostComments'));
 const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
@@ -19,7 +18,7 @@ interface IState {
   showComments: boolean;
 }
 interface IPostType {
-  postById: PostTypes;
+  postById: any;
 }
 
 class PostItem extends React.Component<IPostItemProps, IState> {

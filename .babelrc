@@ -6,7 +6,7 @@
       "presets": [
         "@babel/env",
         "@babel/react",
-        "@babel/preset-flow"
+        "@babel/preset-typescript"
       ],
       "plugins": [
         "@babel/plugin-transform-arrow-functions",
@@ -16,8 +16,10 @@
         "graphql-tag",
         "@babel/plugin-proposal-throw-expressions",
         "@loadable/babel-plugin",
-        "@babel/plugin-syntax-dynamic-import"
+        "@babel/plugin-syntax-dynamic-import",
+        ["@babel/plugin-transform-typescript", {"isTSX": true}],
 
+        ["@babel/plugin-syntax-typescript", {"isTSX": true}]
       ]
     },
 
@@ -25,7 +27,8 @@
       "ignore": ["**/*.test.js"],
       "presets": [
         "@babel/env",
-        "@babel/react"
+        "@babel/react",
+        "@babel/preset-typescript"
       ],
       "plugins": [
         "@babel/plugin-transform-arrow-functions",
@@ -35,7 +38,10 @@
         "@babel/plugin-proposal-class-properties",
         "graphql-tag",
         "@loadable/babel-plugin",
-        "@babel/plugin-syntax-dynamic-import"
+        "@babel/plugin-syntax-dynamic-import",
+        ["@babel/plugin-syntax-typescript", {"isTSX": true}],
+
+        ["@babel/plugin-transform-typescript", {"isTSX": true}]
       ]
     },
     "test": {

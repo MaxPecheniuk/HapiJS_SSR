@@ -9,7 +9,7 @@ module.exports = {
 
   resolve: {
     // File extensions. Add others and needed (e.g. scss, json)
-    extensions: ['.js', '.jsx', 'css', 'scss'],
+    extensions: ['.js', '.jsx', 'css', 'scss', '.ts', '.tsx', 'json'],
     modules: [path.resolve(paths.appSrc), 'node_modules'],
   },
   output: {

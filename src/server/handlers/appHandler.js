@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 const paths = require('../../../config/webpack/paths');
 const path = require('path');
 import { renderToString } from 'react-dom/server';
@@ -24,20 +24,17 @@ const client = new ApolloClient({
 });
 
 export const appHandler = (req) => {
+  debugger
   const statsFile = path.resolve(paths.loadableStats);
   const extractor = new ChunkExtractor({statsFile});
   const store = createStore(rootReducer);
   const context = {};
   const reduxState = store.getState();
+  console.log(<App/>);
 
   const html = (
-    <ApolloProvider client={client}>
-      <Provider store={store}>
-          <StaticRouter location={req.url} context={context}>
-            <App/>
-          </StaticRouter>
-      </Provider>
-    </ApolloProvider>
+    <App/>
+
 
   );
 

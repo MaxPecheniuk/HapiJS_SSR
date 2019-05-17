@@ -1,13 +1,13 @@
 //@flow
 import React from 'react';
 import { Link } from 'react-router-dom';
-import type { PostTypes } from '../PostsList/PostsList';
 
 import './PostInfo.scss'
+// import { PostTypes } from '../PostsList/PostsList';
 
 
-type PostInfoProps = {
-  postInfo: PostTypes
+interface PostInfoProps  {
+  postInfo: any;
 }
 type State = {
   showComments: boolean
