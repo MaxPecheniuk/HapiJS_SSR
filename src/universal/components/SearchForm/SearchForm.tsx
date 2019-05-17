@@ -1,4 +1,5 @@
-import React, { Fragment, SyntheticEvent } from 'react';
+import * as React from 'react';
+import {Fragment, SyntheticEvent } from 'react';
 import { InputText } from '../share.components/inputText/InputText';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router';
 
@@ -52,11 +53,12 @@ class SearchForm extends React.Component<IProps & RouteComponentProps<{}>, ISear
   render() {
     const {redirect , inputValue} = this.state;
     if (redirect) {
-      return <Redirect to={{pathname: "/", search: `?search=${inputValue}`}}/>
+      return <Redirect to={{pathname: "/list", search: `?search=${inputValue}`}}/>
     }
     return (
       <Fragment>
         <form onSubmit={this.onSubmit} className="search-form">
+          ddd
           <InputText
             value={inputValue}
             placeholder="Search title"

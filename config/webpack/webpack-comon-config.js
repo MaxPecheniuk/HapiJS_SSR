@@ -22,31 +22,31 @@ module.exports = {
     // runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
-      //кол-во параллельных запросов
-      // maxInitialRequests: Infinity,
-      // //chunk min size
-      // minSize: 0,
-      // cacheGroups: {
-      //   vendor: {
-      //     test: /[\\/]node_modules[\\/]/,
-      //     name(module) {
-      //       // get package name
-      //       const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-      //       return `npm.${packageName.replace('@', '')}`;
-      //     },
-      //   },
-      // },
+      // кол-во параллельных запросов
+      maxInitialRequests: Infinity,
+      //chunk min size
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // get package name
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+            return `npm.${packageName.replace('@', '')}`;
+          },
+        },
+      },
     },
   },
 
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: [/node_modules/, /__tests__/],
-        include: path.resolve(paths.appSrc),
-        use: ['babel-loader']
-      },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   exclude: [/node_modules/, /__tests__/],
+      //   include: path.resolve(paths.appSrc),
+      //   use: ['babel-loader']
+      // },
       {
         test: /\.tsx?$/,
         exclude: [/node_modules/, /__tests__/],

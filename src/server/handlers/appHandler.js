@@ -1,11 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 const paths = require('../../../config/webpack/paths');
 const path = require('path');
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from '../../universal/reducer/roote.reducer';
-import App from '../../universal/components/App/App';
 import { template } from '../template';
 import { StaticRouter } from 'react-router';
 import ApolloClient from 'apollo-client';
@@ -16,6 +15,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import fetch from 'node-fetch';
 import { ChunkExtractor } from '@loadable/server'
 
+import App from '../../universal/components/App/App';
+
+
 const client = new ApolloClient({
 	link:  createHttpLink({
     uri: 'http://localhost:4000', fetch
@@ -24,17 +26,19 @@ const client = new ApolloClient({
 });
 
 export const appHandler = (req) => {
-  debugger
   const statsFile = path.resolve(paths.loadableStats);
   const extractor = new ChunkExtractor({statsFile});
   const store = createStore(rootReducer);
   const context = {};
   const reduxState = store.getState();
-  console.log(<App/>);
-
-  const html = (
-    <App/>
-
+  const html =(
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+          <StaticRouter location={req.url} context={context}>
+            <App/>
+          </StaticRouter>
+      </Provider>
+    </ApolloProvider>
 
   );
 

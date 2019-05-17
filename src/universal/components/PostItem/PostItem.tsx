@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Query } from 'react-apollo';
 import { GET_POST } from '../../queries/postItem.query';
 import loadable from '@loadable/component';
@@ -6,20 +6,28 @@ import loadable from '@loadable/component';
 import './PostItem.scss';
 import ClearPost from '../share.components/ClearPost/ClearPost';
 
-const PostComments = loadable(() => import('../PostComments/PostComments'));
+// const PostComments = loadable(() => import('../PostComments/PostComments'));
 const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
 
 interface IPostItemProps {
   match?: any;
   postId: string;
 }
+interface PostItemResponse{
+  postById: PostItemType
+}
+interface PostItemType {
+  commentsIds: Array<string>;
+  date: Date;
+  description: string;
+  id: string;
+  title: string;
+}
 
 interface IState {
   showComments: boolean;
 }
-interface IPostType {
-  postById: any;
-}
+
 
 class PostItem extends React.Component<IPostItemProps, IState> {
   state = {
@@ -43,7 +51,7 @@ class PostItem extends React.Component<IPostItemProps, IState> {
     }
     return (
 
-      <Query<IPostType> query={GET_POST} variables={{'id': id}} >
+      <Query<PostItemResponse> query={GET_POST} variables={{'id': id}} >
         {({data, loading, error}) => {
           if (loading) { return <div><ClearPost/></div>; }
           if (error) { return <div>Error</div>; }
@@ -55,7 +63,7 @@ class PostItem extends React.Component<IPostItemProps, IState> {
                   {showComments ? 'Hide' : data.postById.commentsIds.length} comments
                 </span>
               </div>
-              {showComments && <PostComments commentsIds={data.postById.commentsIds}/>}
+              {/*{showComments && <PostComments commentsIds={data.postById.commentsIds}/>}*/}
             </div>
 
           )

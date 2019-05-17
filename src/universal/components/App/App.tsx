@@ -1,26 +1,33 @@
-import React, { Fragment } from 'react';
-import { Redirect, Route, Switch } from 'react-router';
-import PostItem from '../PostItem/PostItem';
+import * as  React  from 'react';
+import {
+  // Redirect,
+  Route, Switch } from 'react-router-dom';
+// import PostItem from '../PostItem/PostItem';
 import { Header } from '../Header/Header';
 import './App.scss';
-import loadable from '@loadable/component';
+// import loadable from '@loadable/component';
+// import PostsList from '../PostsList/PostsList';
+import PostItem from '../PostItem/PostItem';
+import MaxComp from '../testComp/testCopm';
+// import PostsList from '../PostsList/PostsList';
+// import loadable from '@loadable/component';
 
-const PostsList = loadable(() => import('../PostsList/PostsList'));
 
-class App extends React.Component {
-  render() {
+// const PostsList = loadable(() => import('../PostsList/PostsList'));
+
+const App: React.FunctionComponent<{}> = () => {
   return (
-    <Fragment>
+    <div>
       <Header/>
       <div className="container">
         <Switch>
+          {/*<Redirect to='/list'/>*/}
           <Route path="/post/:id" component={PostItem}/>
-          <Route exact={true} path="/list" component={PostsList}/>
-          <Redirect to="/list"/>
+          <Route path="/list" render={({...props})=> <MaxComp {...props}/>}/>
         </Switch>
       </div>
-    </Fragment>
+    </div>
 
-  );}
+  );
 }
 export default App;

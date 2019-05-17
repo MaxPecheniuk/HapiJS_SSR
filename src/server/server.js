@@ -18,7 +18,7 @@ const init = async () => {
         plugin: require('./plugins/cssHook')
       },
       {
-        //console info
+        //console information
         plugin: require('hapi-pino'),
         options: {
           prettyPrint: true,

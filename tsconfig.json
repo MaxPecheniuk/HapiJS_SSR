@@ -16,7 +16,7 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "src",
+//    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -26,9 +26,9 @@
     "noUnusedLocals": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+//    "typeRoots": [
+//      "node_modules/@types"
+//    ]
   },
   "exclude": [
     "node_modules"

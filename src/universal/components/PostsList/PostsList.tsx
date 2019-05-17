@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Query } from 'react-apollo';
 import { GET_POSTS } from '../../queries/posts.query';
 import  PostItem  from '../PostItem/PostItem';
@@ -30,12 +30,14 @@ const PostsList = (props: PostsListProps) => {
   // if (props.location.search !== '') {
   //   variables = {'title': decodeURIComponent(props.location.search.replace('?search=', '')).toLowerCase()};
   // }
+  console.log('sss');
   return (
     <div className="posts-list">
       <Query<IPostListResponse> query={GET_POSTS} variables={variables} >
         {({data, loading,  error}) => {
           if (loading) { return null; }
           if (error) { return <div>Error</div>; }
+          console.log(data);
           return (
             /* tslint:disable-next-line */
             data.posts.map((post: PostTypes, i: string) =>
