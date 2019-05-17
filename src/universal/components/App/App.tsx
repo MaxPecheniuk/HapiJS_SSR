@@ -7,20 +7,20 @@ import loadable from '@loadable/component';
 
 const PostsList = loadable(() => import('../PostsList/PostsList'));
 
-const App = (props: any) => {
+class App extends React.Component {
+  render() {
   return (
     <Fragment>
       <Header/>
       <div className="container">
         <Switch>
-        <Route path="/post/:id" component={PostItem} />
-        <Route exact={true} path="/list"  component={PostsList}/>
-          <Redirect to="/list" />
-        {/*<Route exact path="/" component={MaxComp}/>*/}
+          <Route path="/post/:id" component={PostItem}/>
+          <Route exact={true} path="/list" component={PostsList}/>
+          <Redirect to="/list"/>
         </Switch>
       </div>
     </Fragment>
 
-  );
+  );}
 }
 export default App;
