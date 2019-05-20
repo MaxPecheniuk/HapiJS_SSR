@@ -16,19 +16,11 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-//    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-//    "noImplicitAny": true,
-//    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
+//    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-//    "typeRoots": [
-//      "node_modules/@types"
-//    ]
+    "emitDecoratorMetadata": true
   },
   "exclude": [
     "node_modules"

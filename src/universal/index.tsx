@@ -14,7 +14,9 @@ import App from './components/App/App';
 
 declare global {
   interface Window {
+// tslint:disable-next-line
     __REDUX_STATE__: any;
+    // tslint:disable-next-line
     __APOLLO_STATE__: any
   }
 }
@@ -28,7 +30,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
   link: createHttpLink({uri: 'http://localhost:4000'}),
 });
-
 
 loadableReady(() => {
   ReactDOM.hydrate(
@@ -44,4 +45,4 @@ loadableReady(() => {
     // eslint-disable-next-line
     document.getElementById('root')
   );
-})
+});

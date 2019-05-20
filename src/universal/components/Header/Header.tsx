@@ -2,15 +2,15 @@ import * as React from 'react';
 import './Header.scss';
 import SearchForm from '../SearchForm/SearchForm';
 
-export class Header extends React.PureComponent {
-  render() {
+const Header: React.FunctionComponent = () => {
     return (
       <div className="header">
         <SearchForm/>
       </div>
-    )
-  }
-}
+    );
+};
+
+export default React.memo(Header);
 
 // 1 react memo
 // 2 typescript

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './ClearPost.scss'
+import './ClearPost.scss';
 
 const ClearPost: React.FunctionComponent<{}> = () => {
   return (

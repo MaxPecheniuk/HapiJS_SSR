@@ -15,7 +15,7 @@ module.exports = {
 	// 	publicPath: "/"
 	// },
 	plugins: [
-		new UglifyJSPlugin(),
+		// new UglifyJSPlugin(),
 	],
 
 };

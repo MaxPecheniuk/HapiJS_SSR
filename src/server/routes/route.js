@@ -26,6 +26,11 @@ const Routes = [
   },
   {
     method: 'GET',
+    path: '/post/{param*}',
+    handler
+  },
+  {
+    method: 'GET',
     path: '/api/post',
     handler: () => {
       return mockPost;

@@ -32,7 +32,9 @@
       ],
       "presets": [
         "@babel/env",
-        "@babel/react"
+        "@babel/react",
+        "@babel/preset-typescript"
+
       ],
       "plugins": [
         "@babel/plugin-transform-arrow-functions",
@@ -42,7 +44,13 @@
         "@babel/plugin-proposal-class-properties",
         "graphql-tag",
         "@loadable/babel-plugin",
-        "@babel/plugin-syntax-dynamic-import"
+        "@babel/plugin-syntax-dynamic-import",
+        ["@babel/plugin-transform-typescript", {
+          "isTSX": true
+        }],
+        ["@babel/plugin-syntax-typescript", {
+          "isTSX": true
+        }]
       ]
     },
     "test": {

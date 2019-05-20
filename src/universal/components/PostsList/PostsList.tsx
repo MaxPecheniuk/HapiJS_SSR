@@ -1,55 +1,50 @@
 import * as React from 'react';
 import { Query } from 'react-apollo';
 import { GET_POSTS } from '../../queries/posts.query';
-import  PostItem  from '../PostItem/PostItem';
-import { CommentTypes } from '../PostComments/PostComments';
+import PostItem from '../PostItem/PostItem';
+import { useEffect, useState } from 'react';
 
-import './PostsList.scss';
-
-export interface PostTypes  {
-  id: string;
-  title: string;
-  description: string;
-  date: Date;
-  comments: Array<CommentTypes>;
-}
+// interface State {
+//   variables: string;
+// }
 
 interface PostsListProps {
-  searchValue: string;
-  location: string;
+  location?: {search: string};
 }
+
 interface IPostListResponse {
-  data: any;
-  posts: any;
-  loading: any;
-  error: any;
+  posts: Array<PostsId>;
+  loading: boolean;
+  error: boolean;
 }
 
-const PostsList = (props: PostsListProps) => {
-  let variables;
-  // if (props.location.search !== '') {
-  //   variables = {'title': decodeURIComponent(props.location.search.replace('?search=', '')).toLowerCase()};
-  // }
-  console.log('sss');
-  return (
-    <div className="posts-list">
-      <Query<IPostListResponse> query={GET_POSTS} variables={variables} >
-        {({data, loading,  error}) => {
-          if (loading) { return null; }
-          if (error) { return <div>Error</div>; }
-          console.log(data);
-          return (
-            /* tslint:disable-next-line */
-            data.posts.map((post: PostTypes, i: string) =>
+interface PostsId {
+  id: string;
+}
 
+const PostsList: React.FunctionComponent<PostsListProps> = (props: PostsListProps) => {
+
+    const [variables, updateSearch] = useState<string>('');
+
+    useEffect(() => {
+      updateSearch(decodeURIComponent(props.location.search.replace('?search=', '')).toLowerCase());
+    });
+
+    return (
+      <div className="posts-list">
+        <Query<IPostListResponse> query={GET_POSTS} variables={{'title': variables}}>
+          {({data, loading, error}) => {
+            if (loading) {return null; }
+            if (error) {return <div>Error</div>; }
+            return (
+              data.posts.map((post: PostsId, i: number) =>
                 <PostItem postId={post.id} key={i}/>
-
-            )
-          )
-        }}
-      </Query>
-    </div>
-  )
-}
+              )
+            );
+          }}
+        </Query>
+      </div>
+    );
+};
 
 export default PostsList;

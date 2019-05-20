@@ -4,6 +4,6 @@ import './SpinnerLoader.scss';
 const SpinnerLoader: React.FunctionComponent = () => {
   return (
     <div className="loader"/>
-  )
-}
-export default SpinnerLoader;
+  );
+};
+export default React.memo(SpinnerLoader);

@@ -14,5 +14,8 @@ module.exports = {
   appIndexJs: resolveApp("src/universal/index.tsx"), // Universal entry point
   appIndexJsServer: resolveApp("src/server/server.js"), // Server entry point
   appSrc: resolveApp("src/universal"), // home source
-  appTest: resolveApp("src/__tests__") // home source
+  appTest: resolveApp("src/__tests__"), // home source
+  tslintConf: resolveApp("tslint.json"),
+  tsConf: resolveApp("tsconfig.json")
+
 };
