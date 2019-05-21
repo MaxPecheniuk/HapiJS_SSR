@@ -8,7 +8,7 @@ import rootReducer from '../../universal/reducer/roote.reducer';
 import { template } from '../template';
 import { StaticRouter } from 'react-router';
 import ApolloClient from 'apollo-client';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { getDataFromTree } from 'react-apollo'
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -19,6 +19,7 @@ import App from '../../universal/components/App/App';
 
 
 const client = new ApolloClient({
+  // ssrMode: true,
 	link:  createHttpLink({
     uri: 'http://localhost:4000', fetch
   }),
@@ -47,7 +48,6 @@ export const appHandler = (req) => {
     .then(() => {
       let apolloState = client.extract();
       const content = renderToString(extractor.collectChunks(html));
-
       const scriptTags = extractor.getScriptTags();
       const styleTags = extractor.getStyleTags();
       return template(content, reduxState, apolloState, scriptTags, styleTags)

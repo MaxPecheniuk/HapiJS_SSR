@@ -4,10 +4,6 @@ import { GET_POSTS } from '../../queries/posts.query';
 import PostItem from '../PostItem/PostItem';
 import { useEffect, useState } from 'react';
 
-// interface State {
-//   variables: string;
-// }
-
 interface PostsListProps {
   location?: {search: string};
 }
@@ -25,9 +21,13 @@ interface PostsId {
 const PostsList: React.FunctionComponent<PostsListProps> = (props: PostsListProps) => {
 
     const [variables, updateSearch] = useState<string>('');
-
     useEffect(() => {
+      console.log('mount list');
       updateSearch(decodeURIComponent(props.location.search.replace('?search=', '')).toLowerCase());
+      return () => {
+        console.log('un list');
+      };
+
     });
 
     return (

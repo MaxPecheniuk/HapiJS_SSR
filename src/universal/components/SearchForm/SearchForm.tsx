@@ -24,10 +24,9 @@ const SearchForm: React.FunctionComponent<IProps & RouteComponentProps<{}>> =
     const[redirect, redirectToggle] = useState<boolean>(false);
 
     useEffect(() => {
-      console.log(redirect);
-      if (props.location.pathname === '/list' && redirect) {
+      return () => {
         redirectToggle(false);
-      }
+      };
     });
 
     const onChange = (event: SyntheticEvent<HTMLInputElement>) => {
@@ -36,14 +35,14 @@ const SearchForm: React.FunctionComponent<IProps & RouteComponentProps<{}>> =
 
     const onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
       event.preventDefault();
-      if (props.location.pathname !== '/list') {
+      if (props.location.pathname !== '/') {
         redirectToggle(true);
       }
       props.history.push({search: `?search=${inputValue}`});
     };
 
     if (redirect) {
-      return <Redirect to={{pathname: '/list', search: `?search=${inputValue}`}}/>;
+      return <Redirect to={{pathname: '/', search: `?search=${inputValue}`}}/>;
     }
     return (
       <Fragment>

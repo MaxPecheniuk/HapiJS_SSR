@@ -11,9 +11,10 @@ export const template = (content = '', reduxState, apolloState, scriptsTags, sty
       </head>
       <body>
         <div id="root">${content}</div>
-        ${scriptsTags}
-        <script> window.__APOLLO_STATE__ = ${JSON.stringify(apolloState).replace(/</g, '\\\\\u003c')}</script> 
+        <script> window.__APOLLO_STATE__ = ${JSON.stringify(apolloState).replace(/</g, '\\u003c')}</script> 
         <script> window.__REDUX_STATE__ = ${JSON.stringify(reduxState).replace(/</g, '\\\u003c')}</script> 
+
+        ${scriptsTags}
       </body>
   </html>
 `;

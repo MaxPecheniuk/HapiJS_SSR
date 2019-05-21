@@ -29,6 +29,7 @@ const store = createStore(rootReducer, state);
 const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
   link: createHttpLink({uri: 'http://localhost:4000'}),
+  // ssrMode: true
 });
 
 loadableReady(() => {

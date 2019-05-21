@@ -19,56 +19,54 @@ module.exports = {
     chunkFilename: '[name].js'
   },
   optimization: {
-    // runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
-      // кол-во параллельных запросов
-      maxInitialRequests: Infinity,
-      //chunk min size
       minSize: 0,
+      maxSize: 51200,
+      minChunks: 1,
+      maxInitialRequests: Infinity,
+      automaticNameDelimiter: '~',
+      name: true,
       cacheGroups: {
-        vendor: {
+        vendors: {
           test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            // get package name
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-            return `npm.${packageName.replace('@', '')}`;
-          },
+          priority: -10
         },
-      },
-    },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
   },
 
   module: {
     rules: [
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   exclude: [/node_modules/, /__tests__/],
-      //   include: path.resolve(paths.appSrc),
-      //   use: ['babel-loader']
-      // },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: [/node_modules/, /__tests__/],
+        include: path.resolve(paths.appSrc),
+        use: ['babel-loader']
+      },
       {
         test: /\.tsx?$/,
         exclude: [/node_modules/, /__tests__/],
         include: path.resolve(paths.appSrc),
         loader: 'ts-loader'
       },
-      // {
-      //   test: /\.tsx?$/,
-      //   enforce: 'pre',
-      //   use: [
-      //     {
-      //       loader: 'tslint-loader',
-      //       options: {configFile: path.resolve(paths.tslintConf), tsConfigFile: path.resolve(paths.tsConf),     emitErrors: true}
-      //     }
-      //   ]
-      // },
       {
         test: /\.(css|scss)$/,
         exclude: /node_modules/,
         include: [path.resolve(paths.appSrc)],
         use: [env === 'production' ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
         // use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
       }
     ]
   },

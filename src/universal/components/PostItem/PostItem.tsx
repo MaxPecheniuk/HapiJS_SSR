@@ -5,16 +5,21 @@ import loadable from '@loadable/component';
 import ClearPost from '../share.components/ClearPost/ClearPost';
 
 import './PostItem.scss';
-import { match } from 'react-router';
+// import { match } from 'react-router';
 import { useState } from 'react';
+import PostInfo from '../PostInfo/PostInfo';
+import { useEffect } from 'react';
 
-const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
+// const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
 const PostComments = loadable(() => import('../PostComments/PostComments'));
 
-interface IPostItemProps {
-  match?: match<{ id: string }>;
-  postId: string;
-}
+// interface IPostItemProps {
+//   match?: match<{ id: string }>;
+//
+// }
+// interface IPostItemProps2 {
+//   postId: string;
+// }
 
 interface PostItemResponse {
   postById: PostItemType;
@@ -28,7 +33,7 @@ export interface PostItemType {
   title: string;
 }
 
-const PostItem: React.FunctionComponent<IPostItemProps> = (props: IPostItemProps) => {
+const PostItem: React.FunctionComponent<any> = (props: any) => {
   const [showComments, commentToggle] = useState<boolean>(false);
 
   const onCommentToggle = () => {
@@ -36,7 +41,13 @@ const PostItem: React.FunctionComponent<IPostItemProps> = (props: IPostItemProps
   };
   // tslint:disable-next-line
   const {match, postId} = props;
+  useEffect(() => {
+    console.log('mount item');
+    return () => {
+      console.log('un item');
+    };
 
+  });
   let id: string;
   if (match === undefined) {
     id = postId;
@@ -53,7 +64,6 @@ const PostItem: React.FunctionComponent<IPostItemProps> = (props: IPostItemProps
         if (error) {
           return <div>Error</div>;
         }
-        // console.log(showComments);
         return (
           <div className="post-item">
             <PostInfo postInfo={data.postById}/>

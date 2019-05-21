@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Query } from 'react-apollo';
 import { GET_COMMENTS } from '../../queries/comments.query';
 import SpinnerLoader from '../share.components/SpinerLoader/SpinnerLoader';
-
 import './PostComments.scss';
 
 interface PostCommentsProps  {
@@ -38,7 +37,7 @@ const PostComments: React.FunctionComponent<PostCommentsProps> = (props: PostCom
                 <div className="post-item__comments__item" key={index}>
                   <img
                     className="post-item__comments__item__author-avatar"
-                    src={comment.author.avatar}
+                    src={require('../../assets/emoticon.png')}
                   />
                   <div className="post-item__comments__item__data">
                     <span className="post-item__comments__item__data__author-name">{comment.author.name}</span>
