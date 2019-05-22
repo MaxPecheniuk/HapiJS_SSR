@@ -35,7 +35,7 @@ export const appHandler = (req) => {
   const html =(
     <ApolloProvider client={client}>
       <Provider store={store}>
-          <StaticRouter location={req.url} context={context}>
+          <StaticRouter location={req.url.pathname} context={context}>
             <App/>
           </StaticRouter>
       </Provider>

@@ -24,7 +24,6 @@ const Routes = [
     path: '/{param*}',
     handler
   },
-
   {
     method: 'GET',
     path: '/api/post',

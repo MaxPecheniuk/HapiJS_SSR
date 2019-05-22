@@ -15,7 +15,6 @@ interface IProps {
 /* tslint:enable */
 const SearchForm: React.FunctionComponent<IProps & RouteComponentProps<{}>> =
   (props: IProps & RouteComponentProps<{}>) => {
-console.log('d');
     const [inputValue, inputValueOnChange] = useState<string>('');
     const[redirect, redirectToggle] = useState<boolean>(false);
 
