@@ -56,6 +56,20 @@ module.exports = {
         loader: 'ts-loader'
       },
       {
+        test: /\.tsx?$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'tslint-loader',
+            options: {
+              configFile: path.resolve(paths.tslintConf),
+              tsConfigFile: path.resolve(paths.tsConf),
+              emitErrors: true
+            }
+          }
+        ]
+      },
+      {
         test: /\.(css|scss)$/,
         exclude: /node_modules/,
         include: [path.resolve(paths.appSrc)],

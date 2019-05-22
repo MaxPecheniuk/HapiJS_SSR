@@ -7,12 +7,10 @@ const ClearPost: React.FunctionComponent<{}> = () => {
       <span>Tifdsfdsfdsfsf</span>
       <span>fghdsfdsfsdfs dffgshfghdsfdsfs dfsdffghfghdsfdsfs dfsdffghfghds fdsfsdfsd ffghfghdsfdsfs dfsdffgh</span>
       <span>fghdsfdsfsdfsdff ghfghdsfdsfs dfsdffgh fghdsfdsfsdfsdffgh</span>
-
         <div className="post-item__comments-count">
           <span > comments</span>
         </div>
       </div>
-  )
-}
-export default ClearPost
-
+  );
+};
+export default ClearPost;

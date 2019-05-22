@@ -8,7 +8,7 @@ import './PostItem.scss';
 // import { match } from 'react-router';
 import { useState } from 'react';
 import PostInfo from '../PostInfo/PostInfo';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 // const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
 const PostComments = loadable(() => import('../PostComments/PostComments'));
@@ -41,13 +41,14 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
   };
   // tslint:disable-next-line
   const {match, postId} = props;
-  useEffect(() => {
-    console.log('mount item');
-    return () => {
-      console.log('un item');
-    };
 
-  });
+  // useEffect(() => {
+  //   console.log('mount item');
+  //   return () => {
+  //     console.log('un item');
+  //   };
+  // });
+
   let id: string;
   if (match === undefined) {
     id = postId;

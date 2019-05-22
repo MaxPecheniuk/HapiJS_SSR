@@ -29,7 +29,6 @@ const PostComments: React.FunctionComponent<PostCommentsProps> = (props: PostCom
       {({data, loading, error}) => {
         if (loading) {return <SpinnerLoader/>; }
         if (error) {return <div>Error</div>; }
-        console.log(data);
         return (
           <div className="post-item__comments">
             {data.comments.map((comment: CommentType, index: number) => {

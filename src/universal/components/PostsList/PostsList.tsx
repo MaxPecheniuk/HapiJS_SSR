@@ -22,10 +22,10 @@ const PostsList: React.FunctionComponent<PostsListProps> = (props: PostsListProp
 
     const [variables, updateSearch] = useState<string>('');
     useEffect(() => {
-      console.log('mount list');
+      // console.log('mount list');
       updateSearch(decodeURIComponent(props.location.search.replace('?search=', '')).toLowerCase());
       return () => {
-        console.log('un list');
+        // console.log('un list');
       };
 
     });

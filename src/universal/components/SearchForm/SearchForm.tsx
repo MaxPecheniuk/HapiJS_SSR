@@ -6,10 +6,6 @@ import { Redirect, RouteComponentProps, withRouter } from 'react-router';
 import './searchForm.scss';
 import { useEffect } from 'react';
 
-// interface ISearchFormState  {
-//   inputValue: string;
-//   redirect: boolean;
-// }
 /* tslint:disable */
 interface IProps {
   history?: any;
@@ -19,7 +15,7 @@ interface IProps {
 /* tslint:enable */
 const SearchForm: React.FunctionComponent<IProps & RouteComponentProps<{}>> =
   (props: IProps & RouteComponentProps<{}>) => {
-
+console.log('d');
     const [inputValue, inputValueOnChange] = useState<string>('');
     const[redirect, redirectToggle] = useState<boolean>(false);
 
