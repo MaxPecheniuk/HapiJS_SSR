@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Query } from 'react-apollo';
 import { GET_POSTS } from '../../queries/posts.query';
 import PostItem from '../PostItem/PostItem';
-// import { useEffect, useState } from 'react';
 
 interface PostsListProps {
   location?: {search: string};

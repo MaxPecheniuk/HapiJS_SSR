@@ -8,13 +8,17 @@ import rootReducer from '../../universal/reducer/roote.reducer';
 import { template } from '../template';
 import { StaticRouter } from 'react-router';
 import ApolloClient from 'apollo-client';
-import { ApolloProvider, renderToStringWithData } from 'react-apollo';
+import { ApolloProvider } from 'react-apollo';
 import { getDataFromTree } from 'react-apollo'
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import fetch from 'node-fetch';
 import { ChunkExtractor } from '@loadable/server'
-
+import locale_en from 'react-intl/locale-data/en';
+import locale_ru from 'react-intl/locale-data/ru';
+import { addLocaleData } from 'react-intl';
+import { IntlProvider } from 'react-intl';
+import { language, messages } from '../../universal/locales/langConfig';
 import App from '../../universal/components/App/App';
 
 
@@ -25,6 +29,7 @@ const client = new ApolloClient({
   }),
   cache: new InMemoryCache(),
 });
+addLocaleData([...locale_en, ...locale_ru]);
 
 export const appHandler = (req) => {
   const statsFile = path.resolve(paths.loadableStats);
@@ -36,7 +41,9 @@ export const appHandler = (req) => {
     <ApolloProvider client={client}>
       <Provider store={store}>
           <StaticRouter location={req.url.pathname} context={context}>
-            <App/>
+            <IntlProvider locale={language} messages={messages[language]}>
+              <App/>
+            </IntlProvider>
           </StaticRouter>
       </Provider>
     </ApolloProvider>

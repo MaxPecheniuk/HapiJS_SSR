@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Query } from 'react-apollo';
-import { GET_POST } from '../../queries/postItem.query';
+import { GET_POST_EN, GET_POST_RU } from '../../queries/postItem.query';
 import loadable from '@loadable/component';
 import ClearPost from '../share.components/ClearPost/ClearPost';
 
@@ -8,6 +8,7 @@ import './PostItem.scss';
 // import { match } from 'react-router';
 import { useState } from 'react';
 import PostInfo from '../PostInfo/PostInfo';
+import { language } from '../../locales/langConfig';
 // import { useEffect } from 'react';
 
 // const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
@@ -57,7 +58,7 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
   }
 
   return (
-    <Query<PostItemResponse> query={GET_POST} variables={{'id': id}}>
+    <Query<PostItemResponse> query={language === 'en' ? GET_POST_EN : GET_POST_RU} variables={{'id': id}}>
       {({data, loading, error}) => {
         if (loading) {
           return <div><ClearPost/></div>;

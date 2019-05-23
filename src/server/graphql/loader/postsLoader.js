@@ -1,6 +1,7 @@
 import axios from 'axios';
 import DataLoader from 'dataloader';
 import { apiUrl } from '../../config/apiConfig';
+import { language } from '../../../universal/locales/langConfig';
 
 export const postsLoader = (_, {title}, context) => {
   const loaderPosts = async (keys) =>
@@ -18,5 +19,8 @@ export const postsLoader = (_, {title}, context) => {
 };
 
 const findPost = (posts, title) => {
-  return posts.filter(item => item.title.toLowerCase().includes(title))
+  console.log(title);
+  console.log(language);
+  console.log(posts.map(item => item.title[language].toLowerCase().includes(title)));
+  return posts.filter(item => item.title[language].toLowerCase().includes(title))
 };

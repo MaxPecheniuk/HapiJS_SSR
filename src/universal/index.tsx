@@ -11,7 +11,15 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import './index.scss';
 import { loadableReady } from '@loadable/component';
 import App from './components/App/App';
+import { addLocaleData } from 'react-intl';
+import locale_en from 'react-intl/locale-data/en';
+import locale_ru from 'react-intl/locale-data/ru';
+// import messages_ru from './locales/ru.json';
+// import messages_en from './locales/en.json';
+import { IntlProvider } from 'react-intl';
+import { language, messages } from './locales/langConfig';
 
+addLocaleData([...locale_en, ...locale_ru]);
 declare global {
   interface Window {
 // tslint:disable-next-line
@@ -38,7 +46,9 @@ loadableReady(() => {
     <ApolloProvider client={client}>
       <Provider store={store}>
         <BrowserRouter>
+          <IntlProvider locale={language} messages={messages[language]}>
           <App/>
+          </IntlProvider>
         </BrowserRouter>
       </Provider>
     </ApolloProvider>

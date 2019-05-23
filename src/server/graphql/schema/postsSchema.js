@@ -3,11 +3,19 @@ import gql from 'graphql-tag';
 export const typeDefs = gql`
   type Post {
     id: ID!
-    title: String
-    description: String
+    title: LangOptions
+    description: LangOptions
     date: Int
-	  commentsIds: [ID!]
+    commentsIds: [ID!]
     comments: [Comment]
+  }
+  type LangOptions {
+    en: String
+    ru: String
+  } 
+  type LangOptions2 {
+    en: String
+    ru: String
   }
   type Comment {
     id: ID!
@@ -16,15 +24,15 @@ export const typeDefs = gql`
   }
   type Author{
     id: ID!
-	  avatar: String
+    avatar: String
     name: String
-  } 
+  }
 
   type Query {
     posts(title: String): [Post]
     comments(id: [ID!]): [Comment]
     authors: [Author]
-	  postById(id: ID!): Post
-    
+    postById(id: ID!): Post
+
   }
 `;

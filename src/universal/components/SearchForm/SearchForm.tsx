@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Fragment, SyntheticEvent, useState } from 'react';
 import { InputText } from '../share.components/inputText/InputText';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 
 import './searchForm.scss';
 import { useEffect } from 'react';
@@ -16,7 +17,7 @@ interface IProps {
 const SearchForm: React.FunctionComponent<IProps & RouteComponentProps<{}>> =
   (props: IProps & RouteComponentProps<{}>) => {
     const [inputValue, inputValueOnChange] = useState<string>('');
-    const[redirect, redirectToggle] = useState<boolean>(false);
+    const [redirect, redirectToggle] = useState<boolean>(false);
 
     useEffect(() => {
       return () => {
@@ -42,17 +43,21 @@ const SearchForm: React.FunctionComponent<IProps & RouteComponentProps<{}>> =
     return (
       <Fragment>
         <form onSubmit={onSubmit} className="search-form">
-          <InputText
-            value={inputValue}
-            placeholder="Search title"
-            onChange={onChange}
-            name="inputValue"
-            className="search-form__input-field"
-          />
+          <FormattedMessage id="form.inputPlaceholder">
+            {placeholder => (<InputText
+              value={inputValue}
+              placeholder={placeholder}
+              onChange={onChange}
+              name="inputValue"
+              className="search-form__input-field"
+            />)}
+          </FormattedMessage>
+
           <button
             type="submit"
             className="search-form__submit-btn"
-          >Submit
+          >
+            <FormattedMessage id="form.submitBtn"/>
           </button>
         </form>
       </Fragment>

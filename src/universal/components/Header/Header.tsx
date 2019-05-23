@@ -1,11 +1,15 @@
 import * as React from 'react';
 import './Header.scss';
 import SearchForm from '../SearchForm/SearchForm';
-
 const Header: React.FunctionComponent = () => {
     return (
       <div className="header">
         <SearchForm/>
+        <div>
+          <span>ENG</span>
+          <span>RUS</span>
+        </div>
+
       </div>
     );
 };
