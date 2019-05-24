@@ -6,6 +6,7 @@ import { FormattedMessage } from 'react-intl';
 
 import './searchForm.scss';
 import { useEffect } from 'react';
+import * as queryString from 'querystring';
 
 /* tslint:disable */
 interface IProps {
@@ -34,7 +35,12 @@ const SearchForm: React.FunctionComponent<IProps & RouteComponentProps<{}>> =
       if (props.location.pathname !== '/') {
         redirectToggle(true);
       }
-      props.history.push({search: `?search=${inputValue}`});
+      const parsed = queryString.parse(location.search);
+      parsed.search = inputValue;
+      const stringified = queryString.stringify(parsed);
+      props.history.push({search: stringified});
+
+      // props.history.push({search: `?search=${inputValue}`});
     };
 
     if (redirect) {

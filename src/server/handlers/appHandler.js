@@ -18,9 +18,9 @@ import locale_en from 'react-intl/locale-data/en';
 import locale_ru from 'react-intl/locale-data/ru';
 import { addLocaleData } from 'react-intl';
 import { IntlProvider } from 'react-intl';
-import { language, messages } from '../../universal/locales/langConfig';
+import { messages } from '../../universal/locales/langConfig';
 import App from '../../universal/components/App/App';
-
+// import { language } from '../../universal/store/store';
 
 const client = new ApolloClient({
   // ssrMode: true,
@@ -36,12 +36,14 @@ export const appHandler = (req) => {
   const extractor = new ChunkExtractor({statsFile});
   const store = createStore(rootReducer);
   const context = {};
-  const reduxState = store.getState();
+  let reduxState = store.getState();
+  // const {?lang} = req.query;
+  console.log(req.query);
   const html =(
     <ApolloProvider client={client}>
       <Provider store={store}>
           <StaticRouter location={req.url.pathname} context={context}>
-            <IntlProvider locale={language} messages={messages[language]}>
+            <IntlProvider locale={store.getState().localesReducer.language} messages={messages[store.getState().localesReducer.language]}>
               <App/>
             </IntlProvider>
           </StaticRouter>

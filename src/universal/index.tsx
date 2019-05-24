@@ -17,9 +17,12 @@ import locale_ru from 'react-intl/locale-data/ru';
 // import messages_ru from './locales/ru.json';
 // import messages_en from './locales/en.json';
 import { IntlProvider } from 'react-intl';
-import { language, messages } from './locales/langConfig';
+import { messages } from './locales/langConfig';
+
+const globalAny: any = global;
 
 addLocaleData([...locale_en, ...locale_ru]);
+
 declare global {
   interface Window {
 // tslint:disable-next-line
@@ -28,11 +31,14 @@ declare global {
     __APOLLO_STATE__: any
   }
 }
-
+if (typeof window === 'undefined') {
+  globalAny.window = {};
+}
 const state = window.__REDUX_STATE__;
 delete window.__REDUX_STATE__;
 
-const store = createStore(rootReducer, state);
+export const store = createStore(rootReducer, state);
+const {language} = store.getState().localesReducer;
 
 const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),

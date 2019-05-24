@@ -1,7 +1,5 @@
 import * as  React  from 'react';
-import {
-  // Redirect,
-  Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header  from '../Header/Header';
 import './App.scss';
 import PostsList from '../PostsList/PostsList';

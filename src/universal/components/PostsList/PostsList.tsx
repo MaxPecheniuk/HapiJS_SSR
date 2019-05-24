@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Query } from 'react-apollo';
 import { GET_POSTS } from '../../queries/posts.query';
 import PostItem from '../PostItem/PostItem';
+import * as queryString from 'querystring';
 
 interface PostsListProps {
   location?: {search: string};
@@ -18,12 +19,14 @@ interface PostsId {
 }
 
 const PostsList: React.FunctionComponent<PostsListProps> = (props: PostsListProps) => {
+  console.log(props);
+  const parsed = queryString.parse(props.location.search);
+  console.log(parsed.search);
     return (
       <div className="posts-list">
         <Query<IPostListResponse>
           query={GET_POSTS}
-          variables={{'title':
-              decodeURIComponent(props.location.search.replace('?search=', '')).toLowerCase()}}
+          variables={{'title': parsed.search }}
         >
           {({data, loading, error}) => {
             if (loading) {return null; }

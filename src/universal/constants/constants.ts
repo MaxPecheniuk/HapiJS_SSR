@@ -1,1 +1,2 @@
 export const ADD_SEARCH_VALUE = 'ADD_SEARCH_VALUE';
+export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';

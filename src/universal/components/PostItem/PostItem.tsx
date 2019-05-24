@@ -3,15 +3,11 @@ import { Query } from 'react-apollo';
 import { GET_POST_EN, GET_POST_RU } from '../../queries/postItem.query';
 import loadable from '@loadable/component';
 import ClearPost from '../share.components/ClearPost/ClearPost';
-
 import './PostItem.scss';
-// import { match } from 'react-router';
 import { useState } from 'react';
 import PostInfo from '../PostInfo/PostInfo';
-import { language } from '../../locales/langConfig';
-// import { useEffect } from 'react';
-
-// const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
+import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 const PostComments = loadable(() => import('../PostComments/PostComments'));
 
 // interface IPostItemProps {
@@ -25,6 +21,10 @@ const PostComments = loadable(() => import('../PostComments/PostComments'));
 interface PostItemResponse {
   postById: PostItemType;
 }
+
+const mapStateToProps = state => {
+  return {language: state.localesReducer.language};
+};
 
 export interface PostItemType {
   commentsIds: Array<string>;
@@ -41,7 +41,7 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
     commentToggle(!showComments);
   };
   // tslint:disable-next-line
-  const {match, postId} = props;
+  const {match, postId, language} = props;
 
   // useEffect(() => {
   //   console.log('mount item');
@@ -71,7 +71,7 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
             <PostInfo postInfo={data.postById}/>
             <div className="post-item__comments-count">
                 <span onClick={onCommentToggle}>
-                  {showComments ? 'Hide' : data.postById.commentsIds.length} comments
+                  {showComments ? 'Hide' : data.postById.commentsIds.length}  <FormattedMessage id="postItem.comments"/>
                 </span>
             </div>
             {showComments && <PostComments commentsIds={data.postById.commentsIds}/>}
@@ -82,7 +82,7 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
   );
 
 };
-export default PostItem;
+export default connect(mapStateToProps)(PostItem);
 
 //
 // class PostItem extends React.Component<IPostItemProps, IState> {

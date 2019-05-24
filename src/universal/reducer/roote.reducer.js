@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { searchFormReducer } from '../components/SearchForm/reducer/searchForm.reducer';
+import { localesReducer } from '../locales/reducer/locales.reducer';
 
 const rootReducer = combineReducers({
-  searchFormReducer,
+  localesReducer
 });
 
 export default rootReducer;

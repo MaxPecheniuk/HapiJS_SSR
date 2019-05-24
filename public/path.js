@@ -2093,7 +2093,7 @@ eval("\nvar content = __webpack_require__(/*! !../../../../node_modules/css-load
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"initialState\", function() { return initialState; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HomeReducer\", function() { return HomeReducer; });\n/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../constants/constants */ \"./src/universal/constants/constants.js\");\n\nvar initialState = {\n  count: 14\n};\nvar HomeReducer = function HomeReducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments.length > 1 ? arguments[1] : undefined;\n\n  switch (action.type) {\n    case _constants_constants__WEBPACK_IMPORTED_MODULE_0__[\"INCREASE\"]:\n      return {\n        count: state.count + 1\n      };\n\n    case _constants_constants__WEBPACK_IMPORTED_MODULE_0__[\"DECREASE\"]:\n      return {\n        count: state.count - 1\n      };\n\n    default:\n      return state;\n  }\n};\n\n//# sourceURL=webpack:///./src/universal/components/home/reducer/reducer.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"initialState\", function() { return initialState; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HomeReducer\", function() { return HomeReducer; });\n/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../constants/constants */ \"./src/universal/constants/constants.ts\");\n\nvar initialState = {\n  count: 14\n};\nvar HomeReducer = function HomeReducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments.length > 1 ? arguments[1] : undefined;\n\n  switch (action.type) {\n    case _constants_constants__WEBPACK_IMPORTED_MODULE_0__[\"INCREASE\"]:\n      return {\n        count: state.count + 1\n      };\n\n    case _constants_constants__WEBPACK_IMPORTED_MODULE_0__[\"DECREASE\"]:\n      return {\n        count: state.count - 1\n      };\n\n    default:\n      return state;\n  }\n};\n\n//# sourceURL=webpack:///./src/universal/components/home/reducer/reducer.js?");
 
 /***/ }),
 
@@ -2191,13 +2191,13 @@ eval("\nvar content = __webpack_require__(/*! !../../../../node_modules/css-load
 
 /***/ "./src/universal/constants/constants.js":
 /*!**********************************************!*\
-  !*** ./src/universal/constants/constants.js ***!
+  !*** ./src/universal/constants/constants.ts ***!
   \**********************************************/
 /*! exports provided: INCREASE, DECREASE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INCREASE\", function() { return INCREASE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DECREASE\", function() { return DECREASE; });\nvar INCREASE = 'INCREASE';\nvar DECREASE = 'DECREASE';\n\n//# sourceURL=webpack:///./src/universal/constants/constants.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INCREASE\", function() { return INCREASE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DECREASE\", function() { return DECREASE; });\nvar INCREASE = 'INCREASE';\nvar DECREASE = 'DECREASE';\n\n//# sourceURL=webpack:///./src/universal/constants/constants.ts?");
 
 /***/ }),
 
