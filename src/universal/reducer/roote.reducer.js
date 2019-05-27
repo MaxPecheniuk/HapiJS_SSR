@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { localesReducer } from '../locales/reducer/locales.reducer';
 
 const rootReducer = combineReducers({
-  localesReducer
+  // localesReducer
 });
 
 export default rootReducer;

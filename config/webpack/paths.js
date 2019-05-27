@@ -12,6 +12,10 @@ module.exports = {
 	appConfig: resolveApp("config"), // home config files
 	appDist: resolveApp("dist"), // Dev build
   appIndexJs: resolveApp("src/universal/index.tsx"), // Universal entry point
+  appList: resolveApp("src/universal/PostsList/PostsList"), // Universal entry point
+  PostComments: resolveApp("src/universal/PostComments/PostComments.tsx"), // Universal entry point
+  appHeader: resolveApp("src/universal/Header/Header.tsx"), // Universal entry point
+  app: resolveApp("src/universal/index.tsx"), // Universal entry point
   appIndexJsServer: resolveApp("src/server/server.js"), // Server entry point
   appSrc: resolveApp("src/universal"), // home source
   appTest: resolveApp("src/__tests__"), // home source

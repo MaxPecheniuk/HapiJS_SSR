@@ -1,3 +1,4 @@
+const queryString = require('query-string');
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { createStore } from 'redux';
@@ -14,12 +15,8 @@ import App from './components/App/App';
 import { addLocaleData } from 'react-intl';
 import locale_en from 'react-intl/locale-data/en';
 import locale_ru from 'react-intl/locale-data/ru';
-// import messages_ru from './locales/ru.json';
-// import messages_en from './locales/en.json';
 import { IntlProvider } from 'react-intl';
 import { messages } from './locales/langConfig';
-
-const globalAny: any = global;
 
 addLocaleData([...locale_en, ...locale_ru]);
 
@@ -31,14 +28,13 @@ declare global {
     __APOLLO_STATE__: any
   }
 }
-if (typeof window === 'undefined') {
-  globalAny.window = {};
-}
+
 const state = window.__REDUX_STATE__;
 delete window.__REDUX_STATE__;
 
 export const store = createStore(rootReducer, state);
-const {language} = store.getState().localesReducer;
+
+let language = queryString.parse(location.search.replace('?', ''));
 
 const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
@@ -52,7 +48,7 @@ loadableReady(() => {
     <ApolloProvider client={client}>
       <Provider store={store}>
         <BrowserRouter>
-          <IntlProvider locale={language} messages={messages[language]}>
+          <IntlProvider locale={language.lang || 'en'} messages={messages[language.lang || 'en']}>
           <App/>
           </IntlProvider>
         </BrowserRouter>

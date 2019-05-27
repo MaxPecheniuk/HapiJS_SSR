@@ -3,16 +3,18 @@ import { Route, Switch } from 'react-router-dom';
 import Header  from '../Header/Header';
 import './App.scss';
 import PostsList from '../PostsList/PostsList';
-import PostItem from '../PostItem/PostItem';
+import loadable from '@loadable/component';
 
-const App: React.FunctionComponent<{}> = () => {
+const PostItem = loadable(() => import('../PostItem/PostItem'));
+
+const App: React.FunctionComponent<any> = (props: any) => {
   return (
     <div>
       <Header/>
       <div className="container">
         <Switch>
-          <Route exact={true} path="/" render={(props) => <PostsList {...props}/>}/>
-          <Route path="/post/:id" render={props => <PostItem {...props}/>}/>
+          <Route exact={true} path="/" component={PostsList}/>}/>
+          <Route path="/post/:id" component={PostItem}/>
         </Switch>
       </div>
     </div>

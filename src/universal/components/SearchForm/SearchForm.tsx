@@ -19,7 +19,6 @@ const SearchForm: React.FunctionComponent<IProps & RouteComponentProps<{}>> =
   (props: IProps & RouteComponentProps<{}>) => {
     const [inputValue, inputValueOnChange] = useState<string>('');
     const [redirect, redirectToggle] = useState<boolean>(false);
-
     useEffect(() => {
       return () => {
         redirectToggle(false);
@@ -35,16 +34,17 @@ const SearchForm: React.FunctionComponent<IProps & RouteComponentProps<{}>> =
       if (props.location.pathname !== '/') {
         redirectToggle(true);
       }
-      const parsed = queryString.parse(location.search);
-      parsed.search = inputValue;
+
+      let parsed = queryString.parse(props.location.search.replace('?', ''));
+      if (Object.keys(parsed).length > 0) {
+        parsed['title'] = inputValue;
+      } else { parsed.search = inputValue; }
       const stringified = queryString.stringify(parsed);
       props.history.push({search: stringified});
-
-      // props.history.push({search: `?search=${inputValue}`});
     };
 
     if (redirect) {
-      return <Redirect to={{pathname: '/', search: `?search=${inputValue}`}}/>;
+      return <Redirect to={{pathname: '/'}}/>;
     }
     return (
       <Fragment>

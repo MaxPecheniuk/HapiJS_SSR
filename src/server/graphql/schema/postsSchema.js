@@ -29,7 +29,7 @@ export const typeDefs = gql`
   }
 
   type Query {
-    posts(title: String): [Post]
+    posts(title: String, lang: String): [Post]
     comments(id: [ID!]): [Comment]
     authors: [Author]
     postById(id: ID!): Post

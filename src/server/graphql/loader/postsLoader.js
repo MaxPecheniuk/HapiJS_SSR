@@ -1,14 +1,13 @@
 import axios from 'axios';
 import DataLoader from 'dataloader';
 import { apiUrl } from '../../config/apiConfig';
-import {store} from '../server';
 
-export const postsLoader = (_, {title}, context) => {
+export const postsLoader = (_, {title, lang}, context) => {
   const loaderPosts = async (keys) =>
     await Promise.all(keys.map(() =>
       axios.get(apiUrl)
         .then((res) => res.data.posts)
-        .then(posts => title !== undefined ? findPost(posts, title) : posts)
+        .then(posts => title !== undefined ? findPost(posts, title, lang) : posts)
         .catch((e) => throw Error(e.response.statusText))));
 
   let loader = context.loaderPosts;
@@ -18,7 +17,6 @@ export const postsLoader = (_, {title}, context) => {
   return loader.load([])
 };
 
-const findPost = (posts, title) => {
-  const language = store.getState().localesReducer.language;
-  return posts.filter(item => item.title[language].toLowerCase().includes(title))
+const findPost = (posts, title, lang) => {
+  return posts.filter(item => item.title[lang].toLowerCase().includes(title))
 };

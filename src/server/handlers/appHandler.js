@@ -14,14 +14,15 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import fetch from 'node-fetch';
 import { ChunkExtractor } from '@loadable/server'
-import locale_en from 'react-intl/locale-data/en';
-import locale_ru from 'react-intl/locale-data/ru';
-import { addLocaleData } from 'react-intl';
 import { IntlProvider } from 'react-intl';
-import { messages } from '../../universal/locales/langConfig';
+// import { messages } from '../../universal/locales/langConfig';
 import App from '../../universal/components/App/App';
-// import { language } from '../../universal/store/store';
-
+import messages_ru from '../../universal/locales/ru';
+import messages_en from '../../universal/locales/en';
+export const messages = {
+  'ru': messages_ru,
+  'en': messages_en,
+};
 const client = new ApolloClient({
   // ssrMode: true,
 	link:  createHttpLink({
@@ -29,7 +30,7 @@ const client = new ApolloClient({
   }),
   cache: new InMemoryCache(),
 });
-addLocaleData([...locale_en, ...locale_ru]);
+
 
 export const appHandler = (req) => {
   const statsFile = path.resolve(paths.loadableStats);
@@ -37,13 +38,11 @@ export const appHandler = (req) => {
   const store = createStore(rootReducer);
   const context = {};
   let reduxState = store.getState();
-  // const {?lang} = req.query;
-  console.log(req.query);
   const html =(
     <ApolloProvider client={client}>
       <Provider store={store}>
-          <StaticRouter location={req.url.pathname} context={context}>
-            <IntlProvider locale={store.getState().localesReducer.language} messages={messages[store.getState().localesReducer.language]}>
+          <StaticRouter location={req.url.pathname + req.url.search} context={context}>
+            <IntlProvider locale={req.query.lang||'en'} messages={messages[req.query.lang||"en"]} >
               <App/>
             </IntlProvider>
           </StaticRouter>

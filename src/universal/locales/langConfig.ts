@@ -5,9 +5,3 @@ export const messages = {
   'ru': messages_ru,
   'en': messages_en,
 };
-// export const language = navigator.language.split(/[-_]/)[0];
-// export let language = 'ru';
-// export const changeLang = (value) => {
-//   return language = value;
-// };
-// console.log(language);

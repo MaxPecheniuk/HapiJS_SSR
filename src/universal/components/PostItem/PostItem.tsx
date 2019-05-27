@@ -1,17 +1,21 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
+import {  withRouter } from 'react-router';
+import loadable from '@loadable/component';
+import { FormattedMessage } from 'react-intl';
+import * as queryString from 'querystring';
 import { Query } from 'react-apollo';
 import { GET_POST_EN, GET_POST_RU } from '../../queries/postItem.query';
-import loadable from '@loadable/component';
+import PostInfo from '../PostInfo/PostInfo';
 import ClearPost from '../share.components/ClearPost/ClearPost';
 import './PostItem.scss';
-import { useState } from 'react';
-import PostInfo from '../PostInfo/PostInfo';
-import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+
 const PostComments = loadable(() => import('../PostComments/PostComments'));
 
 // interface IPostItemProps {
 //   match?: match<{ id: string }>;
+//   location?: any;
+//   postId: string;
 //
 // }
 // interface IPostItemProps2 {
@@ -21,10 +25,6 @@ const PostComments = loadable(() => import('../PostComments/PostComments'));
 interface PostItemResponse {
   postById: PostItemType;
 }
-
-const mapStateToProps = state => {
-  return {language: state.localesReducer.language};
-};
 
 export interface PostItemType {
   commentsIds: Array<string>;
@@ -36,29 +36,31 @@ export interface PostItemType {
 
 const PostItem: React.FunctionComponent<any> = (props: any) => {
   const [showComments, commentToggle] = useState<boolean>(false);
-
   const onCommentToggle = () => {
     commentToggle(!showComments);
   };
+
   // tslint:disable-next-line
-  const {match, postId, language} = props;
+  const {match, postId} = props;
+  const parsed = queryString.parse(props.location.search.replace('?', ''));
 
-  // useEffect(() => {
-  //   console.log('mount item');
-  //   return () => {
-  //     console.log('un item');
-  //   };
-  // });
+  useEffect(() => {
+    if (match.params.id !== undefined && parsed.title) {
+      delete parsed.title;
+      const stringified = queryString.stringify(parsed);
+      props.history.push({search: stringified});
+    }
+  });
 
-  let id: string;
-  if (match === undefined) {
+  let id: string ;
+  if (match.params.id === undefined) {
     id = postId;
   } else {
     id = match.params.id;
   }
 
   return (
-    <Query<PostItemResponse> query={language === 'en' ? GET_POST_EN : GET_POST_RU} variables={{'id': id}}>
+    <Query<PostItemResponse> query={parsed.lang === 'en' ? GET_POST_EN : GET_POST_RU} variables={{'id': id}}>
       {({data, loading, error}) => {
         if (loading) {
           return <div><ClearPost/></div>;
@@ -68,7 +70,7 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
         }
         return (
           <div className="post-item">
-            <PostInfo postInfo={data.postById}/>
+            <PostInfo postInfo={data.postById} lang={parsed.lang}/>
             <div className="post-item__comments-count">
                 <span onClick={onCommentToggle}>
                   {showComments ? 'Hide' : data.postById.commentsIds.length}  <FormattedMessage id="postItem.comments"/>
@@ -82,52 +84,4 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
   );
 
 };
-export default connect(mapStateToProps)(PostItem);
-
-//
-// class PostItem extends React.Component<IPostItemProps, IState> {
-//   state = {
-//     showComments: false
-//   };
-//
-//   onCommentToggle = () => {
-//     this.setState({
-//       showComments: !this.state.showComments
-//     });
-//   }
-//
-//   render() {
-//     // tslint:disable-next-line
-//     const {match, postId} = this.props;
-//     const {showComments} = this.state;
-//     let id: string;
-//     if (match === undefined) {
-//       id = postId;
-//     } else {
-//       id = match.params.id;
-//     }
-//     return (
-//
-//       <Query<PostItemResponse> query={GET_POST} variables={{'id': id}} >
-//         {({data, loading, error}) => {
-//           if (loading) { return <div><ClearPost/></div>; }
-//           if (error) { return <div>Error</div>; }
-//           console.log(data.postById.commentsIds);
-//           return (
-//             <div className="post-item">
-//               <PostInfo postInfo={data.postById}/>
-//               <div className="post-item__comments-count">
-//                 <span onClick={this.onCommentToggle}>
-//                   {showComments ? 'Hide' : data.postById.commentsIds.length} comments
-//                 </span>
-//               </div>
-//               {showComments && <PostComments commentsIds={data.postById.commentsIds}/>}
-//             </div>
-//           );
-//         }}
-//       </Query>
-//     );
-//   }
-//
-// }
-// export default PostItem;
+export default withRouter(PostItem);
