@@ -1,15 +1,18 @@
 import * as React from 'react';
+import { match, withRouter } from 'react-router';
 import { Query } from 'react-apollo';
 import { GET_POSTS } from '../../queries/posts.query';
-import PostItem from '../PostItem/PostItem';
 import * as queryString from 'querystring';
 import { useEffect } from 'react';
 import loadable from '@loadable/component';
 const ClearPost = loadable(() => import('../share.components/ClearPost/ClearPost'));
+const PostItem = loadable(() => import('../PostItem/PostItem'));
+import { Location, History } from 'history';
 
 interface PostsListProps {
-  location?: {search: string};
-  history: any;
+  location?: Location;
+  history: History;
+  match: match;
 }
 
 interface IPostListResponse {
@@ -41,7 +44,6 @@ const PostsList: React.FunctionComponent<PostsListProps> = (props: PostsListProp
           variables={{title, lang}}
         >
           {({data, loading, error}) => {
-            console.log(data);
             if (loading) {return <ClearPost/>; }
             if (error) {return <div>Error</div>; }
             return (
@@ -55,4 +57,4 @@ const PostsList: React.FunctionComponent<PostsListProps> = (props: PostsListProp
     );
 };
 
-export default PostsList;
+export default withRouter(PostsList);

@@ -1,25 +1,22 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import {  withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 import loadable from '@loadable/component';
 import { FormattedMessage } from 'react-intl';
 import * as queryString from 'querystring';
 import { Query } from 'react-apollo';
 import { GET_POST_EN, GET_POST_RU } from '../../queries/postItem.query';
-import PostInfo from '../PostInfo/PostInfo';
 import ClearPost from '../share.components/ClearPost/ClearPost';
 import './PostItem.scss';
 
+const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
 const PostComments = loadable(() => import('../PostComments/PostComments'));
 
 // interface IPostItemProps {
-//   match?: match<{ id: string }>;
-//   location?: any;
-//   postId: string;
-//
-// }
-// interface IPostItemProps2 {
-//   postId: string;
+//   match?: match<any>;
+//   postId?: string;
+//   location?: Location;
+//   history?: History;
 // }
 
 interface PostItemResponse {
@@ -52,7 +49,7 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
     }
   });
 
-  let id: string ;
+  let id: string;
   if (match.params.id === undefined) {
     id = postId;
   } else {
@@ -73,7 +70,7 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
             <PostInfo postInfo={data.postById} lang={parsed.lang}/>
             <div className="post-item__comments-count">
                 <span onClick={onCommentToggle}>
-                  {showComments ? 'Hide' : data.postById.commentsIds.length}  <FormattedMessage id="postItem.comments"/>
+                  {showComments ? 'Hide' : data.postById.commentsIds.length} <FormattedMessage id="postItem.comments"/>
                 </span>
             </div>
             {showComments && <PostComments commentsIds={data.postById.commentsIds}/>}

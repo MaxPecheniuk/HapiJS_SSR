@@ -1,10 +1,17 @@
 import * as React from 'react';
 import './Header.scss';
 import SearchForm from '../SearchForm/SearchForm';
-import { withRouter } from 'react-router';
+import { match, withRouter } from 'react-router';
 import * as queryString from 'querystring';
+import { History, Location } from 'history';
 
-const Header: React.FunctionComponent = (props: any) => {
+interface IHeaderProps {
+  match: match;
+  location: Location;
+  history: History;
+}
+
+const Header: React.FunctionComponent<IHeaderProps> = (props: IHeaderProps) => {
   let parsed = queryString.parse(props.location.search.replace('?', ''));
   const changeLang = (language) => {
     if (Object.keys(parsed).length > 0) {
@@ -14,7 +21,7 @@ const Header: React.FunctionComponent = (props: any) => {
     }
     const stringified = queryString.stringify(parsed);
     props.history.push({search: stringified});
-    props.history.go(0);
+   window.location.reload();
   };
   return (
     <div className="header">
@@ -33,8 +40,3 @@ const Header: React.FunctionComponent = (props: any) => {
 };
 
 export default withRouter(React.memo(Header));
-// 1 react memo
-// 2 typescript
-// 3 memo где ключи идут об
-// 4 react hooks
-// 5 react intl

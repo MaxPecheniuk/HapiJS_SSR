@@ -24,7 +24,6 @@ export const messages = {
   'en': messages_en,
 };
 const client = new ApolloClient({
-  // ssrMode: true,
 	link:  createHttpLink({
     uri: 'http://localhost:4000', fetch
   }),
@@ -33,8 +32,10 @@ const client = new ApolloClient({
 
 
 export const appHandler = (req) => {
-  const statsFile = path.resolve(paths.loadableStats);
-  const extractor = new ChunkExtractor({statsFile});
+  const extractor = new ChunkExtractor({
+      statsFile: path.resolve(paths.loadableStats),
+      // entrypoints: ['main', 'PostsListLoader']
+    });
   const store = createStore(rootReducer);
   const context = {};
   let reduxState = store.getState();

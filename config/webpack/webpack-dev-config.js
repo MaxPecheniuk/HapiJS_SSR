@@ -8,11 +8,11 @@ const Host = "localhost";
 
 module.exports = {
   mode: "development",
-  devtool: "source-map",
+  devtool: "eval-source-map",
   entry: {
-    main: path.resolve(paths.appIndexJs)
+    main: path.resolve(paths.appIndexJs),
+    // PostsListLoader: path.resolve(paths.appPostsListLoader)
   },
-
   devServer: {
     port: Port,
     host: Host,
@@ -28,7 +28,7 @@ module.exports = {
 
       }
     },
-    open: true,
+    // open: true,
     overlay: {
       warnings: false,
       errors: true

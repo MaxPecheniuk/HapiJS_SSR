@@ -12,14 +12,13 @@ module.exports = {
 	appConfig: resolveApp("config"), // home config files
 	appDist: resolveApp("dist"), // Dev build
   appIndexJs: resolveApp("src/universal/index.tsx"), // Universal entry point
-  appList: resolveApp("src/universal/PostsList/PostsList"), // Universal entry point
-  PostComments: resolveApp("src/universal/PostComments/PostComments.tsx"), // Universal entry point
-  appHeader: resolveApp("src/universal/Header/Header.tsx"), // Universal entry point
-  app: resolveApp("src/universal/index.tsx"), // Universal entry point
+  appPostsListLoader: resolveApp("src/universal/PostsLis/PostsList.tsx"), // Posts list entry point
+  PostComments: resolveApp("src/universal/PostComments/PostComments.tsx"), // Post comments entry point
+  appHeader: resolveApp("src/universal/Header/Header.tsx"), // Header entry point
   appIndexJsServer: resolveApp("src/server/server.js"), // Server entry point
   appSrc: resolveApp("src/universal"), // home source
   appTest: resolveApp("src/__tests__"), // home source
-  tslintConf: resolveApp("tslint.json"),
-  tsConf: resolveApp("tsconfig.json")
+  tslintConf: resolveApp("tslint.json"), //TSLint rules
+  tsConf: resolveApp("tsconfig.json") //TS config
 
 };
