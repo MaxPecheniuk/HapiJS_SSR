@@ -12,13 +12,6 @@ import './PostItem.scss';
 const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
 const PostComments = loadable(() => import('../PostComments/PostComments'));
 
-// interface IPostItemProps {
-//   match?: match<any>;
-//   postId?: string;
-//   location?: Location;
-//   history?: History;
-// }
-
 interface PostItemResponse {
   postById: PostItemType;
 }
@@ -37,15 +30,14 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
     commentToggle(!showComments);
   };
 
-  // tslint:disable-next-line
-  const {match, postId} = props;
-  const parsed = queryString.parse(props.location.search.replace('?', ''));
+  const {match, postId, location, history} = props;
+  const parsed = queryString.parse(location.search.replace('?', ''));
 
   useEffect(() => {
     if (match.params.id !== undefined && parsed.title) {
       delete parsed.title;
       const stringified = queryString.stringify(parsed);
-      props.history.push({search: stringified});
+      history.push({search: stringified});
     }
   });
 
@@ -70,7 +62,10 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
             <PostInfo postInfo={data.postById} lang={parsed.lang}/>
             <div className="post-item__comments-count">
                 <span onClick={onCommentToggle}>
-                  {showComments ? 'Hide' : data.postById.commentsIds.length} <FormattedMessage id="postItem.comments"/>
+                  {showComments ? <FormattedMessage id="postItem.showComments"/> :
+                    data.postById.commentsIds.length}
+                    {!showComments ? <FormattedMessage id="postItem.comments" /> : null}
+
                 </span>
             </div>
             {showComments && <PostComments commentsIds={data.postById.commentsIds}/>}

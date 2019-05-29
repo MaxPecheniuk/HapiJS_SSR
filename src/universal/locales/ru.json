@@ -1,5 +1,7 @@
 {
-  "postItem.comments": "комментария",
+  "postItem.comments": " комментария",
+  "postItem.showComments":"Скрыть комментарии",
+
   "form.submitBtn": "Искать",
   "form.inputPlaceholder": "Введите заголовок"
 

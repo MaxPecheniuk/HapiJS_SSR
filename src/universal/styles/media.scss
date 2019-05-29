@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+  .search-form {
+    width: 80% !important;
+  }
+  .post-item {
+    width: 80% !important;
+  }
+}
+@media screen and (max-width: 540px){
+  .search-form{
+    margin-left: 10px !important;
+  }
+  .post-item__comments__item__data__author-name{
+    margin-right: 5px !important;
+  }
+
+}

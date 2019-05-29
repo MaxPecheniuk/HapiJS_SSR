@@ -4,6 +4,7 @@ import './PostInfo.scss';
 import * as queryString from 'querystring';
 import { PostItemType } from '../PostItem/PostItem';
 import { History, Location } from 'history';
+import { FormattedDate } from 'react-intl';
 
 interface PostInfoProps {
   postInfo: PostItemType;
@@ -21,7 +22,12 @@ const PostInfo: React.FunctionComponent<PostInfoProps> = (props: PostInfoProps) 
       <span className="post-item__info__title">{postInfo.title[lang]}</span>
       <span className="post-item__info__date">
           <Link to={{pathname: `/post/${postInfo.id}/`, search: queryString.stringify(parsed)}}>
-            {new Date(postInfo.date * 1000).toLocaleDateString()}
+            <FormattedDate
+              value={new Date(postInfo.date * 1000)}
+              year="numeric"
+              month="long"
+              day="2-digit"
+            />
           </Link>
         </span>
       <span className="post-item__info__description">{postInfo.description[lang]}</span>

@@ -9,7 +9,6 @@ import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import './index.scss';
 import { loadableReady } from '@loadable/component';
 import App from './components/App/App';
 import { addLocaleData } from 'react-intl';
@@ -17,6 +16,7 @@ import locale_en from 'react-intl/locale-data/en';
 import locale_ru from 'react-intl/locale-data/ru';
 import { IntlProvider } from 'react-intl';
 import { messages } from './locales/langConfig';
+import './index.scss';
 
 addLocaleData([...locale_en, ...locale_ru]);
 
@@ -39,7 +39,6 @@ let language = queryString.parse(location.search.replace('?', ''));
 const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
   link: createHttpLink({uri: 'http://localhost:4000'}),
-  // ssrMode: true
 });
 
 loadableReady(() => {
@@ -55,7 +54,6 @@ loadableReady(() => {
       </Provider>
     </ApolloProvider>
     ,
-    // eslint-disable-next-line
     document.getElementById('root')
   );
 });

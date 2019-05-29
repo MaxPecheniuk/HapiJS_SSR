@@ -1,6 +1,7 @@
 
 {
-  "postItem.comments": "comments",
+  "postItem.comments": " comments",
+  "postItem.showComments":"Hide comments",
   "form.submitBtn": "Submit",
   "form.inputPlaceholder": "Search title"
 }

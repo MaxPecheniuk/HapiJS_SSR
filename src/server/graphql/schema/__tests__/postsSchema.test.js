@@ -1,16 +1,31 @@
 // import te from 'fs'
-import { graphql } from 'graphql'
+import {graphql} from 'graphql'
 import {makeExecutableSchema} from 'graphql-tools';
 import resolvers from '../../resolvers/rootResolver';
-import { typeDefs } from '../postsSchema';
+import {typeDefs} from '../postsSchema';
 
 const expected = {
 
   data: {
     posts: [
-      {title: "Post 1 Title 1Post 1 Title 1Post 1 Title 1"},
-      {title: "Post 2 Title 2 Post 2 Title 2 Post 2 Title 2"},
-      {title: "Post 3 Title 3 Post 3 Title 3 Post 3 Title 3 "},
+      {
+        title: {
+          en:  "ENG Post 1 Title 1Post 1 Title 1Post 1 Title 1"
+        }
+      },
+      {
+        title: {
+          en:  "ENG Post 2 Title 2 Post 2 Title 2 Post 2 Title 2",
+
+
+        }
+      },
+      {
+        title: {
+          en: "ENG Post 3 Title 3 Post 3 Title 3 Post 3 Title 3 ",
+
+        }
+      },
 
     ]
   }
@@ -22,7 +37,8 @@ describe('Schema test', () => {
   const query = `
   {
     posts {
-      title
+      title{
+      en}
       }
     }
 `
