@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import loadable from '@loadable/component';
+import ClearPost from '../share.components/ClearPost/ClearPost';
 
 const PostsList = loadable(() => import('../PostsList/PostsList'));
 
@@ -11,7 +12,7 @@ const PostsListsLoader: React.FunctionComponent = () => {
       setPage(<PostsList/>);
     }
   });
-  return (page ? page : null );
+  return (page ? page : <ClearPost/> );
 };
 
-export default PostsListsLoader;
+export default React.memo(PostsListsLoader);

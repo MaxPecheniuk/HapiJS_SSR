@@ -31,3 +31,16 @@
     }
   }
 }
+
+@media screen and (max-width: 540px) {
+  .post-item__comments__item {
+    padding: 0 5px;
+    &__author-avatar{
+      width: 15px;
+      height: 15px;
+    }
+    &__data__author-name{
+      margin-right: 5px
+    }
+  }
+}

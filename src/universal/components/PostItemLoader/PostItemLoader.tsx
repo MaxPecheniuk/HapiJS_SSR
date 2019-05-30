@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import loadable from '@loadable/component';
+import ClearPost from '../share.components/ClearPost/ClearPost';
 
 const PostItem = loadable(() => import('../PostItem/PostItem'));
 
@@ -11,7 +12,7 @@ const PostItemLoader: React.FunctionComponent = () => {
       setPage(<PostItem/>);
     }
   });
-  return (page ? page : null );
+  return (page ? page : <ClearPost/> );
 };
 
-export default PostItemLoader;
+export default React.memo(PostItemLoader);

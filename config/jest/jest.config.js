@@ -1,7 +1,7 @@
 module.exports = {
   testEnvironment: "node",
   rootDir: '../../',
-  moduleFileExtensions: ['js','jsx'],
+  moduleFileExtensions: ['js','jsx', 'ts', 'tsx'],
   moduleDirectories: ['node_modules'],
   moduleNameMapper: {
     '\\.(css|scss)$': '<rootDir>/config/jest/__mocks__/styleMock.js'
@@ -12,6 +12,7 @@ module.exports = {
 
   collectCoverage: true,
   coverageReporters: ["text", "text-summary"],
+  coveragePathIgnorePatterns: ['<rootDir>/src/server/config/'],
   coverageThreshold: {
     global: {
       branches: 62,

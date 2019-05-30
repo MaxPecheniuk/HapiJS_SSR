@@ -12,11 +12,9 @@ export const GET_POST_RU = gql`
       }
       date
       commentsIds
-
     }
   }
-`
-
+`;
 
 export const GET_POST_EN = gql`
   query postById($id: ID!) {
@@ -33,8 +31,4 @@ export const GET_POST_EN = gql`
 
     }
   }
-`
-
-
-
-
+`;

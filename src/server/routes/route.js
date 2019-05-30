@@ -1,7 +1,7 @@
 import path from 'path';
 import paths from "../../../config/webpack/paths"
 import mockPost from "../../../config/mocks/mockPost"
-import { appHandler } from '../handlers/appHandler';
+import { appHandler as handler} from '../handlers/appHandler';
 
 let sources =  path.resolve(paths.appDist);
 if (process.env.NODE_ENV === "production"){
@@ -22,9 +22,7 @@ const Routes = [
   {
     method: 'GET',
     path: '/{param*}',
-    handler: (request) => {
-      return appHandler(request)
-    }
+    handler
   },
   {
     method: 'GET',

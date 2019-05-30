@@ -4,13 +4,13 @@ import './ClearPost.scss';
 const ClearPost: React.FunctionComponent<{}> = () => {
   return (
     <div className="clear-post">
-      <span>Tifdsfdsfdsfsf</span>
-      <span>fghdsfdsfsdfs dffgshfghdsfdsfs dfsdffghfghdsfdsfs dfsdffghfghds fdsfsdfsd ffghfghdsfdsfs dfsdffgh</span>
-      <span>fghdsfdsfsdfsdff ghfghdsfdsfs dfsdffgh fghdsfdsfsdfsdffgh</span>
+      <span>Loading...</span>
+      <span>Loading...Loading...Loading...Loading...Loading...Loading...Loading...Loading...</span>
+      <span>Loading...Loading...Loading...Loading...Loading...Loading...</span>
         <div className="post-item__comments-count">
           <span > comments</span>
         </div>
       </div>
   );
 };
-export default ClearPost;
+export default React.memo(ClearPost);

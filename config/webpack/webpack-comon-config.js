@@ -25,8 +25,7 @@ module.exports = {
       maxSize: 51200,
       minChunks: 1,
       maxInitialRequests: Infinity,
-      automaticNameDelimiter: '~',
-      name: true,
+      automaticNameDelimiter: '_',
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
@@ -58,6 +57,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         enforce: 'pre',
+        exclude: [/node_modules/, /__tests__/],
         use: [
           {
             loader: 'tslint-loader',

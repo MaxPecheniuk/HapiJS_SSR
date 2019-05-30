@@ -6,17 +6,15 @@ import { FormattedMessage } from 'react-intl';
 import * as queryString from 'querystring';
 import { History, Location } from 'history';
 
-import './searchForm.scss';
+import './SearchForm.scss';
 
-/* tslint:disable */
-interface IProps {
+interface ISearchFormProps {
   history?: History;
   location?: Location;
 }
 
-/* tslint:enable */
-const SearchForm: React.FunctionComponent<IProps & RouteComponentProps<{}>> =
-  (props: IProps & RouteComponentProps<{}>) => {
+const SearchForm: React.FunctionComponent<ISearchFormProps & RouteComponentProps<{}>> =
+  (props: ISearchFormProps & RouteComponentProps<{}>) => {
     const [inputValue, inputValueOnChange] = useState<string>('');
 
     const onChange = (event: SyntheticEvent<HTMLInputElement>) => {

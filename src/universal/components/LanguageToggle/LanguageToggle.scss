@@ -1,0 +1,41 @@
+@import "../../styles/variables";
+.header__dropdown{
+  position: relative;
+  display: inline-block;
+  &__btn{
+    text-transform: uppercase;
+    background-color: $yellowLight;
+    color: white;
+    padding: 8.5px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+  }
+  &__content{
+    display: none;
+    position: absolute;
+    min-width: 70px;
+    @extend %cardBackground;
+    z-index: 1;
+    span{
+      cursor: pointer;
+      color: black;
+      padding: 12px 5px;
+      text-decoration: none;
+      display: block;
+      &:hover{
+        background-color: $backgroundLight;
+      }
+    }
+  }
+}
+
+
+.header__dropdown:hover .header__dropdown__content{
+  display: block;
+}
+
+.header__dropdown:hover .header__dropdown__btn{
+  background-color: $yellowDark ;
+  border-radius: 3px;
+}

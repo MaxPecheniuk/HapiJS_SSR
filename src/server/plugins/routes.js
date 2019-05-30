@@ -3,5 +3,4 @@ exports.plugin = {
   register:  function (server) {
     server.route(require('../routes/route'))
   }
-
 };

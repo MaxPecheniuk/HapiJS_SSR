@@ -1,5 +1,3 @@
-
-
 import { postsByIdLoader } from '../postByIdLoader';
 
 describe('post by id loader-2', ()=>{

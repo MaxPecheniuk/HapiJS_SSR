@@ -7,7 +7,8 @@ export const authorsQuery = (_, __, context) => {
     await Promise.all(keys.map(() =>
       axios.get(apiUrl)
         .then((res) => res.data.authors)
-        .catch((e) => throw Error(e.response.statusText))));
+        .catch((e) => throw Error(e.response.statusText))
+    ));
 
   let loader = context.loaderAuthors;
   if (!loader) {

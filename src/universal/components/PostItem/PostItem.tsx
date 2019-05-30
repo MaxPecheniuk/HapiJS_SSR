@@ -1,22 +1,30 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { withRouter } from 'react-router';
+import { match, withRouter } from 'react-router';
 import loadable from '@loadable/component';
 import { FormattedMessage } from 'react-intl';
 import * as queryString from 'querystring';
 import { Query } from 'react-apollo';
 import { GET_POST_EN, GET_POST_RU } from '../../queries/postItem.query';
 import ClearPost from '../share.components/ClearPost/ClearPost';
-import './PostItem.scss';
+import { History, Location } from 'history';
 
 const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
 const PostComments = loadable(() => import('../PostComments/PostComments'));
 
-interface PostItemResponse {
-  postById: PostItemType;
+import './PostItem.scss';
+
+interface IPostItemProps {
+  history: History;
+  match: match<{id: string}>;
+  location: Location;
+  postId?: string;
+}
+interface IPostItemResponse {
+  postById: IPostItemType;
 }
 
-export interface PostItemType {
+export interface IPostItemType {
   commentsIds: Array<string>;
   date: number;
   description: string;
@@ -24,7 +32,7 @@ export interface PostItemType {
   title: string;
 }
 
-const PostItem: React.FunctionComponent<any> = (props: any) => {
+const PostItem: React.FunctionComponent<IPostItemProps> = (props: IPostItemProps) => {
   const [showComments, commentToggle] = useState<boolean>(false);
   const onCommentToggle = () => {
     commentToggle(!showComments);
@@ -39,6 +47,11 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
       const stringified = queryString.stringify(parsed);
       history.push({search: stringified});
     }
+    if (!parsed.lang) {
+      parsed.lang = 'en';
+      const stringified = queryString.stringify(parsed);
+      props.history.push({search: stringified});
+    }
   });
 
   let id: string;
@@ -49,7 +62,7 @@ const PostItem: React.FunctionComponent<any> = (props: any) => {
   }
 
   return (
-    <Query<PostItemResponse> query={parsed.lang === 'en' ? GET_POST_EN : GET_POST_RU} variables={{'id': id}}>
+    <Query<IPostItemResponse> query={parsed.lang === 'en' ? GET_POST_EN : GET_POST_RU} variables={{'id': id}}>
       {({data, loading, error}) => {
         if (loading) {
           return <div><ClearPost/></div>;

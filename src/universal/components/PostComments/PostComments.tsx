@@ -2,36 +2,37 @@ import * as React from 'react';
 import { Query } from 'react-apollo';
 import { GET_COMMENTS } from '../../queries/comments.query';
 import SpinnerLoader from '../share.components/SpinerLoader/SpinnerLoader';
+
 import './PostComments.scss';
 
-interface PostCommentsProps  {
+interface IPostCommentsProps  {
   commentsIds?: Array<String>;
 }
 
-interface PostCommentsResponse {
-  comments: Array<CommentType>;
+interface IPostCommentsResponse {
+  comments: Array<ICommentType>;
 }
 
-interface CommentType {
-  author: AuthorType;
+interface ICommentType {
+  author: IAuthorType;
   id: string;
   text: string;
 }
 
-interface AuthorType {
+interface IAuthorType {
   avatar: string;
   name: string;
 }
 
-const PostComments: React.FunctionComponent<PostCommentsProps> = (props: PostCommentsProps) => {
+const PostComments: React.FunctionComponent<IPostCommentsProps> = (props: IPostCommentsProps) => {
   return (
-    <Query<PostCommentsResponse> query={GET_COMMENTS} variables={{'id': props.commentsIds}}>
+    <Query<IPostCommentsResponse> query={GET_COMMENTS} variables={{'id': props.commentsIds}}>
       {({data, loading, error}) => {
         if (loading) {return <SpinnerLoader/>; }
         if (error) {return <div>Error</div>; }
         return (
           <div className="post-item__comments">
-            {data.comments.map((comment: CommentType, index: number) => {
+            {data.comments.map((comment: ICommentType, index: number) => {
               return (
                 <div className="post-item__comments__item" key={index}>
                   <img

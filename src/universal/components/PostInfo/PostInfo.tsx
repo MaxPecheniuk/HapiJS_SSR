@@ -1,20 +1,22 @@
 import * as React from 'react';
 import { Link, match, withRouter } from 'react-router-dom';
-import './PostInfo.scss';
 import * as queryString from 'querystring';
-import { PostItemType } from '../PostItem/PostItem';
+import { IPostItemType } from '../PostItem/PostItem';
 import { History, Location } from 'history';
 import { FormattedDate } from 'react-intl';
 
-interface PostInfoProps {
-  postInfo: PostItemType;
+import './PostInfo.scss';
+
+interface IPostInfoProps {
   location: Location;
   history: History;
-  lang: string | any;
   match: match;
+  postInfo: IPostItemType;
+  lang: string | any;// tslint:disable-line
 }
 
-const PostInfo: React.FunctionComponent<PostInfoProps> = (props: PostInfoProps) => {
+const PostInfo: React.FunctionComponent<IPostInfoProps> = (props: IPostInfoProps) => {
+  console.log(typeof props.lang);
   const {postInfo, lang} = props;
   const parsed = queryString.parse(props.location.search.replace('?', ''));
   return (

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should render correctly with no props 1`] = `ShallowWrapper {}`;
+
+exports[`LanguageToggle component should render correctly with no props 1`] = `ShallowWrapper {}`;

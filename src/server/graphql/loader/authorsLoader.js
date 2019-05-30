@@ -7,7 +7,7 @@ export const authorsLoader = (root, __, context) => {
     axios.get(apiUrl)
       .then((res) => res.data.authors)
       .then(authors => authors.find(author => author.id === key.id))
-      .catch((e) => throw Error(e.response.statusText))));
+      .catch((error) => throw Error(error.response.statusText))));
 
   let loader = context.loaderAuthor;
   if (!loader) {

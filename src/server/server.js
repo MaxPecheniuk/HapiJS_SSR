@@ -1,14 +1,14 @@
 const Hapi = require('hapi');
 
 let port = 9080; //dev port
-if(process.env.NODE_ENV === "production"){
+
+if(process.env.NODE_ENV === "production") {
   port = 8080
 }
 
 const server = Hapi.server({
   port: port,
   host: 'localhost',
-
 });
 
 const init = async () => {

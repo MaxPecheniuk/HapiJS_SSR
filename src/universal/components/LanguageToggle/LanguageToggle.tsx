@@ -3,6 +3,8 @@ import * as queryString from 'querystring';
 import { match, withRouter } from 'react-router';
 import { History, Location } from 'history';
 
+import './LanguageToggle.scss';
+
 interface ILanguageToggleProps {
   match: match;
   location: Location;
@@ -25,8 +27,8 @@ const LanguageToggle: React.FunctionComponent<ILanguageToggleProps> = (props: IL
     <div className="header__dropdown">
       <button className="header__dropdown__btn">{parsed.lang}</button>
       <div className="header__dropdown__content">
-        <span onClick={() => changeLang('en')}>ENG</span>
-        <span onClick={() => changeLang('ru')}>RUS</span>
+        <span className="header__dropdown__content_en" onClick={() => changeLang('en')}>ENG</span>
+        <span className="header__dropdown__content_ru" onClick={() => changeLang('ru')}>RUS</span>
       </div>
 
     </div>

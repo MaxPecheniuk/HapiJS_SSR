@@ -10,8 +10,7 @@ module.exports = {
   mode: "development",
   devtool: "eval-source-map",
   entry: {
-    main: path.resolve(paths.appIndexJs),
-    // PostsListLoader: path.resolve(paths.appPostsListLoader)
+    main: path.resolve(paths.appIndexJs)
   },
   devServer: {
     port: Port,
@@ -28,7 +27,7 @@ module.exports = {
 
       }
     },
-    // open: true,
+    open: true,
     overlay: {
       warnings: false,
       errors: true

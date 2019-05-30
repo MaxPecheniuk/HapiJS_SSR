@@ -4,7 +4,7 @@ const path = require('path');
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from '../../universal/reducer/roote.reducer';
+import rootReducer from '../../universal/reducer/roote.reducer.js';
 import { template } from '../template';
 import { StaticRouter } from 'react-router';
 import ApolloClient from 'apollo-client';
@@ -15,14 +15,15 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import fetch from 'node-fetch';
 import { ChunkExtractor } from '@loadable/server'
 import { IntlProvider } from 'react-intl';
-// import { messages } from '../../universal/locales/langConfig';
 import App from '../../universal/components/App/App';
 import messages_ru from '../../universal/locales/ru';
 import messages_en from '../../universal/locales/en';
+
 export const messages = {
   'ru': messages_ru,
   'en': messages_en,
 };
+
 const client = new ApolloClient({
 	link:  createHttpLink({
     uri: 'http://localhost:4000', fetch
@@ -30,11 +31,9 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
 export const appHandler = (req) => {
   const extractor = new ChunkExtractor({
       statsFile: path.resolve(paths.loadableStats),
-      // entrypoints: ['main', 'PostsListLoader']
     });
   const store = createStore(rootReducer);
   const context = {};
@@ -49,9 +48,7 @@ export const appHandler = (req) => {
           </StaticRouter>
       </Provider>
     </ApolloProvider>
-
   );
-
 
   return getDataFromTree(html)
     .then(() => {
