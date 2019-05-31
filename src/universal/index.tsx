@@ -1,3 +1,6 @@
+// import { createMemoryHistory as createHistory } from 'history';
+// export const myHist = createHistory();
+
 const queryString = require('query-string');
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -17,8 +20,10 @@ import locale_ru from 'react-intl/locale-data/ru';
 import { IntlProvider } from 'react-intl';
 import { messages } from './locales/langConfig';
 import './index.scss';
-
-addLocaleData([...locale_en, ...locale_ru]);
+// import window from 'global';
+import { createBrowserHistory as createHistory } from 'history';
+export const myHist = createHistory();
+//
 
 declare global {
   interface Window {
@@ -28,11 +33,12 @@ declare global {
     __APOLLO_STATE__: any
   }
 }
-
 const state = window.__REDUX_STATE__;
 delete window.__REDUX_STATE__;
 
-export const store = createStore(rootReducer, state);
+const store = createStore(rootReducer, state);
+
+addLocaleData([...locale_en, ...locale_ru]);
 
 let language = queryString.parse(location.search.replace('?', ''));
 
@@ -48,7 +54,7 @@ loadableReady(() => {
       <Provider store={store}>
         <BrowserRouter>
           <IntlProvider locale={language.lang || 'en'} messages={messages[language.lang || 'en']}>
-          <App/>
+            <App/>
           </IntlProvider>
         </BrowserRouter>
       </Provider>

@@ -3,13 +3,17 @@ import SearchForm from '../SearchForm/SearchForm';
 import LanguageToggle from '../LanguageToggle/LanguageToggle';
 
 import './Header.scss';
+import getHistory from '../../Hh';
+// import { customHistory } from '../../index';
 
 const Header: React.FunctionComponent = () => {
+  // console.log(customHistory);
   return (
-    <div className="header">
+    <header className="header">
       <SearchForm/>
       <LanguageToggle/>
-    </div>
+      <button onClick={() => getHistory().push('/33')}>l</button>
+    </header>
   );
 };
 

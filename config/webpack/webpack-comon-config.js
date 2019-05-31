@@ -26,6 +26,7 @@ module.exports = {
       minChunks: 1,
       maxInitialRequests: Infinity,
       automaticNameDelimiter: '_',
+      name:true,
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
@@ -89,7 +90,8 @@ module.exports = {
 
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(env)
+        NODE_ENV: JSON.stringify(env),
+        BROWSER: JSON.stringify(true)
       }
     }),
     new MiniCssExtractPlugin({

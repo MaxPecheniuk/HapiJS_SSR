@@ -8,7 +8,7 @@ const Host = "localhost";
 
 module.exports = {
   mode: "development",
-  devtool: "eval-source-map",
+  devtool: "source-map",
   entry: {
     main: path.resolve(paths.appIndexJs)
   },

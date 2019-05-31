@@ -14,7 +14,7 @@
     "build:client": "NODE_ENV=production  BABEL_ENV=universal webpack --config config/webpack/webpack.config.js",
     "test:unit": "jest --config config/jest/jest.config.js",
     "test:flow": "flow status",
-    "test:eslint": "BABLE_ENV=test eslint src -c .eslintrc --ext js,jsx",
+    "test:eslint": "BABLE_ENV=test eslint src/server -c .eslintrc --ext js,jsx,ts,tsx",
     "apollo": "BABEL_ENV=server node src/server/graphql/index.js",
     "apollo:prod": "BABEL_ENV=server NODE_ENV=production node src/server/graphql/index.js",
     "clean": "rm -r -v dist/*"
@@ -38,6 +38,7 @@
     "babel-plugin-react-intl": "^3.0.1",
     "css-modules-require-hook": "^4.2.3",
     "dataloader": "^1.4.0",
+    "global": "^4.3.2",
     "graphql": "^14.2.1",
     "graphql-tools": "^4.0.4",
     "hapi": "^18.1.0",

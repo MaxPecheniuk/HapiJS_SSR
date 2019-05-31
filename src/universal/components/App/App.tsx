@@ -7,10 +7,13 @@ import PostsListsLoader from '../PostsListLoader/PostsListLoader';
 import PostItemLoader from '../PostItemLoader/PostItemLoader';
 
 import './App.scss';
+import { GlobalHistory } from '../../Hh';
 
 const App: React.FunctionComponent = () => {
   return (
     <Fragment>
+      <GlobalHistory />
+
       <Header/>
       <div className="container">
         <Switch>

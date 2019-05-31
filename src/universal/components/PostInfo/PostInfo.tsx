@@ -16,7 +16,6 @@ interface IPostInfoProps {
 }
 
 const PostInfo: React.FunctionComponent<IPostInfoProps> = (props: IPostInfoProps) => {
-  console.log(typeof props.lang);
   const {postInfo, lang} = props;
   const parsed = queryString.parse(props.location.search.replace('?', ''));
   return (

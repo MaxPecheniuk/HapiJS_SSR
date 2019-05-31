@@ -37,12 +37,14 @@ export const appHandler = (req) => {
     });
   const store = createStore(rootReducer);
   const context = {};
-  let reduxState = store.getState();
+  const reduxState = store.getState();
+  const {pathname, search} = req.url;
+  const {lang} = req.query;
   const html =(
     <ApolloProvider client={client}>
       <Provider store={store}>
-          <StaticRouter location={req.url.pathname + req.url.search} context={context}>
-            <IntlProvider locale={req.query.lang||'en'} messages={messages[req.query.lang||"en"]} >
+          <StaticRouter location={pathname + search} context={context}>
+            <IntlProvider locale={lang||'en'} messages={messages[lang||"en"]} >
               <App/>
             </IntlProvider>
           </StaticRouter>

@@ -4,6 +4,7 @@ import { authorResolver } from './authorsResolver';
 import { postsByIdResolver } from "./postByIdResolver";
 const { merge } = require('lodash');
 
+
 const resolvers = merge(
   postsResolver,
   commentsResolver,
