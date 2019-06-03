@@ -4,7 +4,7 @@ const path = require('path');
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from '../../universal/reducer/roote.reducer.js';
+import rootReducer from '../../universal/reducer/roote.reducer';
 import { template } from '../template';
 import { StaticRouter } from 'react-router';
 import ApolloClient from 'apollo-client';

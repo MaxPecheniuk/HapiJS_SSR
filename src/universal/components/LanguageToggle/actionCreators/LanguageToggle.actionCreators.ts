@@ -1,6 +1,8 @@
-import { CHANGE_LANGUAGE } from '../../../constants/constants';
+import { CHANGE_LANGUAGE, CHECK_LANGUAGE } from '../../../constants/constants';
 //
-export const languageActionCreators = (payload) => {
-  console.log(payload);
+export const changeLanguageActionCreators = (payload) => {
   return {type: CHANGE_LANGUAGE, payload: payload};
+};
+export const checkLanguageActionCreators = (payload) => {
+  return {type: CHECK_LANGUAGE, payload: payload};
 };

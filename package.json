@@ -10,7 +10,7 @@
     "production": "NODE_ENV=production node  dist/server/server.js",
     "server": "NODE_ENV=development BABEL_ENV=server node src/server/index.js",
     "server:dev": "NODE_ENV=development BABEL_ENV=server nodemon src/server/index.js",
-    "build:server": "NODE_ENV=production BABEL_ENV=server babel --extensions \".tsx\" --extensions \".js\" src --out-dir dist --copy-files",
+    "build:server": "NODE_ENV=production BABEL_ENV=server babel --extensions \".tsx\" --extensions \".ts\" --extensions \".js\" src --out-dir dist --copy-files",
     "build:client": "NODE_ENV=production  BABEL_ENV=universal webpack --config config/webpack/webpack.config.js",
     "test:unit": "jest --config config/jest/jest.config.js",
     "test:flow": "flow status",
@@ -58,6 +58,7 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
+    "redux-persist": "^5.10.0",
     "scss-parser": "^1.0.3",
     "tslint-loader": "^3.5.4"
   },

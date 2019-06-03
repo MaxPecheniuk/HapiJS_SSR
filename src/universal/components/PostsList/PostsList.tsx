@@ -4,15 +4,18 @@ import { Query } from 'react-apollo';
 import { GET_POSTS } from '../../queries/posts.query';
 import * as queryString from 'querystring';
 import { useEffect } from 'react';
-import loadable from '@loadable/component';
-const ClearPost = loadable(() => import('../share.components/ClearPost/ClearPost'));
-const PostItem = loadable(() => import('../PostItem/PostItem'));
 import { Location, History } from 'history';
+import { connect } from 'react-redux';
+import { checkLanguageActionCreators } from '../LanguageToggle/actionCreators/LanguageToggle.actionCreators';
+import PostItemLoader from '../PostItemLoader/PostItemLoader';
+// import loadable from '@loadable/component';
+// const ClearPost = loadable(() => import('../share.components/ClearPost/ClearPost'));
 
 interface IPostsListProps {
   location?: Location;
   history: History;
   match: match;
+  setLang: (lang: Object) => void;
 }
 
 interface IPostListResponse {
@@ -27,12 +30,11 @@ interface IPostsId {
 
 const PostsList: React.FunctionComponent<IPostsListProps> = (props: IPostsListProps) => {
   const parsed = queryString.parse(props.location.search.replace('?', ''));
+  console.log(parsed);
 
   useEffect(() => {
     if (!parsed.lang) {
-      parsed.lang = 'en';
-      const stringified = queryString.stringify(parsed);
-      props.history.push({search: stringified});
+      props.setLang({parsed: parsed});
     }
   });
 
@@ -44,11 +46,11 @@ const PostsList: React.FunctionComponent<IPostsListProps> = (props: IPostsListPr
           variables={{title, lang}}
         >
           {({data, loading, error}) => {
-            if (loading) {return <ClearPost/>; }
+            if (loading) {return null; }
             if (error) {return <div>Error</div>; }
             return (
               data.posts.map((post: IPostsId, i: number) =>
-                <PostItem postId={post.id} key={i}/>
+                <PostItemLoader postId={post.id} key={i}/>
               )
             );
           }}
@@ -57,4 +59,13 @@ const PostsList: React.FunctionComponent<IPostsListProps> = (props: IPostsListPr
     );
 };
 
-export default withRouter(PostsList);
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {language: state.languageReducer.language};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return { setLang: lang => dispatch(checkLanguageActionCreators(lang))};
+};
+
+export default withRouter(connect<any, any, any>(mapStateToProps, mapDispatchToProps)(PostsList));

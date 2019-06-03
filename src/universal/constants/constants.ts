@@ -1,1 +1,3 @@
 export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
+export const CHECK_LANGUAGE = 'CHECK_LANGUAGE';
+// export const DELETE_TITLE = 'DELETE_TITLE';

@@ -16,8 +16,8 @@ interface IPostInfoProps {
 }
 
 const PostInfo: React.FunctionComponent<IPostInfoProps> = (props: IPostInfoProps) => {
-  const {postInfo, lang} = props;
   const parsed = queryString.parse(props.location.search.replace('?', ''));
+  const {postInfo, lang} = props;
   return (
     <div className="post-item__info">
       <span className="post-item__info__title">{postInfo.title[lang]}</span>
@@ -35,5 +35,4 @@ const PostInfo: React.FunctionComponent<IPostInfoProps> = (props: IPostInfoProps
     </div>
   );
 };
-
 export default withRouter(PostInfo);

@@ -3,11 +3,12 @@ import { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header  from '../Header/Header';
 
-import PostsListsLoader from '../PostsListLoader/PostsListLoader';
+// import PostsListsLoader from '../PostsListLoader/PostsListLoader';
 import PostItemLoader from '../PostItemLoader/PostItemLoader';
 
 import './App.scss';
-import { GlobalHistory } from '../../Hh';
+import { GlobalHistory } from '../share.components/GlobalHistory/GlobalHistory';
+import PostsList from '../PostsList/PostsList';
 
 const App: React.FunctionComponent = () => {
   return (
@@ -17,7 +18,7 @@ const App: React.FunctionComponent = () => {
       <Header/>
       <div className="container">
         <Switch>
-          <Route exact={true} path="/" component={PostsListsLoader}/>}/>
+          <Route exact={true} path="/" component={PostsList}/>}/>
           <Route path="/post/:id" component={PostItemLoader}/>
         </Switch>
       </div>

@@ -13,13 +13,17 @@ const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
 const PostComments = loadable(() => import('../PostComments/PostComments'));
 
 import './PostItem.scss';
+import { checkLanguageActionCreators } from '../LanguageToggle/actionCreators/LanguageToggle.actionCreators';
+import { connect } from 'react-redux';
 
 interface IPostItemProps {
   history: History;
   match: match<{id: string}>;
   location: Location;
   postId?: string;
+  setLang: (lang: Object) => void;
 }
+
 interface IPostItemResponse {
   postById: IPostItemType;
 }
@@ -48,9 +52,7 @@ const PostItem: React.FunctionComponent<IPostItemProps> = (props: IPostItemProps
       history.push({search: stringified});
     }
     if (!parsed.lang) {
-      parsed.lang = 'en';
-      const stringified = queryString.stringify(parsed);
-      props.history.push({search: stringified});
+      props.setLang({parsed: parsed});
     }
   });
 
@@ -89,4 +91,11 @@ const PostItem: React.FunctionComponent<IPostItemProps> = (props: IPostItemProps
   );
 
 };
-export default withRouter(PostItem);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLang: lang => dispatch(checkLanguageActionCreators(lang))
+  };
+};
+
+export default withRouter(connect<any, any, any>(null, mapDispatchToProps)(PostItem));
