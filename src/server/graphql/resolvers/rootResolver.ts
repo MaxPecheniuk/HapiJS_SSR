@@ -1,9 +1,9 @@
 import { postsResolver } from './postsResolver';
-import { commentsResolver } from './commentsResolver';
+import { postsByIdResolver } from './postByIdResolver';
 import { authorResolver } from './authorsResolver';
-import { postsByIdResolver } from "./postByIdResolver";
-const { merge } = require('lodash');
+import { commentsResolver } from './commentsResolver';
 
+const { merge } = require('lodash');
 
 const resolvers = merge(
   postsResolver,

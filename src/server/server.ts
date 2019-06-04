@@ -1,9 +1,9 @@
 const Hapi = require('hapi');
 
-let port = 9080; //dev port
+let port = 9080; // dev port
 
-if(process.env.NODE_ENV === "production") {
-  port = 8080
+if (process.env.NODE_ENV === 'production') {
+  port = 8080;
 }
 
 const server = Hapi.server({
@@ -18,7 +18,7 @@ const init = async () => {
         plugin: require('./plugins/cssHook')
       },
       {
-        //console information
+        // console information
         plugin: require('hapi-pino'),
         options: {
           prettyPrint: true,
@@ -26,7 +26,7 @@ const init = async () => {
         }
       },
       {
-        //static file
+        // static file
         plugin: require('inert')
       },
       {

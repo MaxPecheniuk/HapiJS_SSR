@@ -74,8 +74,8 @@ module.exports = {
         test: /\.(css|scss)$/,
         exclude: /node_modules/,
         include: [path.resolve(paths.appSrc)],
-        use: [env === 'production' ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
-        // use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        // use: [env === 'production' ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {
         test: /\.(png|svg|jpg|gif)$/,

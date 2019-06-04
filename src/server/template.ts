@@ -18,5 +18,5 @@ export const template = (content = '', reduxState, apolloState, scriptsTags, sty
       </body>
   </html>
 `;
-  return page
+  return page;
 };

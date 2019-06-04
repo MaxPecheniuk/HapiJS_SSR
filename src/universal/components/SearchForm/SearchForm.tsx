@@ -27,7 +27,9 @@ const SearchForm: React.FunctionComponent<ISearchFormProps & RouteComponentProps
       let parsed = queryString.parse(props.location.search.replace('?', ''));
       if (Object.keys(parsed).length > 0) {
         parsed['title'] = inputValue;
-      } else { parsed.search = inputValue; }
+      } else {
+        parsed.search = inputValue;
+      }
       const stringified = queryString.stringify(parsed);
       props.history.push({pathname: '/', search: stringified});
     };
@@ -36,13 +38,14 @@ const SearchForm: React.FunctionComponent<ISearchFormProps & RouteComponentProps
       <Fragment>
         <form onSubmit={onSubmit} className="search-form">
           <FormattedMessage id="form.inputPlaceholder">
-            {placeholder => (<InputText
-              value={inputValue}
-              placeholder={placeholder}
-              onChange={onChange}
-              name="inputValue"
-              className="search-form__input-field"
-            />)}
+            {placeholder => (
+              <InputText
+                value={inputValue}
+                placeholder={placeholder}
+                onChange={onChange}
+                name="inputValue"
+                className="search-form__input-field"
+              />)}
           </FormattedMessage>
 
           <button

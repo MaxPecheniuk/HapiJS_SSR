@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Link, match, withRouter } from 'react-router-dom';
 import * as queryString from 'querystring';
-import { IPostItemType } from '../PostItem/PostItem';
 import { History, Location } from 'history';
 import { FormattedDate } from 'react-intl';
 
 import './PostInfo.scss';
+import { IPostItemTypes } from '../PostItem/PostItem';
 
 interface IPostInfoProps {
   location: Location;
   history: History;
   match: match;
-  postInfo: IPostItemType;
+  postInfo: IPostItemTypes;
   lang: string | any;// tslint:disable-line
 }
 

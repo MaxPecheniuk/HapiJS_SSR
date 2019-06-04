@@ -15,7 +15,7 @@ module.exports = {
   appPostsListLoader: resolveApp("src/universal/PostsLis/PostsList.tsx"), // Posts list entry point
   PostComments: resolveApp("src/universal/PostComments/PostComments.tsx"), // Post comments entry point
   appHeader: resolveApp("src/universal/Header/Header.tsx"), // Header entry point
-  appIndexJsServer: resolveApp("src/server/server.js"), // Server entry point
+  appIndexJsServer: resolveApp("src/server/server.ts"), // Server entry point
   appSrc: resolveApp("src/universal"), // home source
   appTest: resolveApp("src/__tests__"), // home source
   tslintConf: resolveApp("tslint.json"), //TSLint rules

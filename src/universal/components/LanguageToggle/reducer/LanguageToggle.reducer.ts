@@ -6,7 +6,7 @@ export const initialState = {
   language: '',
 };
 
-const pushHistory = (parsed: any) => {
+const pushHistory = (parsed: {lang: string}) => {
   const stringified = queryString.stringify(parsed);
   getHistory().push({search: stringified});
 };
@@ -23,7 +23,7 @@ export const languageReducer = (state = initialState, action) => {
         parsed.lang = language;
       }
       pushHistory(parsed);
-      window.location.reload();
+      // window.location.reload();
       return {language: state.language = language};
 
     case CHECK_LANGUAGE:

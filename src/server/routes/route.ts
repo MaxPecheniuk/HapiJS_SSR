@@ -1,11 +1,11 @@
 import path from 'path';
-import paths from "../../../config/webpack/paths"
-import mockPost from "../../../config/mocks/mockPost"
-import { appHandler as handler} from '../handlers/appHandler';
+import paths from '../../../config/webpack/paths';
+import mockPost from '../../../config/mocks/mockPost.json';
+import { appHandler as handler } from '../handlers/appHandler';
 
-let sources =  path.resolve(paths.appDist);
-if (process.env.NODE_ENV === "production"){
-  sources =  path.resolve(paths.appPublic);
+let sources = path.resolve(paths.appDist);
+if (process.env.NODE_ENV === 'production') {
+  sources = path.resolve(paths.appPublic);
 }
 
 const Routes = [

@@ -1,4 +1,4 @@
-import { ApolloServer } from 'apollo-server/dist/index';
+import { ApolloServer } from 'apollo-server';
 import { typeDefs } from './schema/postsSchema';
 import resolvers from './resolvers/rootResolver';
 
@@ -8,6 +8,6 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url }) => {
-  // eslint-disable-next-line
+  // tslint:disable-line
   console.log(`Server ready at ${url}`);
 });

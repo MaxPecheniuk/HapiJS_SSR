@@ -11,7 +11,7 @@ interface ILanguageToggleProps {
   match: match;
   location: Location;
   history: History;
-  changeLang: (lang: any) => void;
+  changeLang: (lang: any) => void; // tslint:disable-line
 }
 
 const LanguageToggle: React.FunctionComponent<ILanguageToggleProps> = (props: ILanguageToggleProps) => {
@@ -45,4 +45,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect<any, any, any>(mapStateToProps, mapDispatchToProps)(LanguageToggle));
+export default withRouter(connect<any, any, any>(mapStateToProps, mapDispatchToProps)(LanguageToggle));// tslint:disable-line

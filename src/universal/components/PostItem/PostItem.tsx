@@ -1,34 +1,12 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { match, withRouter } from 'react-router';
+import './PostItem.scss';
+import PostInfo from '../PostInfo/PostInfo';
+import CommentCount from '../CommentCount/CommentCount';
+import { useState } from 'react';
 import loadable from '@loadable/component';
-import { FormattedMessage } from 'react-intl';
-import * as queryString from 'querystring';
-import { Query } from 'react-apollo';
-import { GET_POST_EN, GET_POST_RU } from '../../queries/postItem.query';
-import ClearPost from '../share.components/ClearPost/ClearPost';
-import { History, Location } from 'history';
-
-const PostInfo = loadable(() => import('../PostInfo/PostInfo'));
 const PostComments = loadable(() => import('../PostComments/PostComments'));
 
-import './PostItem.scss';
-import { checkLanguageActionCreators } from '../LanguageToggle/actionCreators/LanguageToggle.actionCreators';
-import { connect } from 'react-redux';
-
-interface IPostItemProps {
-  history: History;
-  match: match<{id: string}>;
-  location: Location;
-  postId?: string;
-  setLang: (lang: Object) => void;
-}
-
-interface IPostItemResponse {
-  postById: IPostItemType;
-}
-
-export interface IPostItemType {
+export interface IPostItemTypes {
   commentsIds: Array<string>;
   date: number;
   description: string;
@@ -36,66 +14,30 @@ export interface IPostItemType {
   title: string;
 }
 
+interface IPostItemProps {
+  postData: IPostItemTypes;
+  lang: string | any;// tslint:disable-line
+}
+
 const PostItem: React.FunctionComponent<IPostItemProps> = (props: IPostItemProps) => {
   const [showComments, commentToggle] = useState<boolean>(false);
   const onCommentToggle = () => {
     commentToggle(!showComments);
   };
-
-  const {match, postId, location, history} = props;
-  const parsed = queryString.parse(location.search.replace('?', ''));
-
-  useEffect(() => {
-    if (match.params.id !== undefined && parsed.title) {
-      delete parsed.title;
-      const stringified = queryString.stringify(parsed);
-      history.push({search: stringified});
-    }
-    if (!parsed.lang) {
-      props.setLang({parsed: parsed});
-    }
-  });
-
-  let id: string;
-  if (match.params.id === undefined) {
-    id = postId;
-  } else {
-    id = match.params.id;
-  }
+  const { postData, lang} = props;
 
   return (
-    <Query<IPostItemResponse> query={parsed.lang === 'en' ? GET_POST_EN : GET_POST_RU} variables={{'id': id}}>
-      {({data, loading, error}) => {
-        if (loading) {
-          return <div><ClearPost/></div>;
-        }
-        if (error) {
-          return <div>Error</div>;
-        }
-        return (
-          <div className="post-item">
-            <PostInfo postInfo={data.postById} lang={parsed.lang}/>
-            <div className="post-item__comments-count">
-                <span onClick={onCommentToggle}>
-                  {showComments ? <FormattedMessage id="postItem.showComments"/> :
-                    data.postById.commentsIds.length}
-                    {!showComments ? <FormattedMessage id="postItem.comments" /> : null}
-
-                </span>
-            </div>
-            {showComments && <PostComments commentsIds={data.postById.commentsIds}/>}
-          </div>
-        );
-      }}
-    </Query>
+    <div className="post-item">
+      <PostInfo postInfo={postData} lang={lang}/>
+      <CommentCount
+        commentLength={postData.commentsIds.length}
+        showComments={showComments}
+        onCommentToggle={onCommentToggle}
+      />
+      {showComments && <PostComments commentsIds={postData.commentsIds}/>}
+    </div>
   );
 
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setLang: lang => dispatch(checkLanguageActionCreators(lang))
-  };
-};
-
-export default withRouter(connect<any, any, any>(null, mapDispatchToProps)(PostItem));
+export default PostItem;

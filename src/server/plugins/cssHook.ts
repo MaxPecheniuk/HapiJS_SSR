@@ -13,6 +13,4 @@ exports.plugin = {
     });
 
   }
-
 };
-

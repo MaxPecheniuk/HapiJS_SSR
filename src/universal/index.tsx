@@ -20,10 +20,6 @@ import locale_ru from 'react-intl/locale-data/ru';
 import { IntlProvider } from 'react-intl';
 import { messages } from './locales/langConfig';
 import './index.scss';
-// import window from 'global';
-import { createBrowserHistory as createHistory } from 'history';
-export const myHist = createHistory();
-//
 
 declare global {
   interface Window {
